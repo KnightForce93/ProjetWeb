@@ -1,0 +1,145 @@
+body {
+	padding: 0px; 
+	margin: 0px; 
+	background: #FDFDFD;
+}
+
+.navbar { 
+	background:#FDFDFD;
+	width: 100%;
+	margin: auto;
+	font-family: helvetica;
+}
+.navbar-link{
+	color: #031083;
+	cursor: pointer; 
+}
+.navbar-brand {
+	color: #031083;
+	cursor: pointer; 
+}
+.navbar-menu {
+	color: #031083;
+	cursor: pointer; 
+}
+.navbar-menu-link {
+	color: #0B38A8;
+	cursor: pointer; 
+	margin-left: 20px;
+	text-decoration: none;
+
+}
+.bouton-dropdown {
+	color: #031083;
+	cursor: pointer;
+
+}
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+.bouton-categorie-liste{
+	display: none;
+	background-color: #D9DEEB;
+	min-width: 100px;
+	list-style-type: none;
+} 
+.bouton-categorie-liste li a{
+	color: #0B38A8;
+	padding: 20px;
+	display: block;
+}
+.dropdown:hover .bouton-categorie-liste {
+display: block;
+position: absolute;
+top: 100%;
+left: 0px;
+padding: 0px;
+z-index: 1000;
+cursor: pointer; 
+
+}
+
+
+#recherche { 
+	padding: 4px;
+	border: 2px solid #031083;
+	border-radius: 40px;
+	outline: none;
+	width: 300px;
+}
+
+/*--- header (image de fond + titre + despcription + bouton) ---*/
+.header {
+	background-size: cover; 
+	background-position: center;
+	position: relative; 
+	font-family: helvetica;
+}
+.overlay {
+	position: absolute;
+	min-height: 100%;
+	min-width: 100%;
+	left: 0px;
+	top: 0px;
+	background-color: rgba(0, 0, 0, 0.4); /* a : opacité */
+}
+.row {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+}
+.row-img {
+	width: 25%;
+	height: 200px;
+}
+
+
+
+
+
+
+.description {
+	left: 50%;
+	position: absolute;
+	top: 25%;
+	transform: translate(-50%, -55%); 
+	text-align: center;
+	color: black;
+}
+.description h1 { 
+	color: black;
+}
+.description p { 
+	color: #fff; 
+	font-size: 1.3rem;
+	line-height: 1.5; 
+}
+.description button { 
+	border:1px solid black; 
+	background-color: black;
+	border-radius: 0;
+	color: #fff;
+}
+.description button:hover { 
+	border:1px solid black; 
+	background-color: #fff; 
+	color: #000;
+}
+
+
+/*--- colonnes ---*/
+.page-footer { 
+	background-color: #222; 
+	color: #ccc;
+	padding: 60px 0 30px;
+}
+.footer-copyright { 
+	color: #666; 
+	padding: 40px 0;
+}
+
+
+
+
