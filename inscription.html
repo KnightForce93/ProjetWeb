@@ -1,0 +1,56 @@
+<!DOCTYPE html> 
+<html>
+<head>
+		<title>ECE Ebay</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="inscription.css">
+		<!-- lien vers font awesome, library de emoticone -->
+		<script src="https://kit.fontawesome.com/49d3300cf5.js" crossorigin="anonymous"></script> 
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+		<script type="text/javascript">
+			//utiliser jQuery pour que l’image s’étire sur l’écran
+				$(document).ready(function(){ 
+					$('.header').height($(window).height());
+				});
+		</script>
+		<script>
+			function send() {
+				alert("Message envoyé avec succès !")
+			}
+		</script>
+</head> 
+
+<body> 
+	<nav class="navbar">
+				<a href="index.html"><img src="images/logo.png" width="80"></a>
+	</nav>
+	<header class="page-header header container-fluid">
+		<div class="overlay"></div>
+		<div class="description">
+				<h1><strong>Créer votre compte</strong></h1><br><br>
+					<select name="Civilité">
+						<option value="Madame">Madame</option>
+						<option value="Monsieur">Monsieur</option>
+						<option value="Nonprécisé">Non précisé</option>
+					</select><br><br>
+
+                	<input type="text" placeholder="Nom..."/><br><br>
+                	<input type="text" placeholder="Prénom..."/><br><br>
+               		<input type="text" placeholder="Age..."/><br><br>
+               		<input type="text" placeholder="..."/><br><br>
+               		<input type="text" placeholder="..."/><br><br>
+                	<button>S'inscrire</button>
+
+		</div>
+	</header>
+		
+	<footer class="page-footer"> 
+		<div class="container">
+			<div class="footer-copyright text-center">&copy; 2020 Copyright | Droits d'auteurs: Wassim Sebbahi & Thomas Popielski & Louis Donikian TD02</div><!--text-center : modifier la typographie-->
+		</div>
+	</footer>
+</body>
+</html>
