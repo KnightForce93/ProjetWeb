@@ -6,15 +6,33 @@
 //Rappel: votre serveur = localhost | votre login = root |votre password = <rien> 
 		$db_handle = mysqli_connect('localhost', 'root', 'root');
 		$db_found = mysqli_select_db($db_handle, $database);
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ajout produit</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.affichage {
+			background-color: grey;
+			padding-left: 20px;
+		}
+	</style>
+</head>
+<body>
+<?php
 		if ($_POST["button"]) {
 			 if ($db_found) {
 			 	//affichage de tous les produits 
 					$sql = "SELECT * FROM Item";
 					$result = mysqli_query($db_handle, $sql); 
-
+?>
+		<h3>Voici la liste de produits</h3>
+		<div class="affichage">
+<?php
+					echo "Produits dans le marketplace:" . "<br><br>"; 
 					while ($data = mysqli_fetch_assoc($result)) {
 						echo "Produits dans le marketplace:" . "<br>"; 
-						echo "ID: " . $data['id'] . "<br>";
 						echo "Nom: " . $data['nom'] . "<br>";
 						echo "Photo: " . $data['photos'] . "<br>";
 						echo "Description: " . $data['descrptions'] . "<br>";
@@ -32,14 +50,8 @@
 //fermer la connexion
 	mysqli_close($db_handle);
 ?>
+	</div>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Ajout produit</title>
-	<meta charset="utf-8">
-</head>
-<body>
 	<h3>Veuillez rentrer les informations nécessaires à l'ajout un produit</h3>
 		<form action="addproduct.php" method="post">
 			<table>
