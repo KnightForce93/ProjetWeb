@@ -77,29 +77,18 @@ cursor: pointer;
 
 
 }
-.carousel-caption h3{
-	color: #031083;
-	font-size: 20px;
-	font:helvetica;
-}
-.carousel-caption p{
-	color: #031083;
-	font-size: 12px;
-	font:helvetica;
-}
-h3{
-	color: #031083;
-}
-h2 {
-	color: #031083;
+.row {
+	color: black;	
 }
 
-.col-sm-4 p{
-	color: #031083;
+.well{
+	font-size: 15px;
+	color: #031083;	
+
 }
-.col-sm-4 img{
-	width: 390px;
-	height: 250px;
+.well .description{
+	text-align: left;	
+
 }
 
 

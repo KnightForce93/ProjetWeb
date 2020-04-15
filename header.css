@@ -6,9 +6,10 @@ body {
 
 .navbar { 
 	background:#FDFDFD;
-	width: 90%;
+	width: 100%;
 	margin: auto;
 	font-family: helvetica;
+	
 }
 .navbar-link{
 	color: #031083;
@@ -21,6 +22,7 @@ body {
 .navbar-menu {
 	color: #031083;
 	cursor: pointer; 
+	font-size: 20px;
 }
 .navbar-menu-link {
 	color: #0B38A8;
@@ -29,6 +31,7 @@ body {
 	text-decoration: none;
 
 }
+
 .bouton-dropdown {
 	color: #031083;
 	cursor: pointer;
@@ -37,17 +40,20 @@ body {
 .dropdown {
 	position: relative;
 	display: inline-block;
+	font-size: 20px;
+	left: 200px;
 }
 .bouton-categorie-liste{
 	display: none;
 	background-color: #D9DEEB;
 	min-width: 100px;
 	list-style-type: none;
+	border-radius: 10px;
 } 
 .bouton-categorie-liste li a{
 	color: #0B38A8;
 	padding: 20px;
-	display: block;
+	display: block; 
 }
 .dropdown:hover .bouton-categorie-liste {
 display: block;
@@ -60,13 +66,17 @@ cursor: pointer;
 
 }
 
-
 #recherche { 
 	padding: 4px;
 	border: 2px solid #031083;
 	border-radius: 40px;
 	outline: none;
-	width: 300px;
+	width: 350px; 
+	height: 40px;
+	font-size: 17px;
+	margin-left: 330px;
+
+
 }
 
 /*--- header (image de fond + titre + despcription + bouton) ---*/

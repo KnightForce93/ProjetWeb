@@ -75,7 +75,12 @@ cursor: pointer;
 	font-size: 17px;
 	margin-left: 330px;
 
+}
 
+h1{
+	color: #031083;
+	font:helvetica;
+	text-align: center;
 }
 .carousel-caption h3{
 	color: #031083;
