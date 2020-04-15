@@ -12,7 +12,7 @@
 	<h3>Veuillez rentrer les informations nécessaires à l'ajout un produit</h3>
 	<div class="container">
 
-		<form action="addproductv2.php" method="post">
+		<form action="addproduct.php" method="post">
 			<fieldset>
 				<div class="form-group">
                    <label for="nom">Nom du produit :</label>
