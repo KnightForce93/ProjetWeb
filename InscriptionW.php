@@ -1,5 +1,5 @@
 <?php 
- 
+include("Connexionbdd.php"); 
  //récupérer les données venant de formulaire  
 $email = isset($_POST["email"])? $_POST["email"] : "";  
 $mdp = isset($_POST["mdp"])? $_POST["mdp"] : "";  
@@ -58,11 +58,7 @@ echo "<td><img src='imagesutilisateur/$pphoto.jpg' height='150px' width='300px'>
 } else {
 $erreur .= "error uploading pphoto.";
 }
-
- 
-
-
-		$target_dir = "imagesutilisateur/";
+$target_dir = "imagesutilisateur/";
         $target_file = $target_dir . basename($_FILES["bphoto"]["name"]);
 $uploadOk = 1;
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -76,19 +72,11 @@ $erreur .= "error uploading bphoto.";
 
 }
 
-
-
 if($erreur!=""){
 
 	 echo "Erreur: $erreur";
 }else{
  
- //identifier votre BDD  
-$database = "projetweb"; 
- 
- //connectez-vous de votre BDD  
-$db_handle = mysqli_connect('localhost', 'root', '');  
-$db_found = mysqli_select_db($db_handle, $database); 
  
 //verifie si l'utilisateur n'existe pas déja
 if (isset($_POST['submit'])) {   
@@ -100,7 +88,9 @@ if (isset($_POST['submit'])) {
 		$result = mysqli_query($db_handle, $sql); 
 //regarder s'il y a de résultat    
 		if (mysqli_num_rows($result) != 0) {     
-			echo "utilisateur existe déja";    
+			header("Location: Firstpage.php?log=existant");
+			mysqli_close($db_handle);  
+			exit;    
 		} else {     
 			
    $sql = "INSERT INTO utilisateur(login, password, statut)VALUES('$email', '$mdp', '$status')";     
@@ -118,12 +108,11 @@ if (isset($_POST['submit'])) {
    }  else if($status=="vendeur"){
    	  $sql = "INSERT INTO vendeur(id, prenom, nom, photo, backgroundphoto, user_id)VALUES('$id', '$nom', '$prenom', '$pphoto', '$bphoto' , '$id')";   
   $result = mysqli_query($db_handle, $sql);  
-
-   
    }
-   
-}
-mysqli_close($db_handle);    
+   header("Location: Firstpage.php");
+			mysqli_close($db_handle);  
+			exit;    
+}   
 } else {    
 	echo "Database not found";   
 }  
