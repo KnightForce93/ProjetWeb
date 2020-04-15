@@ -12,6 +12,10 @@
 <head>
 	<title>Ajout produit</title>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<style type="text/css">
 		.affichage {
 			background-color: grey;
@@ -38,6 +42,7 @@
 						echo "Description: " . $data['descrptions'] . "<br>";
 						echo "Prix Minimum: " . $data['prix_minimum'] . "<br>";
 						echo "Video: " . $data['video'] . "<br>";
+						if($categoriedachat==BonpourleMusee)
 						echo "Catégorie d'achat: " . $data['categoriedachat'] . "<br>";
 						echo "Catégorie de l'item: " . $data['categorie'] . "<br>";
 						echo "<br>";

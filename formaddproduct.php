@@ -6,7 +6,7 @@
 </head>
 <body>
 	<h3>Veuillez rentrer les informations nécessaires à l'ajout un produit</h3>
-		<form action="addproduct.php" method="post">
+		<form action="addproductv2.php" method="post">
 			<table>
 				<tr>
 					<td>Nom :</td>

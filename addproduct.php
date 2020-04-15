@@ -8,7 +8,7 @@
 		$categoriedachat = isset($_POST["categoriedachat"])? $_POST["categoriedachat"] : "";
 		$categorieitem = isset($_POST["categorieitem"])? $_POST["categorieitem"] : "";
 //identifier votre BDD
-		$database = "projet";
+		$database = "projetweb";
 //connectez-vous dans votre BDD
 //Rappel: votre serveur = localhost | votre login = root |votre password = <rien> 
 		$db_handle = mysqli_connect('localhost', 'root', 'root');
