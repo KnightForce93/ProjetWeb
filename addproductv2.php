@@ -48,6 +48,30 @@ class Items
 if ($_POST["button"]) { 
       if ($db_found) {
         echo "ok";
+
+        $target_dir = "imagesproduit/";
+        $target_file = $target_dir . basename($_FILES["photo"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+        if (move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file)) {
+            echo "The file ". basename( $_FILES["photo"]["name"]). " has been uploaded.";
+            $photo=basename( $_FILES["photo"]["name"],".jpg"); //used to store the filename in a variable
+            echo "<td><img src='imagesproduit/$photo.jpg' height='150px' width='300px'></td>";
+        } else {
+            $erreur .= "error uploading photo.";
+        }
+
+        $target_dir = "videosproduit/";
+        $target_file = $target_dir . basename($_FILES["video"]["name"]);
+        $uploadOk = 1;
+        $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+        if (move_uploaded_file($_FILES["video"]["tmp_name"], $target_file)) {
+            echo "The file ". basename( $_FILES["video"]["name"]). " has been uploaded.";
+            $video=basename( $_FILES["video"]["name"],".jpg"); //used to store the filename in a variable
+            echo "<td><img src='videosproduit/$video.mp4' height='150px' width='300px'></td>";
+        } else {
+            $erreur .= "error uploading video.";
+        }
         $sql = "INSERT INTO Item(nom, photos, descrptions, prix_minimum, video, categoriedachat, categorie) 
                             VALUES('$nom', '$photo', '$description', '$prixmin', '$video', '$categoriedachat', '$categorieitem')";
         $result = mysqli_query($db_handle, $sql);
