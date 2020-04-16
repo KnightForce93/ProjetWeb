@@ -3,8 +3,8 @@ session_start();
 //$_SESSION['id']="11";
 
 include("Connexionbdd.php"); 
-if($_SESSION['id']!=""){
-		$id=$_SESSION['id'];
+if($_SESSION['id_global']!=""){
+		$id=$_SESSION['id_global'];
 		$sql = "SELECT * FROM utilisateur";       
 	    $sql .= " WHERE id LIKE '%$id%'";               	    
 		$result = mysqli_query($db_handle, $sql); 
