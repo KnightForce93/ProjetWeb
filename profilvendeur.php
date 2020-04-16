@@ -41,22 +41,22 @@
       <ul class="nav navbar-nav navbar-right">
         <div class="navbar-menu">
           <a href="achat.php" class="navbar-menu-link">Achat</a>
-          <a href="vente.php" class="navbar-menu-link">Enchère</a>
-           <a href="newitem.php" class="navbar-menu-link"><i class="fas fa-shopping-basket"></i> Vendre</a>
+          <a href="vente.php" class="navbar-menu-link">Vente</a>
           <a href="inscription.php" class="navbar-menu-link">Votre Compte</a>
+          <a href="" class="navbar-menu-link"><i class="fas fa-shopping-basket"></i> Panier</a>
           <a href="plus.php" class="navbar-menu-link">Plus</a>
         </div>
       </ul>
     </div>
   </div>
 </nav>
-  
+  <?php include("Tprofilvendeur.php"); ?>
 <div class="container text-center">    
   <div class="row">
     <div class="col-sm-3 well">
       <div class="well">
-        <p><a href="#">Louis Donikian</a></p>
-        <img src="images/louis.jpg" alt="Avatar">
+        <p><a href="#"> <?php echo $nom." ".$prenom; ?> </a></p>
+        <?php echo "<img src='images/".$pphoto."' height='40%' width='40%' alt='Avatar'>"; ?>
       </div>
       <div class="well">
         <p><a href="#">Types de Produits</a></p>
@@ -68,9 +68,9 @@
           <span class="label label-default">Argent</span>
         </p>
       </div>
-      <p><a href="#">Louis.donikian@edu.ece.fr</a></p>
-      <p><a href="#">Facebook</a></p>
-      <p><a href="#">Numéro de tel</a></p>
+      <p><a href="#"><?php echo $email;?></a></p>
+      <p><a href="#"><?php echo $mdp;?></a></p>
+      
     </div>
     <div class="col-sm-7">
     
@@ -78,60 +78,36 @@
         <div class="col-sm-12">
           <div class="panel panel-default text-left">
             <div class="panel-body">
-              <p contenteditable="true">Statut: Vendeur</p>
-              <p contenteditable="true">Louis Donikian est inscrit sur ECE Ebay depuis le 15 avril 2020</p>    
+              <p contenteditable="true">Statut: <?php echo $statut;?></p>
+              <p contenteditable="true"><?php echo $nom." ".$prenom;?> est inscrit sur ECE Ebay depuis le <?php echo$datecreation;?></p>    
             </div>
           </div>
         </div>
       </div>
+
+      <?php $sql = "SELECT * FROM item";       
+            $sql .= " WHERE v_id LIKE '%$id_vendeur%'";                    
+    $result = mysqli_query($db_handle, $sql); 
+    while ($data = mysqli_fetch_assoc($result)) {
+
+      echo'<div class="row">
+        <div class="col-sm-3">
+          <div class="well">
+           <p>'.$data['nom'].'</p>
+           <img src="images/'.$data['photo1'].'" height="100%" width="100%" alt="Avatar">
+          </div>
+        </div>
+        <div class="col-sm-9">
+          <div class="well">
+            <p class="description">'.$data['description'].'</p>
+          </div>
+        </div>
+      </div>
+      ';
+    }
+    ?>
       
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>Sac Hermès KELLY 35</p>
-           <img src="images/sac.jpg" height="100%" width="100%" alt="Avatar">
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-            <p class="description">Crocodile d'estuaire vert Émeraude (Crocodylus porosus) II/B source C
-              Garniture métal argenté palladié.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>Autoportrait Peinture de Vincent van Gogh</p>
-           <img src="images/vangogh.jpg" height="100%" width="100%" alt="Avatar">
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-            <p class="description">L'artiste hollandais postimpressionniste Vincent van Gogh a peint un autoportrait à l'huile sur toile en septembre 1889. L'œuvre, qui pourrait être le dernier autoportrait de Van Gogh, a été peinte peu de temps avant son départ de Saint-Rémy-de-Provence dans le sud France.</p>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-3">
-          <div class="well">
-           <p>Patek Philippe Nautilus « Jumbo »</p>
-           <img src="images/montrePP.jpg" height="100%" width="100%" alt="Avatar">
-          </div>
-        </div>
-        <div class="col-sm-9">
-          <div class="well">
-            <p class="description">Montre bracelet extra-large en acier <br>
-                Boîtier : coussin, fermeture à vis sur la carrure, signé<br>
-                Cadran : anthracite tramé, index "bâton" appliqués, aiguilles luminescentes, date à guichet, signé<br>
-                Mouvement : automatique, 28.255, 36 rubis, ajusté 5 positions, signé<br>
-                Bracelet / Boucle : intégré en acier / déployante, signée<br>
-                Tour de poignet : approx. 185 mm<br>
-                Dim. : 42 x 44 mm<br>
-                Avec : son certificat d'identité et garantie d'origine mentionnant la date de vente du 12 août 1978 à Genève, un extrait des registres confirmant la date de manufacture en 1977 et sa vente le 31 juillet 1978, un livret</p>
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>
 </div>

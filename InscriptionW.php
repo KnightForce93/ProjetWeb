@@ -1,16 +1,16 @@
 <?php 
 include("Connexionbdd.php"); 
- //récupérer les données venant de formulaire  
+
 $email = isset($_POST["email"])? $_POST["email"] : "";  
 $mdp = isset($_POST["mdp"])? $_POST["mdp"] : "";  
-$status = isset($_POST["statusRadios"])? $_POST["statusRadios"] : "";  
+$statut = isset($_POST["statusRadios"])? $_POST["statusRadios"] : "";  
 $nom = isset($_POST["nom"])? $_POST["nom"] : ""; 
-$prenom = isset($_POST["prenom"])? $_POST["prenom"] : "";  
+$prenom = isset($_POST["prenom"])? $_POST["prenom"] : ""; 
 $adresse = isset($_POST["adresse"])? $_POST["adresse"] : "";  
-$ville = isset($_POST["ville"])? $_POST["ville"] : "";  
-$pays = isset($_POST["pays"])? $_POST["pays"] : ""; 
-$cp = isset($_POST["cp"])? $_POST["cp"] : "";  
-$tel = isset($_POST["tel"])? $_POST["tel"] : "";  
+$ville = isset($_POST["ville"])? $_POST["ville"] : ""; 
+$pays= isset($_POST["pays"])? $_POST["pays"] : "";  
+$cp = isset($_POST["cp"])? $_POST["cp"] : ""; 
+$tel = isset($_POST["tel"])? $_POST["tel"] : "";   
 $pphoto = isset($_POST["pphoto"])? $_POST["pphoto"] : "";  
 $bphoto = isset($_POST["bphoto"])? $_POST["bphoto"] : "";  
 
@@ -22,8 +22,8 @@ if($email==""){
 if($mdp==""){
 	$erreur .= "Mot de passe est vide.<br>";
 }
-if($status==""){
-	$erreur .="status est vide.<br>";
+if($statut==""){
+	$erreur .="statut est vide.<br>";
 }
 if($nom==""){
 	$erreur .="Nom est vide.<br>";
@@ -31,7 +31,7 @@ if($nom==""){
 if($prenom==""){
 	$erreur .= "Prenom est vide.<br>";
 }
-if($status=="acheteur"){
+if($statut=="acheteur"){
 if($adresse==""){
 	$erreur .= "adresse est vide.<br>";
 }if($ville==""){
@@ -44,28 +44,25 @@ if($adresse==""){
 	$erreur .= "tel est vide.<br>";
 }
 }
-if($status == "vendeur"){
+if($statut == "vendeur"){
 	
 
 		$target_dir = "imagesutilisateur/";
+		//$imageFileType = pathinfo($_FILES["pphoto"]["name"],PATHINFO_EXTENSION);
+		
         $target_file = $target_dir . basename($_FILES["pphoto"]["name"]);
 
-$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
 if (move_uploaded_file($_FILES["pphoto"]["tmp_name"], $target_file)) {
-echo "The file ". basename( $_FILES["pphoto"]["name"]). " has been uploaded.";
-$pphoto=basename( $_FILES["pphoto"]["name"],".jpg"); //used to store the filename in a variable
-echo "<td><img src='imagesutilisateur/$pphoto.jpg' height='150px' width='300px'></td>";
+$pphoto=basename( $_FILES["pphoto"]["name"]); //used to store the filename in a variable
 } else {
 $erreur .= "error uploading pphoto.";
 }
-$target_dir = "imagesutilisateur/";
+
         $target_file = $target_dir . basename($_FILES["bphoto"]["name"]);
-$uploadOk = 1;
-$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+
 if (move_uploaded_file($_FILES["bphoto"]["tmp_name"], $target_file)) {
-echo "The file ". basename( $_FILES["bphoto"]["name"]). " has been uploaded.";
-$bphoto=basename( $_FILES["bphoto"]["name"],".jpg"); //used to store the filename in a variable
-echo "<td><img src='imagesutilisateur/$bphoto.jpg' height='150px' width='300px'></td>";
+$bphoto=basename( $_FILES["bphoto"]["name"]); //used to store the filename in a variable
 } else {
 $erreur .= "error uploading bphoto.";
 }
@@ -82,7 +79,7 @@ if($erreur!=""){
 if (isset($_POST['submit'])) {   
 	if ($db_found) {    
 		$sql = "SELECT * FROM utilisateur";       
-	    $sql .= " WHERE login LIKE '%$email%'";          
+	    $sql .= " WHERE email LIKE '%$email%'";          
 		$sql .= " AND password LIKE '%$mdp%'";     
 			    
 		$result = mysqli_query($db_handle, $sql); 
@@ -93,23 +90,36 @@ if (isset($_POST['submit'])) {
 			exit;    
 		} else {     
 			
-   $sql = "INSERT INTO utilisateur(login, password, statut)VALUES('$email', '$mdp', '$status')";     
+   $sql = "INSERT INTO utilisateur(email, password, statut)VALUES('$email', '$mdp', '$statut')";     
    $result = mysqli_query($db_handle, $sql);  
    $sql = "SELECT * FROM utilisateur";       
-	    $sql .= " WHERE login LIKE '%$email%'";          
+	    $sql .= " WHERE email LIKE '%$email%'";          
 		$sql .= " AND password LIKE '%$mdp%'";     
 		$result = mysqli_query($db_handle, $sql); 
 		while ($data = mysqli_fetch_assoc($result)) {   
 		$id=$data['id'];
-		}	       
-   if ($status=="acheteur")  {
-   	  $sql = "INSERT INTO acheteur(id, prenom, nom, user_id)VALUES('$id', '$prenom', '$nom', '$id')";     
-   $result = mysqli_query($db_handle, $sql);  
-   }  else if($status=="vendeur"){
-   	  $sql = "INSERT INTO vendeur(id, prenom, nom, photo, backgroundphoto, user_id)VALUES('$id', '$nom', '$prenom', '$pphoto', '$bphoto' , '$id')";   
-  $result = mysqli_query($db_handle, $sql);  
+		}	
+
+   if ($statut=="acheteur")  {
+   	  $sql = "INSERT INTO acheteur(prenom, nom, user_id)VALUES('$prenom', '$nom', '$id')";     
+      $result = mysqli_query($db_handle, $sql); 
+        $sql = "SELECT * FROM acheteur";       
+	    $sql .= " WHERE user_id LIKE '%$id%'";             
+		$result = mysqli_query($db_handle, $sql); 
+
+		while ($data = mysqli_fetch_assoc($result)) {   
+		$id2= $data['id'];
+		
+		}	
+
+   		$sql = "INSERT INTO adresse(adresse, ville, codepostal, pays, telephone, ach_id)VALUES('$adresse', '$ville', '$cp', '$pays', '$tel', '$id2')"; 
+   		$result = mysqli_query($db_handle, $sql);  
+   		}
+     else if($statut=="vendeur"){
+   	  $sql = "INSERT INTO vendeur(prenom, nom, profil_photo, background_photo, user_id)VALUES('$prenom', '$nom', '$pphoto', '$bphoto' , '$id')";   
+  	  $result = mysqli_query($db_handle, $sql);  
    }
-   header("Location: Firstpage.php");
+  header("Location: Firstpage.php");
 			mysqli_close($db_handle);  
 			exit;    
 }   

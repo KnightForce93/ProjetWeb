@@ -24,7 +24,7 @@ if($erreur!=""){
 if (isset($_POST['submit'])) {   
 	if ($db_found) {    
 		$sql = "SELECT * FROM utilisateur";       
-	    $sql .= " WHERE login LIKE '%$email%'";          
+	    $sql .= " WHERE email LIKE '%$email%'";          
 		$sql .= " AND password LIKE '%$mdp%'";     
 			    
 		$result = mysqli_query($db_handle, $sql); 
