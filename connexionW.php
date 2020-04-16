@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
 		$id=$data['id'];
 		}
 		session_start();
-		$_SESSION["id"]=$id;
+		$_SESSION["id_global"]=$id;
 		mysqli_close($db_handle);  
 		header("Location: index.html");
 		exit;

@@ -1,84 +1,130 @@
 <?php
-//recuperer les données venant de la page HTML
+session_start();
+
+include("Connexionbdd.php");
+//$_SESSION['id_global']="11";
+
+include("Connexionbdd.php"); 
+if($_SESSION['id_global']!=""){
+	    $id=$_SESSION['id_global'];
 		$nom = isset($_POST["nom"])? $_POST["nom"] : ""; 
-		$photo = isset($_POST["photo"])? $_POST["photo"] : ""; 
+		$photo1 = isset($_POST["photo1"])? $_POST["photo1"] : "";  
+		$photo2= isset($_POST["photo2"])? $_POST["photo2"] : "";  
+		$photo3 = isset($_POST["photo3"])? $_POST["photo2"] : "";
+		$video = isset($_POST["video"])? $_POST["video"] : "";   
 		$description = isset($_POST["description"])? $_POST["description"] : ""; 
 		$prixmin = isset($_POST["prixmin"])? $_POST["prixmin"] : "";
-		$video = isset($_POST["video"])? $_POST["video"] : "";
 		$categoriedachat = isset($_POST["categoriedachat"])? $_POST["categoriedachat"] : "";
 		$categorieitem = isset($_POST["categorieitem"])? $_POST["categorieitem"] : "";
-		
-//identifier votre BDD
 
-		$database = "projetweb";
+		$erreur="";
 
-//connectez-vous dans votre BDD
-//Rappel: votre serveur = localhost | votre login = root |votre password = <rien> 
-    $db_handle = mysqli_connect('localhost', 'root', 'root');
-    $db_found = mysqli_select_db($db_handle, $database);
-		
- 		if ($_POST["button"]) { 
-			 if ($db_found) {
-			 	
-			 		$target_dir = "imagesproduit/";
-        			$target_file = $target_dir . basename($_FILES["photo"]["name"]);
-			        $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-			        if (move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file)) {
-			            echo "The file ". basename( $_FILES["photo"]["name"]). " has been uploaded.";
-			            $photo=basename( $_FILES["photo"]["name"],".jpg"); //used to store the filename in a variable
-			            echo "<td><img src='imagesproduit/$photo.jpg' height='150px' width='300px'></td>";
+if($nom==""){
+	$erreur .= "Nom est vide.<br>";
+}
+if($description==""){
+	$erreur .= "description est vide.<br>";
+}if($prixmin==""){
+	$erreur .= "prixminest vide.<br>";
+}if($categoriedachat==""){
+	$erreur .= "categoriedachat est vide.<br>";
+}if($categorieitem==""){
+	$erreur .= "categorieitem est vide.<br>";
+}
+
+
+$target_dir = "imagesproduit/";
+
+if (file_exists($_FILES["photo1"]["tmp_name"])) {
+	
+//$imageFileType = pathinfo($_FILES["pphoto"]["name"],PATHINFO_EXTENSION);
+$target_file = $target_dir . basename($_FILES["photo1"]["name"]);
+
+if (move_uploaded_file($_FILES["photo1"]["tmp_name"], $target_file)) {
+	
+$photo1=basename( $_FILES["photo1"]["name"]); //used to store the filename in a variable
 			        } else {
-			        	echo "erreur";
-			            $erreur .= "error uploading photo.";
+			            $erreur .= "error uploading photo1.";
 			        }
-			     /*
-			        $target_dir = "videosproduit/";
+}else{$erreur .= "la photo1 est obligatoire";}
+
+if (file_exists($_FILES["photo2"]["tmp_name"])) {
+	
+$target_file = $target_dir . basename($_FILES["photo2"]["name"]);
+
+if (move_uploaded_file($_FILES["photo2"]["tmp_name"], $target_file)) {
+	
+$photo2=basename( $_FILES["photo2"]["name"]); //used to store the filename in a variable
+			        } else {
+			            $erreur .= "error uploading photo2.";
+			        }
+			    }
+			        
+
+if (file_exists($_FILES["photo3"]["tmp_name"])) {
+$target_file = $target_dir . basename($_FILES["photo3"]["name"]);
+if (move_uploaded_file($_FILES["photo3"]["tmp_name"], $target_file)) {
+	
+$photo3=basename( $_FILES["photo3"]["name"]); //used to store the filename in a variable
+			        } else {
+			            $erreur .= "error uploading photo3.";
+			        }
+			    }
+if (file_exists($_FILES["video"]["tmp_name"])) {
+					$target_dir = "videosproduit/";
+
 			        $target_file = $target_dir . basename($_FILES["video"]["name"]);
-			        $uploadOk = 1;
-			        $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-			        if (move_uploaded_file($_FILES["video"]["tmp_name"], $target_file)) {
-			            echo "The file ". basename( $_FILES["video"]["name"]). " has been uploaded.";
-			            $video=basename( $_FILES["video"]["name"],".jpg"); //used to store the filename in a variable
-			            echo "<td><img src='videosproduit/$video.mp4' height='150px' width='300px'></td>";
+
+if (move_uploaded_file($_FILES["video"]["tmp_name"], $target_file)) {
+	
+$video=basename( $_FILES["video"]["name"]); //used to store the filename in a variable
 			        } else {
 			            $erreur .= "error uploading video.";
 			        }
-			    */
-					$sql = "INSERT INTO Item(nom, photos, descrptions, prix_minimum, video, categoriedachat, categorie) 
-							VALUES('$nom', '$photo', '$description', '$prixmin', '$video', '$categoriedachat', '$categorieitem')";
-					$result = mysqli_query($db_handle, $sql); 
+			    }
 
-					 echo "Add successful." . "<br>";
+	if($erreur!=""){
 
-//on affiche le livre ajouté
-					$sql = "SELECT * FROM Item";
-					if ($nom != "") {
-//on cherche le livre avec les paramètres titre et auteur 
-						$sql .= " WHERE nom LIKE '%$nom%'";
-						if ($photo != "") {
-							$sql .= " AND photos LIKE '%$photo%'";
-						} 
-					}
-					$result = mysqli_query($db_handle, $sql);
+	 echo "Erreur: $erreur";
+}else{		        
+ 	if (isset($_POST['submit'])) {  
 
-					while ($data = mysqli_fetch_assoc($result)) {
-						echo "Informations sur le produit ajouté:" . "<br>"; 
-						echo "ID: " . $data['id'] . "<br>";
-						echo "Nom: " . $data['nom'] . "<br>";
-						echo "Description: " . $data['descrptions'] . "<br>";
-						echo "Prix Minimum: " . $data['prix_minimum'] . "<br>";
-						echo "Catégorie d'achat: " . $data['categoriedachat'] . "<br>";
-						echo "Catégorie de l'item: " . $data['categorie'] . "<br>";
-						echo '<img style="width:200px;" src= '. $data["photos"] .' >';
-						//echo '<embed id="movie_player" width="640" height="363" bgcolor="#000000" allowfullscreen="true" allowscriptaccess="always" flashvars="video_id=iP6XpLQM2Cs" src='. $data["video"] .'  />';
-						//echo '<video id="video" src="bague.mp4">';
-						echo '<video id="video" src='. $data["video"] .' >';
-					} 
-			} 
-			else {
+			 if ($db_found) {
+	$sql = "SELECT * FROM vendeur";       
+	    $sql .= " WHERE user_id LIKE '%$id%'";          	    
+		$result = mysqli_query($db_handle, $sql);
+		while ($data = mysqli_fetch_assoc($result)) { 
+		$id_vendeur=$data['id'];
+		} 		 	
+	$sql =  "INSERT INTO item(nom, photo1,";
+	 if($photo2!=""){
+	 	$sql .=  " photo2,";
+	 	}
+	 	if($photo3!=""){
+	 	$sql .=  " photo3,";
+	 	}
+	 	if($video!=""){
+	 	$sql .=  " video,";
+	 	}
+	 $sql .=  " description, prix_minimum, categorie_achat, categorie_produit, v_id)VALUES('$nom', '$photo1',";
+	  if($photo2!=""){
+	 	$sql .=  " '$photo2',";
+	 	}
+	 	if($photo3!=""){
+	 	$sql .=  " '$photo3',";
+	 	}
+	 	if($video!=""){
+	 	$sql .=  " '$video',";
+	 	}
+	 $sql .=" '$description', '$prixmin', '$categoriedachat', '$categorieitem','$id_vendeur')";   
+	$result = mysqli_query($db_handle, $sql); 
+	 mysqli_close($db_handle);
+		}	else {
 				echo "Database not found";
  			} 
 		}
+	}
+}
 //fermer la connexion
-	mysqli_close($db_handle);
+	
 ?>

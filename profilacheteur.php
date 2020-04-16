@@ -51,25 +51,30 @@
   </div>
 </nav>
   
+   <?php include("Tprofilacheteur.php"); ?>
 <div class="container text-center">    
   <div class="row">
         <div class="col-sm-3 well">
           <div class="well">
-            <p><a href="#">Wassim Sebbahi</a></p>
-            <p><a href="#">adresse@mail.com</a></p>
-            <p><a href="#">Numéro de tel</a></p>
+            <p><a href="#"><?php echo $nom." ".$prenom; ?> </a></p>
+            <p><a href="#"><?php echo $email;?></a></p>
+            <p><a href="#"><?php echo $mdp;?></a></p>
+            <p><a href="#"><?php echo $tel;?></a></p>
           </div>
           <div class="well">
-            <p class="info">Adresse:<br>
-               Ville:<br>
-               Code Postal: <br>
-               Pays:<br>
+            <p class="info">Adresse: <?php echo $adresse;?><br>
+               Ville:<?php echo $ville;?><br>
+               Code Postal: <?php echo $tel;?><br>
+               Pays:<?php echo $pays;?><br>
             </p>
           </div>
           <div class="well">
-            <p class="info">Type de carte:<br>
-               Code:<br>
-               Cryptogramme: <br>
+            <p class="info">
+               Nom de la carte: <?php echo $nomcarte;?><br>
+               Type de carte: <?php echo $typecarte;?><br>
+               Numéro:<?php echo $numero_carte;?><br>
+               Cryptogramme: <?php echo $code;?><br>
+               Date expiration: <?php echo $dateexp;?>
             </p>
           </div>
         </div>
@@ -79,8 +84,8 @@
             <div class="col-sm-12">
               <div class="panel panel-default text-left">
                 <div class="panel-body">
-                  <p contenteditable="true">Statut: Acheteur</p>
-                  <p contenteditable="true">Wassim est inscrit sur ECE Ebay depuis le 15 avril 2020</p>    
+                  <p contenteditable="true">Statut: <?php echo $statut;?></p>
+                  <p contenteditable="true"><?php echo $nom." ".$prenom;?> est inscrit sur ECE Ebay depuis le <?php echo$datecreation;?></p>    
                 </div>
               </div>
             </div>
@@ -95,35 +100,30 @@
             </div>
           </div>
 
-      
-          <div class="row">
-              <div class="col-sm-3">
-                <div class="well">
-                 <p>Sac Hermès KELLY 35</p>
-                 <img src="images/sac.jpg" height="100%" width="100%" alt="Avatar">
-                </div>
-              </div>
-              <div class="col-sm-9">
-                <div class="well">
-                  <p class="description">PRIX: 10000€<br>
-                  Date d'achat: 17/04/2020</p>
-                </div>
-              </div>
+        <?php $sql = "SELECT * FROM item";       
+            $sql .= " WHERE id_acheteur LIKE '%$id_acheteur%'"; 
+
+    $result = mysqli_query($db_handle, $sql); 
+    while ($data = mysqli_fetch_assoc($result)) {
+
+      echo'<div class="row">
+        <div class="col-sm-3">
+          <div class="well">
+           <p>'.$data['nom'].'</p>
+           <img src="images/'.$data['photo1'].'" height="100%" width="100%" alt="Avatar">
           </div>
-          <div class="row">
-              <div class="col-sm-3">
-                <div class="well">
-                 <p>Autoportrait Peinture de Vincent van Gogh</p>
-                 <img src="images/vangogh.jpg" height="100%" width="100%" alt="Avatar">
-                </div>
-              </div>
-              <div class="col-sm-9">
-                <div class="well">
-                  <p class="description">PRIX: 1M€<br>
-                  Date d'achat: 20/04/2020</p>
-                </div>
-              </div>
+        </div>
+        <div class="col-sm-9">
+          <div class="well">
+            <p class="description">Prix de vente: '.$data['prix_vente']."€<br> 
+           Date d'achat: ".$data['date_vente']."</p>
           </div>
+        </div>
+      </div>  
+      ";
+    }
+    ?>
+          
         </div>
   </div>
 </div>
