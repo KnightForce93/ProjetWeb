@@ -41,9 +41,9 @@
       <ul class="nav navbar-nav navbar-right">
         <div class="navbar-menu">
           <a href="achat.php" class="navbar-menu-link">Achat</a>
-          <a href="vente.php" class="navbar-menu-link">Vente</a>
+          <a href="vente.php" class="navbar-menu-link">Enchère</a>
+           <a href="newitem.php" class="navbar-menu-link"><i class="fas fa-shopping-basket"></i> Vendre</a>
           <a href="inscription.php" class="navbar-menu-link">Votre Compte</a>
-          <a href="" class="navbar-menu-link"><i class="fas fa-shopping-basket"></i> Panier</a>
           <a href="plus.php" class="navbar-menu-link">Plus</a>
         </div>
       </ul>

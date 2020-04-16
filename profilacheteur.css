@@ -76,37 +76,32 @@ cursor: pointer;
 	font-size: 17px;
 	margin-left: 330px;
 
+
+}
+.row {
+	color: black;	
 }
 
-h1{
-	color: #031083;
-	font:helvetica;
-	text-align: center;
+.well{
+	font-size: 15px;
+	color: #031083;	
+
 }
-.carousel-caption h3{
-	color: #031083;
-	font-size: 20px;
-	font:helvetica;
+.info{
+	font-size: 15px;
+	color: #031083;	
+	text-align: left;
 }
-.carousel-caption p{
-	color: #031083;
-	font-size: 12px;
-	font:helvetica;
+.commande{
+	font-size: 30px;
+	color: #031083;	
+	text-align: left;
 }
-h3{
-	color: #031083;
-}
-h2 {
-	color: #031083;
+.well .description{
+	text-align: left;	
+
 }
 
-.col-sm-4 p{
-	color: #031083;
-}
-.col-sm-4 img{
-	width: 390px;
-	height: 250px;
-}
 
 
 /*--- colonnes ---*/
@@ -119,6 +114,9 @@ h2 {
 	color: #666; 
 	padding: 40px 0;
 }
+
+
+
 
 
 

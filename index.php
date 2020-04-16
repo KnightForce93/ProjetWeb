@@ -35,7 +35,7 @@
 				    <div class="collapse navbar-collapse" id="myNavbar"  style="padding-top: 20px;">
 				      	<ul class="nav navbar-nav">
 				        	<div class = "dropdown">
-					        	<a href="" class="bouton-dropdown">Catégories</a>
+					        	<a href="achat.php" class="bouton-dropdown">Catégories</a>
 					          	<ul class="bouton-categorie-liste">
 					          	  	<li><a href="ferraille_tresor.php">Férrailles et Trésor</a></li>
 					            	<li><a href="#">Bon pour le musée</a></li>

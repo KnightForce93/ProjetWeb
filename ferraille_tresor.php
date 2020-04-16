@@ -39,74 +39,110 @@
 </head>
 <body>
 
-<nav>
-  <div class="container-fluid">
-    <div class="navbar-header">
-         <a href="index.php"><img src="images/logo.png" width="80"></a>
-    </div>
-    <div class="collapse navbar-collapse" id="myNavbar"  style="padding-top: 20px;">
-      <ul class="nav navbar-nav">
-        <div class = "dropdown">
-        <a href="" class="bouton-dropdown">Catégories</a>
-          <ul class="bouton-categorie-liste">
-            <li><a href="ferraille_tresor.php">Férrailles et Trésor</a></li>
-            <li><a href="#">Bon pour le musée</a></li>
-            <li><a href="#">Accessoire VIP</a></li>
+    <nav>
+      <div class="container-fluid">
+        <div class="navbar-header">
+             <a href="index.php"><img src="images/logo.png" width="80"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar"  style="padding-top: 20px;">
+          <ul class="nav navbar-nav">
+            <div class = "dropdown">
+            <a href="" class="bouton-dropdown">Catégories</a>
+              <ul class="bouton-categorie-liste">
+                <li><a href="ferraille_tresor.php">Férrailles et Trésor</a></li>
+                <li><a href="#">Bon pour le musée</a></li>
+                <li><a href="#">Accessoire VIP</a></li>
+              </ul>
+            </div>
+          </ul>
+          <div class="nav navbar-nav">
+            <input type="search" id="recherche" name="recherche" placeholder="Rechercher dans ECE Ebay... ">
+          </div> 
+          <ul class="nav navbar-nav navbar-right">
+            <div class="navbar-menu">
+              <a href="achat.php" class="navbar-menu-link">Achat</a>
+              <a href="vente.php" class="navbar-menu-link">Vente</a>
+              <a href="profilacheteur.php" class="navbar-menu-link">Votre Compte</a>
+              <a href="" class="navbar-menu-link"><i class="fas fa-shopping-basket"></i> Panier</a>
+              <a href="plus.php" class="navbar-menu-link">Plus</a>
+            </div>
           </ul>
         </div>
-      </ul>
-      <div class="nav navbar-nav">
-        <input type="search" id="recherche" name="recherche" placeholder="Rechercher dans ECE Ebay... ">
-      </div> 
-      <ul class="nav navbar-nav navbar-right">
-        <div class="navbar-menu">
-          <a href="achat.php" class="navbar-menu-link">Achat</a>
-          <a href="vente.php" class="navbar-menu-link">Vente</a>
-          <a href="inscription.php" class="navbar-menu-link">Votre Compte</a>
-          <a href="" class="navbar-menu-link"><i class="fas fa-shopping-basket"></i> Panier</a>
-          <a href="plus.php" class="navbar-menu-link">Plus</a>
+      </div>
+    </nav>
+    <h1>Ferraille ou Trésor</h1>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#myCarousel" data-slide-to="1"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+            <img src="images/bijoux.jpg" alt="Image">
+            <div class="carousel-caption">
+              <h3>Joaillerie</h3>
+              <p>Bijoux d'exceptions</p>
+            </div>      
+          </div>
+
+          <div class="item">
+            <img src="images/montres.jpg" alt="Image">
+            <div class="carousel-caption">
+              <h3>Horlogerie de Collection</h3>
+              <p>Montres de toutes marques</p>
+            </div>      
+          </div>
         </div>
-      </ul>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
     </div>
-  </div>
-</nav>
-<h1>Ferraille ou Trésor</h1>
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-    </ol>
-
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-        <img src="images/bijoux.jpg" alt="Image">
-        <div class="carousel-caption">
-          <h3>Joaillerie</h3>
-          <p>Bijoux d'exceptions</p>
-        </div>      
-      </div>
-
-      <div class="item">
-        <img src="images/montres.jpg" alt="Image">
-        <div class="carousel-caption">
-          <h3>Horlogerie de Collection</h3>
-          <p>Montres de toutes marques</p>
-        </div>      
+    <br>
+    <div class="container text-center">    
+      <div class="row">
+            <div class="col-sm-12 well">
+              <div class="col-sm-3">
+                <p>Paire de pendant d'oreilles</p>
+                <img src="images/boucles.jpg" height="100%" width="100%" alt="Image">
+              </div>
+               <div class="col-sm-7 well">
+                <p>790 200 €
+                    Paire de pendant d’oreilles
+                    18 janv. 2018
+                </p>
+              </div>
+               <a href="ficheitem.php"><button>En savoir plus</button></a>
+            </div>
       </div>
     </div>
-
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-</div>
+    <br>
+    <div class="container text-center">    
+      <div class="row">
+            <div class="col-sm-12 well">
+              <div class="col-sm-3">
+                <p>Bague</p>
+                <img src="images/bague.jpg" height="100%" width="100%" alt="Image">
+              </div>
+               <div class="col-sm-7 well">
+                <p>590 500 €
+                    Bague
+                    19 juill. 2016
+                </p>
+              </div>
+               <a href=""><button>En savoir plus</button></a>
+            </div>
+      </div>
+    </div>
   
 
 
