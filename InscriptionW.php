@@ -16,34 +16,6 @@ $bphoto = isset($_POST["bphoto"])? $_POST["bphoto"] : "";
 
 $erreur="";
 
-if($email==""){
-	$erreur .= "Email est vide.<br>";
-}
-if($mdp==""){
-	$erreur .= "Mot de passe est vide.<br>";
-}
-if($statut==""){
-	$erreur .="statut est vide.<br>";
-}
-if($nom==""){
-	$erreur .="Nom est vide.<br>";
-}
-if($prenom==""){
-	$erreur .= "Prenom est vide.<br>";
-}
-if($statut=="acheteur"){
-if($adresse==""){
-	$erreur .= "adresse est vide.<br>";
-}if($ville==""){
-	$erreur .= "ville est vide.<br>";
-}if($pays==""){
-	$erreur .= "pays est vide.<br>";
-}if($cp==""){
-	$erreur .= "cp est vide.<br>";
-}if($tel==""){
-	$erreur .= "tel est vide.<br>";
-}
-}
 if($statut == "vendeur"){
 	
 
@@ -74,10 +46,9 @@ if($erreur!=""){
 	 echo "Erreur: $erreur";
 }else{
  
- 
 //verifie si l'utilisateur n'existe pas déja
-if (isset($_POST['submit'])) {   
-	if ($db_found) {    
+if (isset($_POST['submit'])) {  
+	if ($db_found) {
 		$sql = "SELECT * FROM utilisateur";       
 	    $sql .= " WHERE email LIKE '%$email%'";          
 		$sql .= " AND password LIKE '%$mdp%'";     
@@ -93,11 +64,11 @@ if (isset($_POST['submit'])) {
    $sql = "INSERT INTO utilisateur(email, password, statut)VALUES('$email', '$mdp', '$statut')";     
    $result = mysqli_query($db_handle, $sql);  
    $sql = "SELECT * FROM utilisateur";       
-	    $sql .= " WHERE email LIKE '%$email%'";          
+	    $sql .= " WHERE email LIKE '%$email%'";
 		$sql .= " AND password LIKE '%$mdp%'";     
 		$result = mysqli_query($db_handle, $sql); 
 		while ($data = mysqli_fetch_assoc($result)) {   
-		$id=$data['id'];
+			$id=$data['id'];
 		}	
 
    if ($statut=="acheteur")  {
@@ -116,6 +87,7 @@ if (isset($_POST['submit'])) {
    		$result = mysqli_query($db_handle, $sql);  
    		}
      else if($statut=="vendeur"){
+
    	  $sql = "INSERT INTO vendeur(prenom, nom, profil_photo, background_photo, user_id)VALUES('$prenom', '$nom', '$pphoto', '$bphoto' , '$id')";   
   	  $result = mysqli_query($db_handle, $sql);  
    }

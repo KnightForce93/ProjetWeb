@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html>
 <head>
-        <title>ECE Ebay</title>
+        <title>Inscription à ECE Ebay</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1"> 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
@@ -17,6 +17,14 @@
                 $(document).ready(function(){ 
                     $('.header').height($(window).height());
                 });
+                function togg1(){
+                     document.getElementById("Form_acheteur").style.display = "block";
+                     document.getElementById("Form_vendeur").style.display = "none";
+                }; 
+                function togg2(){
+                     document.getElementById("Form_vendeur").style.display = "block";
+                    document.getElementById("Form_acheteur").style.display = "none";
+                };
         </script>
 </head> 
 
@@ -34,61 +42,98 @@
                     <div class="card">
                         <div class="card-header">Créer votre compte</div>
                         <div class="card-body">
-                            <form name="my-form" onsubmit="return validform()" action="success.php" method="">
+                            <form enctype="multipart/form-data" name="my-form" onsubmit="return validform()" action="inscriptionW.php" method="post">
+                                <fieldset>
                                 <div class="form-group row">
-                                    <label for="permanent_address" class="col-md-4 col-form-label text-md-right">Civilité</label>
+                                    <label for="nom" class="col-md-4 col-form-label text-md-right">Nom</label>
                                     <div class="col-md-6">
-                                        <select name="civilite">
-                                            <option value="--" disabled>--</option>
-                                            <option value="Madame">Madame</option>
-                                            <option value="Monsieur">Monsieur</option>
-                                            <option value="Nonprécisé">Non précisée</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="full_name" class="col-md-4 col-form-label text-md-right">Nom complet</label>
-                                    <div class="col-md-6">
-                                        <input type="text" id="full_name" class="form-control" name="full-name">
+                                        <input type="text" class="form-control" name="nom">
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="email_address" class="col-md-4 col-form-label text-md-right">Adresse E-mail</label>
+                                    <label for="prenom" class="col-md-4 col-form-label text-md-right">Prénom</label>
                                     <div class="col-md-6">
-                                        <input type="email" id="email_address" class="form-control" name="email-address">
+                                        <input type="text" class="form-control" name="prenom">
                                     </div>
                                 </div>
+                                <br>
+                                <div class="form-group row">
+                                            <label for="email" class="col-md-4 col-form-label text-md-right">E-mail</label>
+                                            <div class="col-md-6">
+                                               <input type="email" class="form-control" name="email">
+                                            </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="mdp" class="col-md-4 col-form-label text-md-right">Mot de passe</label>
+                                        <div class="col-md-6">
+                                           <input type="password" class="form-control" name="mdp">
+                                        </div>
+                                    </div>
 
                                 <div class="form-group row">
-                                    <label for="user_name" class="col-md-4 col-form-label text-md-right">Pseudo</label>
-                                    <div class="col-md-6">
-                                        <input type="text" id="user_name" class="form-control" name="username">
+                                    <div class="form-check row col-form-label col-md-6 text-md-right">
+                                        <input type="radio" onclick="togg1()" class="form-check-input" id="acheteur" name="statusRadios" value="acheteur">
+                                        <label class="form-check-label" for="acheteur">Acheteur</label>
                                     </div>
+                                    <div class="form-check row col-form-label">
+                                        <input type="radio" onclick="togg2()" class="form-check-input" id="vendeur" name="statusRadios" value="vendeur">
+                                        <label class="form-check-label" for="vendeur">Vendeur</label>
+                                    </div>
+                                </div>
+            <!-- CONTENU MASQUE -->
+                                <div id="Form_vendeur" style="display:none">
+                                    <div class="form-group row">
+                                             <label class="col-md-7 col-form-label text-md-right" for="pphoto">Choisissez une photo de profil</label>
+                                            <input class="offset-md-4" type="file" class="form-control-file" name="pphoto"></input>
+                                             
+                                    </div>
+                                    <div class="form-group row">
+                                             <label class="col-md-7 col-form-label text-md-right" for="bphoto">Choisissez une photo de fond</label>
+                                             <input class="offset-md-4" type="file" class="form-control-file" name="bphoto">
+                                    </div>
+                                </div>
+                                <div id="Form_acheteur" style="display:none">
+                                    <br>
+                                        <div class="form-group row">
+                                            <label for="adresse" class="col-md-4 col-form-label text-md-right">Adresse</label>
+                                            <div class="col-md-6">
+                                                  <input type="text" name="adresse" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                           <label for="ville" class="col-md-4 col-form-label text-md-right">Ville</label>
+                                           <div class="col-md-6">
+                                                <input type="text" class="form-control" name="ville">
+                                            </div>
+                                        </div>  
+                                        <div class="form-group row">
+                                           <label for="cp" class="col-md-4 col-form-label text-md-right">Code postal</label>
+                                           <div class="col-md-6">
+                                                <input type="text" class="form-control" name="cp">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                           <label for="pays" class="col-md-4 col-form-label text-md-right">Pays</label>
+                                           <div class="col-md-6">
+                                                <input type="text" class="form-control" name="pays">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                           <label for="tel" class="col-md-4 col-form-label text-md-right">Téléphone</label>
+                                           <div class="col-md-6">
+                                                <input type="text" class="form-control" name="tel">
+                                            </div>
+                                        </div>
                                 </div>
 
-                                <div class="form-group row">
-                                    <label for="phone_number" class="col-md-4 col-form-label text-md-right">Téléphone</label>
-                                    <div class="col-md-6">
-                                        <input type="text" id="phone_number" class="form-control">
-                                    </div>
-                                </div>
-
-                                <div class="form-group row">
-                                    <label for="present_address" class="col-md-4 col-form-label text-md-right">Adresse</label>
-                                    <div class="col-md-6">
-                                        <input type="text" id="address" class="form-control">
-                                    </div>
-                                </div>
-                                    <div class="col-md-6 offset-md-4">
-                                        <button type="submit" class="btn btn-primary">
-                                        S'inscrire
-                                        </button>
+                                <div class="col-md-6 offset-md-4">
+                                        <input type="submit" value="Inscription" class ="btn btn-primary" name="submit">
                                         <a href="connexion.html" class="btn btn-link">
-                                    Déjà un compte? Connectez-vous!
-                                </a>
-                                    </div>
+                                    <small>Déjà un compte? Connectez-vous!</small>
+                                        </a>
                                 </div>
+                               </fieldset>
                             </form>
                         </div>
                     </div>
