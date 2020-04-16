@@ -51,12 +51,16 @@
       </div>
     </nav>
   
+  <?php
+      include("Tficheitem.php");
+       ?>
+
     <div class="container text-center">    
           <div class="row">
             <div class="col-sm-12">
               <div class="panel panel-default text-left">
                 <div class="panel-body">
-                  <p contenteditable="true">Nom du vendeur</p>  
+                  <p contenteditable="true"><?php echo $nomvendeur;?></p>  
                 </div>
               </div>
             </div>
@@ -65,7 +69,7 @@
             <div class="col-sm-12">
               <div class="panel panel-default text-left">
                 <div class="panel-body">
-                  <p class="commande">Titre de l'objet</p>  
+                  <p class="commande"><?php echo $nomitem;?></p>  
                 </div>
               </div>
             </div>
@@ -73,21 +77,13 @@
           <div class="row">
               <div class="col-sm-3">
                 <div class="well">
-                 <img src="images/boucles.jpg" height="100%" width="100%" alt="Avatar">
+                 <?php echo '<img src="images/'.$photo1.'" height="100%" width="100%" alt="Avatar">'?>
                 </div>
               </div>
               <div class="col-sm-9">
                 <div class="well">
-                  <p class="description"><strong>Paire de pendant d'oreilles</strong><br>
-                      En platine (950) et or gris 18k (750) formés chacun de deux diamants poires surmontés par trois diamants plus petits de même forme<br>
-                      Poids de chaque diamant principaux: 7.81 et 7.56 cts<br>
-                      Haut.: 4 cm, Poids brut: 8.61 g<br>
-
-                      Accompagnés de deux certificats du laboratoire LFG (2017) indiquant couleur D, pureté VVS2, pas de fluorescence, Type IIa et deux certificats du laboratoire GIA (2017) indiquant pour le 7.81 cts: couleur D, pureté VVS2, aucune fluorescence, et pour le 7.56 cts: couleur D, pureté VS2, aucune fluorescence<br>
-
-                      A pair of diamond, platinum and 18k white gold ear pendants, accompanied by two LFG certificates stating D color, VVS2 clarity, none fluorescence, Type IIa, and two GIA certificates stating for the 7.81 cts: D color, VVS2 clarity, none fluorescence, type IIa, and for the 7.56 cts: D color, VS2 clarity, none fluorescence, type IIa<br>
-
-                      Estimation 200 000 - 300 000 €<br>
+                  <p class="description"><strong><?php echo $nomitem;?></strong><br>
+                      <?php echo $description;?>
                   </p>
                 </div>
               </div>

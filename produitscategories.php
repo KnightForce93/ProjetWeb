@@ -9,7 +9,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <!-- lien vers font awesome, library de emoticone -->
     <script src="https://kit.fontawesome.com/49d3300cf5.js" crossorigin="anonymous"></script> 
-  <link rel="stylesheet" type="text/css" href="achat.css">
+  <link rel="stylesheet" type="text/css" href="produitscategories.css">
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
@@ -62,7 +62,7 @@
             <div class="navbar-menu">
               <a href="achat.php" class="navbar-menu-link">Achat</a>
               <a href="vente.php" class="navbar-menu-link">Vente</a>
-              <a href="inscription.php" class="navbar-menu-link">Votre Compte</a>
+              <a href="profilacheteur.php" class="navbar-menu-link">Votre Compte</a>
               <a href="" class="navbar-menu-link"><i class="fas fa-shopping-basket"></i> Panier</a>
               <a href="plus.php" class="navbar-menu-link">Plus</a>
             </div>
@@ -70,6 +70,19 @@
         </div>
       </div>
     </nav>
+    <?php
+      include("Connexionbdd.php");
+        if(filter_has_var(INPUT_GET,'categorie')){
+         $categorie=$_GET['categorie'];
+         if($categorie== "Ferrailles ou Trésors"){
+         echo   "<h1>Ferraille ou Trésor</h1>";
+       } if($categorie== "Bon pour le musée"){
+         echo   "<h1>Bon pour le musée</h1>";
+       } if($categorie== "Accessoires VIP"){
+         echo   "<h1>Accessoires VIP</h1>";
+       } 
+     }
+     ?>  
 
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
@@ -81,10 +94,10 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
           <div class="item active">
-            <img src="images/meubles.jpg" alt="Image">
+            <img src="images/bijoux.jpg" alt="Image">
             <div class="carousel-caption">
-              <h3>Inventaires et Collections</h3>
-              <p>Meubles anciens</p>
+              <h3>Joaillerie</h3>
+              <p>Bijoux d'exceptions</p>
             </div>      
           </div>
 
@@ -107,34 +120,45 @@
           <span class="sr-only">Next</span>
         </a>
     </div>
-  
-    <div class="container text-center">    
-      <h3><u>Catégories:</u></h3><br>
-      <div class="row">
-        <div class="col-sm-4">
-          <h2>Ferrailles ou Trésors</h2>   
-          <a href="produitscategories.php?categorie=Ferrailles ou Trésors"><img src="images/tresor.jpg" class="img-responsive" alt="Image"></a>
-          <p>Bijoux</p>
-        </div>
-        <div class="col-sm-4"> 
-          <h2>Bon pour le musée</h2>   
-          <a href="produitscategories.php?categorie=Bon pour le musée"><img src="images/paint.jpg" class="img-responsive" alt="Image">
-          </a>
-          <p>Ecole de Guler ou Kangra, 1775</p>    
-        </div>
-        <div class="col-sm-4">
-          <h2>Accessoires VIP</h2>    
-          <a href="produitscategories.php?categorie=Accessoires VIP"><img src="images/ferrari.jpg" class="img-responsive" alt="Image"></a>
-          <p>1957 Ferrari 335 sport Scaglietti</p>    
-        </div>
+    <br>
+     <?php 
+     if(filter_has_var(INPUT_GET,'categorie')){
+      $sql = "SELECT * FROM item";       
+            $sql .= " WHERE categorie_produit LIKE '%$categorie%'";                    
+            $result = mysqli_query($db_handle, $sql); 
+    while ($data = mysqli_fetch_assoc($result)) {
+      echo"
+      <div class='container text-center'>    
+      <div class='row'>
+            <div class='col-sm-12 well'>
+              <div class='col-sm-3'>
+                <p>".$data['nom']."</p>
+                <img src='images/".$data['photo1']."' height='100%'' width='100%'' alt='Image'>
+              </div>
+               <div class='col-sm-7 well'>
+                <p>".$data['prix_minimum']." €
+                    ".$data['nom']."
+                    ".$data['date_publication']."
+                </p>
+              </div>
+               <a href='ficheitem.php?item_id=".$data['id']."'><button>En savoir plus</button></a>
+            </div>
       </div>
-    </div><br>
+    </div>
+    <br>
+      ";
+    }
+  }
+    ?>
 
-    <footer class="page-footer"> 
-        <div class="container">
-          <div class="footer-copyright text-center">&copy; 2020 Copyright | Droits d'auteurs: Wassim Sebbahi & Thomas Popielski & Louis Donikian TD02</div><!--text-center : modifier la typographie-->
-        </div>
-      </footer>
+    
+
+  
+<footer class="page-footer"> 
+    <div class="container">
+      <div class="footer-copyright text-center">&copy; 2020 Copyright | Droits d'auteurs: Wassim Sebbahi & Thomas Popielski & Louis Donikian TD02</div><!--text-center : modifier la typographie-->
+    </div>
+  </footer>
 
 </body>
 </html>
