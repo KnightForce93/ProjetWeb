@@ -9,11 +9,9 @@
 		$categorieitem = isset($_POST["categorieitem"])? $_POST["categorieitem"] : "";
 		
 //identifier votre BDD
-<<<<<<< HEAD
-		$database = "projet";
-=======
+
 		$database = "projetweb";
->>>>>>> Front
+
 //connectez-vous dans votre BDD
 //Rappel: votre serveur = localhost | votre login = root |votre password = <rien> 
     $db_handle = mysqli_connect('localhost', 'root', 'root');
@@ -22,7 +20,7 @@
  		if ($_POST["button"]) { 
 			 if ($db_found) {
 			 	
-			 		$target_dir = "/imagesproduit/";
+			 		$target_dir = "imagesproduit/";
         			$target_file = $target_dir . basename($_FILES["photo"]["name"]);
 			        $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 			        if (move_uploaded_file($_FILES["photo"]["tmp_name"], $target_file)) {
@@ -30,6 +28,7 @@
 			            $photo=basename( $_FILES["photo"]["name"],".jpg"); //used to store the filename in a variable
 			            echo "<td><img src='imagesproduit/$photo.jpg' height='150px' width='300px'></td>";
 			        } else {
+			        	echo "erreur";
 			            $erreur .= "error uploading photo.";
 			        }
 			     /*
