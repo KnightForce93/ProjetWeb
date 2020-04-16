@@ -81,6 +81,9 @@
        } if($categorie== "Accessoires VIP"){
          echo   "<h1>Accessoires VIP</h1>";
        } 
+     }else{
+       $categorie="Accessoires VIP";
+         echo   "<h1>Accessoires VIP</h1>";
      }
      ?>  
 
@@ -122,7 +125,7 @@
     </div>
     <br>
      <?php 
-     if(filter_has_var(INPUT_GET,'categorie')){
+     //if(filter_has_var(INPUT_GET,'categorie')){
       $sql = "SELECT * FROM item";       
             $sql .= " WHERE categorie_produit LIKE '%$categorie%'";                    
             $result = mysqli_query($db_handle, $sql); 
@@ -148,7 +151,7 @@
     <br>
       ";
     }
-  }
+//  }
     ?>
 
     

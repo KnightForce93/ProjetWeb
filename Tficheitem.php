@@ -1,12 +1,13 @@
 <?php 
 session_start();
-//$_SESSION['id_global']="11";
+$_SESSION['id_global']="10";
 
 include("Connexionbdd.php");
 if($_SESSION['id_global']!=""){ 
 	$id=$_SESSION['id_global'];
 if(filter_has_var(INPUT_GET,'item_id')){
         $item_id=$_GET['item_id'];
+    }else{$item_id='15';}
 		$sql = "SELECT * FROM item";       
 	    $sql .= " WHERE id LIKE '%$item_id%'";               	    
 		$result = mysqli_query($db_handle, $sql); 
@@ -30,6 +31,6 @@ if(filter_has_var(INPUT_GET,'item_id')){
 		$prenomvendeur = $data['prenom'];
 		}
 		}
-	}
+	
 ?>	       
 

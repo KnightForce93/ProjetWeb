@@ -1,6 +1,6 @@
 <?php 
 session_start();
-//$_SESSION['id_global']="11";
+$_SESSION['id_global']="11";
 
 include("Connexionbdd.php"); 
 if($_SESSION['id_global']!=""){

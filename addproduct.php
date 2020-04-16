@@ -2,7 +2,7 @@
 session_start();
 
 include("Connexionbdd.php");
-//$_SESSION['id_global']="11";
+$_SESSION['id_global']="11";
 
 include("Connexionbdd.php"); 
 if($_SESSION['id_global']!=""){
