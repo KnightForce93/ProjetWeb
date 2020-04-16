@@ -34,12 +34,11 @@ if($description==""){
 
 
 $target_dir = "imagesproduit/";
-$filename = '/path/to/foo.txt';
 
 if (file_exists($_FILES["photo1"]["tmp_name"])) {
 	
 //$imageFileType = pathinfo($_FILES["pphoto"]["name"],PATHINFO_EXTENSION);
-$target_file = $target_dir . basename($_FILES["photo1"]["name"],$imageFileType).$;
+$target_file = $target_dir . basename($_FILES["photo1"]["name"]);
 
 if (move_uploaded_file($_FILES["photo1"]["tmp_name"], $target_file)) {
 	
@@ -72,6 +71,7 @@ $photo3=basename( $_FILES["photo3"]["name"]); //used to store the filename in a 
 			        }
 			    }
 if (file_exists($_FILES["video"]["tmp_name"])) {
+					$target_dir = "videosproduit/";
 
 			        $target_file = $target_dir . basename($_FILES["video"]["name"]);
 
