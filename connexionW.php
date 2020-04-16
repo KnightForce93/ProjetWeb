@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
 		session_start();
 		$_SESSION["id_global"]=$id;
 		mysqli_close($db_handle);  
-		header("Location: index.html");
+		header("Location: index.php");
 		exit;
    }
 
