@@ -39,45 +39,15 @@
 </head>
 <body>
 
-    <nav>
-      <div class="container-fluid">
-        <div class="navbar-header">
-             <a href="index.php"><img src="images/logo.png" width="80"></a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar"  style="padding-top: 20px;">
-          <ul class="nav navbar-nav">
-            <div class = "dropdown">
-            <a href="" class="bouton-dropdown">Catégories</a>
-              <ul class="bouton-categorie-liste">
-                <li><a href="ferraille_tresor.php">Férrailles et Trésor</a></li>
-                <li><a href="#">Bon pour le musée</a></li>
-                <li><a href="#">Accessoire VIP</a></li>
-              </ul>
-            </div>
-          </ul>
-          <div class="nav navbar-nav">
-            <input type="search" id="recherche" name="recherche" placeholder="Rechercher dans ECE Ebay... ">
-          </div> 
-          <ul class="nav navbar-nav navbar-right">
-            <div class="navbar-menu">
-              <a href="achat.php" class="navbar-menu-link">Achat</a>
-              <a href="vente.php" class="navbar-menu-link">Vente</a>
-              <a href="profilacheteur.php" class="navbar-menu-link">Votre Compte</a>
-              <a href="" class="navbar-menu-link"><i class="fas fa-shopping-basket"></i> Panier</a>
-              <a href="plus.php" class="navbar-menu-link">Plus</a>
-            </div>
-          </ul>
-        </div>
-      </div>
-    </nav>
     <?php
+    include("navbar.php");
       include("Connexionbdd.php");
         if(filter_has_var(INPUT_GET,'categorie')){
          $categorie=$_GET['categorie'];
          echo   "<h1>". $categorie."</h1>";
      }else{
        $categorie="Accessoires VIP";
-         echo   "<h1>Accessoires VIP</h1>";
+         echo   "<h1>".$categorie."</h1>";
      }
      ?>  
 
@@ -143,11 +113,12 @@
 
           <div class='row'>
               <div class='col-sm-12'>
-              
-                <button type="button" class="btn btn-primary">Achat Immediat</button> <br><br>
-                <button type="button" class="btn btn-primary">Faire une enchère</button> <br><br>
-                <button type="button" class="btn btn-primary">Proposer une offre</button>
-                
+          <?php
+          echo'    
+         <a href="produitscategories.php?categorie='.$categorie.'&type=AchatImmediat"><button type="button" class="btn btn-primary">Achat Immediat</button></a> <br><br>
+         <a href="produitscategories.php?categorie='.$categorie.'&type=Enchere"><button type="button" class="btn btn-primary">Enchère</button> </a><br><br>
+         <a href="produitscategories.php?categorie='.$categorie.'&type=MeilleurOffre"><button type="button" class="btn btn-primary">Negociation</button></a>
+                '?>
               </div>
             </div>
 
@@ -156,9 +127,14 @@
             <div class="col-sm-9">
      <?php 
      //if(filter_has_var(INPUT_GET,'categorie')){
-      $sql = "SELECT * FROM item";       
-            $sql .= " WHERE categorie_produit LIKE '%$categorie%'";                    
-            $result = mysqli_query($db_handle, $sql); 
+     $sql = "SELECT * FROM item";       
+     $sql .= " WHERE categorie_produit LIKE '%$categorie%'";  
+      if(filter_has_var(INPUT_GET,'categorie')){
+         $type=$_GET['type'];
+         $sql .= " AND categorie_achat LIKE '%$type%'"; 
+       }
+
+      $result = mysqli_query($db_handle, $sql); 
     while ($data = mysqli_fetch_assoc($result)) {
       echo'
       <div class="well">
