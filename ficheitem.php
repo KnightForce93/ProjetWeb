@@ -19,78 +19,49 @@
 </head>
 <body>
 
-    <nav>
-      <div class="container-fluid">
-        <div class="navbar-header">
-             <a href="index.php"><img src="images/logo.png" width="80"></a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar"  style="padding-top: 20px;">
-          <ul class="nav navbar-nav">
-            <div class = "dropdown">
-            <a href="" class="bouton-dropdown">Catégories</a>
-              <ul class="bouton-categorie-liste">
-                <li><a href="ferraille_tresor.php">Férrailles et Trésor</a></li>
-                <li><a href="#">Bon pour le musée</a></li>
-                <li><a href="#">Accessoire VIP</a></li>
-              </ul>
-            </div>
-          </ul>
-          <div class="nav navbar-nav">
-            <input type="search" id="recherche" name="recherche" placeholder="Rechercher dans ECE Ebay... ">
-          </div> 
-          <ul class="nav navbar-nav navbar-right">
-            <div class="navbar-menu">
-              <a href="achat.php" class="navbar-menu-link">Achat</a>
-              <a href="vente.php" class="navbar-menu-link">Enchère</a>
-               <a href="newitem.php" class="navbar-menu-link"><i class="fas fa-shopping-basket"></i> Vendre</a>
-              <a href="inscription.php" class="navbar-menu-link">Votre Compte</a>
-              <a href="plus.php" class="navbar-menu-link">Plus</a>
-            </div>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <?php include ("navbar.php"); ?>
   
   <?php
       include("ficheitemT.php");
        ?>
 
-    <div class="container text-center">    
+    <div class="container text-center">  
+    <br>  
           <div class="row">
-            <div class="col-sm-12">
-              <div class="panel panel-default text-left">
-                <div class="panel-body">
-                  <p contenteditable="true"><?php echo $nomvendeur;?></p>  
+              <div class="col-sm-5">
+                <div class="panel panel-default text-left">
+                  <div class="panel-body">
+                    <p class="commande"><?php echo $nomitem;?></p>  
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="panel panel-default text-left">
-                <div class="panel-body">
-                  <p class="commande"><?php echo $nomitem;?></p>  
-                </div>
+              <div class="col-sm-7">
+                <div class="panel panel-default text-left">
+                  <div class="panel-body">
+                    <p contenteditable="true"><strong>Nom du vendeur: </strong><?php echo $nomvendeur;?></p>  
+                  </div>
+                </div>  
               </div>
-            </div>
           </div>
           <div class="row">
-              <div class="col-sm-3">
+              <div class="col-sm-5">
                 <div class="well">
                  <?php echo '<img src="images/'.$photo1.'" height="100%" width="100%" alt="Avatar">'?>
                 </div>
               </div>
-              <div class="col-sm-9">
+              <div class="col-sm-7">
                 <div class="well">
-                  <p class="description"><strong><?php echo $nomitem;?></strong><br>
-                      <?php echo $description;?>
-                  </p>
+                    <p class="titre"><strong>Titre: </strong><?php echo $nomitem;?><br></p>
+                    <p class="titre"><strong>Catégorie: </strong><?php echo $nomitem;?><br></p> <!--Ajouter la catégorie svp-->
+                    <p class="description"> <strong>Description: </strong><?php echo $description;?></p><br>
+                    <p class="prix"><strong>Prix: </strong>250 euros</p> <!--Ajouter le prix svp-->
+                     <br><br>
                 </div>
+                <button class="buttonachat">Achat immédiat</button>
               </div>
           </div>
-        </div>
-  </div>
-</div>
+    </div>
+
 
 <footer class="page-footer"> 
     <div class="container">
