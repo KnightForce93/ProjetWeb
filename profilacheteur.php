@@ -51,7 +51,7 @@
   </div>
 </nav>
   
-   <?php include("Tprofilacheteur.php"); ?>
+   <?php include("profilacheteurT.php"); ?>
 <div class="container text-center">    
   <div class="row">
         <div class="col-sm-3 well">

@@ -52,7 +52,7 @@
     </nav>
   
   <?php
-      include("Tficheitem.php");
+      include("ficheitemT.php");
        ?>
 
     <div class="container text-center">    

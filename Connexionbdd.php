@@ -12,6 +12,7 @@ if($db_handle)//Si j'arrive à me connecter avec ses paramêtres
 
 }else {
 	$db_handle = mysqli_connect('localhost', 'root', 'root');  
+	$db_found = mysqli_select_db($db_handle, $database); 
 }
 
 if($db_handle)//Si j'arrive à me connecter avec ses paramêtres

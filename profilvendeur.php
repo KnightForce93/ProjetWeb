@@ -50,7 +50,7 @@
     </div>
   </div>
 </nav>
-  <?php include("Tprofilvendeur.php"); ?>
+  <?php include("profilvendeurT.php"); ?>
 <div class="container text-center">    
   <div class="row">
     <div class="col-sm-3 well">
