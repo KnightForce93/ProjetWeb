@@ -74,13 +74,7 @@
       include("Connexionbdd.php");
         if(filter_has_var(INPUT_GET,'categorie')){
          $categorie=$_GET['categorie'];
-         if($categorie== "Ferrailles ou Trésors"){
-         echo   "<h1>Ferraille ou Trésor</h1>";
-       } if($categorie== "Bon pour le musée"){
-         echo   "<h1>Bon pour le musée</h1>";
-       } if($categorie== "Accessoires VIP"){
-         echo   "<h1>Accessoires VIP</h1>";
-       } 
+         echo   "<h1>". $categorie."</h1>";
      }else{
        $categorie="Accessoires VIP";
          echo   "<h1>Accessoires VIP</h1>";
@@ -124,37 +118,92 @@
         </a>
     </div>
     <br>
+
+     <div class='container text-center'>    
+      <div class='row'>
+            <div class='col-sm-12'>
+              <div class="well">
+                <h2>Produits en vente dans la catégorie <?php echo $categorie; ?></h2>
+              </div>
+            </div>
+          </div>
+
+            <div class='row'>
+
+            <div class='col-sm-3'>
+              <div class='well'>
+
+              <div class='row'>
+              <div class='col-sm-12'>
+              
+                <p><strong> Afficher les produits par type de vente:</strong></p>
+              
+            </div>
+          </div>
+
+          <div class='row'>
+              <div class='col-sm-12'>
+              
+                <button type="button" class="btn btn-primary">Achat Immediat</button> <br><br>
+                <button type="button" class="btn btn-primary">Faire une enchère</button> <br><br>
+                <button type="button" class="btn btn-primary">Proposer une offre</button>
+                
+              </div>
+            </div>
+
+          </div>
+</div>
+            <div class="col-sm-9">
      <?php 
      //if(filter_has_var(INPUT_GET,'categorie')){
       $sql = "SELECT * FROM item";       
             $sql .= " WHERE categorie_produit LIKE '%$categorie%'";                    
             $result = mysqli_query($db_handle, $sql); 
     while ($data = mysqli_fetch_assoc($result)) {
-      echo"
-      <div class='container text-center'>    
-      <div class='row'>
-            <div class='col-sm-12 well'>
-              <div class='col-sm-3'>
-                <p>".$data['nom']."</p>
-                <img src='images/".$data['photo1']."' height='100%'' width='100%'' alt='Image'>
+      echo'
+      <div class="well">
+       <div class="row">
+        
+
+       <div class="col-sm-3">
+                <div class="well">
+                 <img src="images/'.$data['photo1'].'" height="100%" width="100%" alt="Avatar">
+                </div>
               </div>
-               <div class='col-sm-7 well'>
-                <p>".$data['prix_minimum']." €
-                    ".$data['nom']."
-                    ".$data['date_publication']."
-                </p>
+
+              <div class="col-sm-9">
+
+                <div class="row">
+                <div class="col-sm-12">
+                <div class="panel-body">
+                  <p class="commande"><strong>'.$data['nom'].'</strong></p>  
+                </div>
               </div>
-               <a href='ficheitem.php?item_id=".$data['id']."'><button>En savoir plus</button></a>
             </div>
-      </div>
-    </div>
-    <br>
-      ";
+
+             <div class="row">
+                <div class="col-sm-6">
+                <div class="panel-body">
+                  <p class="commande"> Type de vente:  '.$data['categorie_achat'].'</p>  
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="panel-body">
+               <a href=ficheitem.php?item_id='.$data['id'].'><button>En savoir plus</button></a>  
+                </div>
+              </div>
+            </div>
+            
+            </div>
+</div>
+              </div>
+               ';
     }
 //  }
     ?>
-
-    
+  </div>
+</div>
+   </div> 
 
   
 <footer class="page-footer"> 
