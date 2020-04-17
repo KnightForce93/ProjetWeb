@@ -13,25 +13,29 @@ echo "ok1";
  	    $sql .= " WHERE email LIKE '%$email%'";  
  	    $result = mysqli_query($db_handle, $sql); 
  	    if (mysqli_num_rows($result) == 0) {     
-			echo "user not found";
+			header("Location: Firstpage.php?log=inexistant");
 			mysqli_close($db_handle); 
+			exit;
  		}
  		else {
  			while ($data = mysqli_fetch_assoc($result)) {   
-			     $to      = $email;
+
+			     $to = $email;
 			     $subject = 'Confidentiel : votre mot de passe ECE eBay';
-			     $message = 'Bonjour !\n\nVoici votre mot de passe' . $data['password'] . ;
+			     $message = 'Bonjour !' . "\n\n" . 'Voici votre mot de passe : ' . $data['password'] . "\n\n" . 'L\'équipe ECE Ebay.';
 			     $headers = 'From: noreply@eceebay.com' . "\r\n" .
-			     'Reply-To: noreply@eceebay.com' . "\r\n" .
-			     'X-Mailer: PHP/' . phpversion();
-			     $ok=mail($to, $subject, $message, $headers);
-			     if($ok==true)
-			     	{echo "mail envoyé";}
-			     if($ok==false)
-			     	{echo "mail echec";}
-			     echo "ok2";
+			     'Reply-To: noreply@eceebay.com' . "\r\n";
+			     // $ok=mail($to, $subject, $message, $headers);
+			     mail($to, $subject, $message, $headers);
+			     // if($ok==true)
+			     // 	{echo "mail envoyé";}
+			     // if($ok==false)
+			     // 	{echo "mail echec";}
+			     // echo "ok2";
 			}
+			header("Location: connexion.html");
 			mysqli_close($db_handle);
+			exit;
 		}
 	}
 }
