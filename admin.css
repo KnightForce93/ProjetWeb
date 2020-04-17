@@ -32,6 +32,14 @@ body {
 
 }
 
+#myNavbar {
+	margin-top: 10px;
+}
+
+.logo{
+	margin-left: 20px;
+}
+
 .bouton-dropdown {
 	color: #031083;
 	cursor: pointer;
@@ -40,8 +48,8 @@ body {
 .dropdown {
 	position: relative;
 	display: inline-block;
-	font-size: 20px;
-	left: 200px;
+	left: 50px;
+	margin-top: 10px;
 }
 .bouton-categorie-liste{
 	display: none;
@@ -70,38 +78,35 @@ cursor: pointer;
 	border: 2px solid #031083;
 	border-radius: 40px;
 	outline: none;
-	width: 350px; 
-	height: 40px;
+	width: 320px; 
+	height: 35px;
 	font-size: 17px;
-	margin-left: 330px;
+	margin-left:100px;
 
 
 }
-.carousel-caption h3{
-	color: #031083;
+.row {
+	color: black;	
+}
+
+.well{
+	font-size: 15px;
+	color: #031083;	
+
+}
+.panel-body h2 {
+	color: #031083;	
+}
+
+.col-sm-6 button {
+	background-color: #FA7962;
+	border-radius: 10px;
+	padding: 20px;
+	width: 300px;
+	color: black;
 	font-size: 20px;
-	font:helvetica;
-}
-.carousel-caption p{
-	color: #031083;
-	font-size: 12px;
-	font:helvetica;
-}
-h3{
-	color: #031083;
-}
-h2 {
-	color: #031083;
-}
 
-.col-sm-4 p{
-	color: #031083;
 }
-.col-sm-4 img{
-	width: 390px;
-	height: 250px;
-}
-
 
 /*--- colonnes ---*/
 .page-footer { 
