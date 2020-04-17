@@ -31,6 +31,13 @@ body {
 	text-decoration: none;
 
 }
+#myNavbar {
+	margin-top: 10px;
+}
+
+.logo{
+	margin-left: 20px;
+}
 
 .bouton-dropdown {
 	color: #031083;
@@ -41,7 +48,9 @@ body {
 	position: relative;
 	display: inline-block;
 	font-size: 20px;
-	left: 200px;
+	font-size: 20px;
+	left: 50px;
+	margin-top: 10px;
 }
 .bouton-categorie-liste{
 	display: none;
@@ -71,10 +80,11 @@ cursor: pointer;
 	border: 2px solid #031083;
 	border-radius: 40px;
 	outline: none;
-	width: 350px; 
-	height: 40px;
+	width: 320px; 
+	height: 35px;
 	font-size: 17px;
-	margin-left: 330px;
+	margin-left:100px;
+
 
 
 }
@@ -97,11 +107,32 @@ cursor: pointer;
 	color: #031083;	
 	text-align: left;
 }
+.well .titre{
+	text-align: left;	
+
+}
 .well .description{
 	text-align: left;	
 
 }
+.well .prix{
+	text-align: left;
+	color: black;
+	font-size: 30px;	
 
+}
+.buttonachat{
+	width: 300px;
+	height: 50px;
+	background-color: #054CDA;
+	color:white;
+	border-radius: 12px;
+
+}
+
+.buttonachat:hover {
+background-color: #5C6BFF;
+}
 
 
 /*--- colonnes ---*/
