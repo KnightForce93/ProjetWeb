@@ -13,6 +13,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="admin.css"> 
   <link rel="stylesheet" type="text/css" href="header.css">
+  
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
     <script type="text/javascript">
@@ -74,15 +75,17 @@
                                 <td>'.$data1['datee'].'</td>
                                 <td>
                                   <div>
-                                    <a href="adminV2.php"><button class="bouton-supprimer">Supprimer</button></a>
+                                    <a href="adminSupprVend.php"><input type="submit" value="Supprimer" class ="btn btn-danger" name="submit"></a>
+
                                   </div>
                                 </td>
                               </tr>
                             ';
-                        }}
+                            
+                        }
+                    }
                   ?>
                 </table>  
-                
                 
               </div>
             </div>
