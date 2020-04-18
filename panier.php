@@ -24,8 +24,10 @@
 </head>
 <body>
 
-<?php include("navbar.php"); ?>
-<?php include("panierT.php"); ?>
+<?php include("navbar.php"); 
+include("Connexionbdd.php");
+ include("panierT.php"); 
+ ?>
 
 <div class="container text-center">    
   <div class="row">
@@ -68,64 +70,55 @@
 
 
           	<?php 
-          	$sql= "SELECT * FROM panier";
-			$sql .= " INNER JOIN item ON item.id = panier.item_id WHERE panier.ach_id = '%$id_acheteur%' AND item.id = '%$item_id%'";
-			$result = mysqli_query($db_handle, $sql); 
-			while ($data = mysqli_fetch_assoc($result))
-			{
+          	     $sql= "SELECT * FROM panier";
+			     $sql .= " WHERE ach_id LIKE '%$id_acheteur%'";
+			     $result = mysqli_query($db_handle, $sql); 
 
-				echo $data['panier.ach_id']. " ".$data['panier.item_id']."ok
-				<div class='row'>
-                <div class='col-sm-3'>
-                        <div class='well'>
-                        	<p><a href='ficheitem.php/{" . $data['item.id']."}''>" . $data['i.nom'] . "</a></p>
-	                        	<img src='images/".$data['item.photo1'] ." 'height='100%' width='100%'' alt='photo1'> <br>
-	                    </div>
-                </div>
-                <div class='col-sm-9'>
-                        <div class='well'>
-	                        <p class='description'>
-	                        <b>Prix : " . $data['i.prix_minimum'] . "€</b><br>
-                                   Description : " . $data['i.description'] . "<br>
-                                   <small>
-                                   		<i>Vendu par : " . $data['v.prenom'] . ' ' .$data['v.nom'] . "</i>
-                                   	</small> 
-                            </p>
-                		</div>
-                </div>
-            </div>
-                ";
+      			while ($data = mysqli_fetch_assoc($result))
+      			{
+                    $item_id=$data['item_id'];
+                    $sql1 = "SELECT * FROM item ";
+                    $sql1 .= " WHERE id LIKE '%$item_id%'";
+                    $result1 = mysqli_query($db_handle, $sql1);  
+                    while ($data1 = mysqli_fetch_assoc($result1)) 
+                    {
+                        $v_id=$data1['v_id'];
+                        $sql2 = "SELECT * FROM vendeur ";
+                        $sql2 .= " WHERE id LIKE '%$v_id%'";
+                        $result2 = mysqli_query($db_handle, $sql2);
+                        while ($data2 = mysqli_fetch_assoc($result2)) {
+            				echo '
+            				<div class="row">
+                            <div class="col-sm-3">
+                                    <div class="well">
+                                    	<p><a href="ficheitem.php/{' . $data1['id'].'}">' . $data1['nom'] . '</a></p>
+            	                        	<img src="images/'.$data1['photo1'] .' "height="100%" width="100%" alt="photo1"> <br>
+            	                    </div>
+                            </div>
+                            <div class="col-sm-9">
+                                    <div class="well">
+            	                        <p class="description">
+            	                        <b>Prix : ' . $data1['prix_minimum'] . '€</b><br>
+                                               Description : ' . $data1['description'] . '<br>
+                                               <small>
+                                               		<i>Vendu par : ' . $data2['prenom'] . ' ' .$data2['nom'] . '</i>
+                                               	</small> 
+                                        </p>
+                            		</div>
+                            </div>
+                        </div>';
+                        $tot=$tot+$data1['prix_minimum'];
+                   } }
 			}
-			?>
-            <div class="row">
-                <div class="col-sm-3">
-                        <div class="well">
-                                <p><a href="ficheitem.php/{<?php $item_id;?>}"><?php echo $nom_item;?></a></p>
-                                <?php echo '<img src="images/'.$photo1.'" height="100%" width="100%" alt="photo1">';?><br>
-                        </div>
-                </div>
-                <div class="col-sm-9">
-                        <div class="well">
-                              <p class="description">
-                              	<b>Prix : <?php echo $prix_minimum;?>€</b><br>
-                                   Description : <?php echo $description; ?><br>
-                                   <small>
-                                   		<i>Vendu par : <?php echo $prenom_vendeur . " " .$nom_vendeur;?></i>
-                                   	</small> 
-                              <?php echo $nb;?>
-                            </p>
-                		</div>
-                </div>
-            </div>
-          
-
+            echo '
           <div class="row">
             <div class="col-sm-12">
               <div class="well">
-                  <p class="total">Total: </p>
+                  <p class="total">Total : ' . $tot . '€</p>
                 </div>
               </div>
             </div>
+            ';?>
             <div class="row">
             <div class="col-sm-12">
             <a href=""><button class="bouton-paiement">Procéder au paiement</button></a>
