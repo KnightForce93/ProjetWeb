@@ -55,8 +55,9 @@ if($_SESSION['id_global']!=""){
 			$id_panier=$data['id'];
 			$item_id = $data['item_id'];
 
-			$sql1 = "SELECT * FROM item";       
-	    	$sql1 .= " WHERE id LIKE '%$item_id%'";               	    
+			
+		$sql1 = "SELECT * FROM item";  
+	    $sql1 .= " WHERE id LIKE '%$item_id%'";               	    
 		$result1 = mysqli_query($db_handle, $sql1);
 		while ($data1 = mysqli_fetch_assoc($result1)) {   
 			$nom_item=$data1['nom'];
@@ -67,7 +68,7 @@ if($_SESSION['id_global']!=""){
 			$categorie_produit=$data1['categorie_produit'];
 			$vendeur_id=$data1['v_id'];
 		} 
-		}
+
 
 		$sql = "SELECT * FROM item";       
 	    $sql .= " WHERE id LIKE '%$item_id%'";               	    
