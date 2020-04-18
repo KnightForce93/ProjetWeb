@@ -1,0 +1,80 @@
+.navbar { 
+	background:#FDFDFD;
+	width: 100%;
+	margin: auto;
+	font-family: helvetica;
+	
+}
+.navbar-link{
+	color: #031083;
+	cursor: pointer; 
+}
+.navbar-brand {
+	color: #031083;
+	cursor: pointer; 
+}
+.navbar-menu {
+	color: #031083;
+	cursor: pointer; 
+	font-size: 20px;
+}
+.navbar-menu-link {
+	color: #031083;
+	cursor: pointer; 
+	margin-left: 20px;
+	text-decoration: none;
+}
+#myNavbar {
+	margin-top: 10px;
+}
+
+.logo{
+	margin-left: 20px;
+}
+
+.bouton-dropdown {
+	color: #031083;
+	cursor: pointer;
+
+}
+.dropdown {
+	position: relative;
+	display: inline-block;
+	font-size: 20px;
+	left: 50px;
+	margin-top: 10px;
+}
+.bouton-categorie-liste{
+	display: none;
+	background-color: #D9DEEB;
+	min-width: 100px;
+	list-style-type: none;
+	border-radius: 10px;
+} 
+.bouton-categorie-liste li a{
+	color: #0B38A8;
+	padding: 20px;
+	display: block;
+}
+.dropdown:hover .bouton-categorie-liste {
+display: block;
+position: absolute;
+top: 100%;
+left: 0px;
+padding: 0px;
+z-index: 1000;
+cursor: pointer; 
+
+}
+
+#recherche { 
+	padding: 4px;
+	border: 2px solid #031083;
+	border-radius: 40px;
+	outline: none;
+	width: 320px; 
+	height: 35px;
+	font-size: 17px;
+	margin-left:100px;
+
+}

@@ -10,13 +10,9 @@
   <!-- lien vers font awesome, library de emoticone -->
     <script src="https://kit.fontawesome.com/49d3300cf5.js" crossorigin="anonymous"></script> 
   <link rel="stylesheet" type="text/css" href="produitscategories.css">
+   <link rel="stylesheet" type="text/css" href="navbar.css">
   <style>
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-    }
-    
+        
     /* Add a gray background color and some padding to the footer */
     footer {
       background-color: #f2f2f2;
@@ -129,7 +125,7 @@
      //if(filter_has_var(INPUT_GET,'categorie')){
      $sql = "SELECT * FROM item";       
      $sql .= " WHERE categorie_produit LIKE '%$categorie%'";  
-      if(filter_has_var(INPUT_GET,'categorie')){
+      if(filter_has_var(INPUT_GET,'type')){
          $type=$_GET['type'];
          $sql .= " AND categorie_achat LIKE '%$type%'"; 
        }

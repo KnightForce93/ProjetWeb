@@ -29,11 +29,12 @@ echo '
      <ul class="nav navbar-nav navbar-right">
                   <div class="navbar-menu">
                     <a href="achat.php" class="navbar-menu-link">Achat</a>
-                    <a href="vente.php" class="navbar-menu-link">Vente</a>
+                    <a href="addproduct.php" class="navbar-menu-link">Vendre</a>
                     <a href="profilvendeur.php" class="navbar-menu-link">Votre Compte</a>
                     <a href="panier.php" class="navbar-menu-link"><i class="fas fa-shopping-basket"></i> Panier</a>
                     <a href="plus.php" class="navbar-menu-link">Plus</a>
-                     <a href="admin.php" class="navbar-menu-link">admin</a>
+                     <a href="admin.php" class="navbar-menu-link">Admin</a>
+                      <a href="Firstpage.php" class="navbar-menu-link">Se deconnecter</a>
                   </div>
       </ul>
     </div>

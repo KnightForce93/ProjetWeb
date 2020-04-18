@@ -17,9 +17,11 @@ if(filter_has_var(INPUT_GET,'item_id')){
 		$photo1 = $data['photo1'];
 		$photo2 = $data['photo2'];
 		$photo3 = $data['photo3'];
+		$video = $data['video'];
 		$description= $data['description'];
 		$prix= $data['prix_minimum'];
 		$categorie_achat = $data['categorie_achat'];
+		$categorie_produit = $data['categorie_produit'];
 		$date_publication=$data['date_publication'];
 		$v_id =$data['v_id'];
 		}

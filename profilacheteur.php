@@ -8,6 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="profilacheteur.css">
+  <link rel="stylesheet" type="text/css" href="navbar.css">
   <style>    
     /* Set black background color, white text and some padding */
     footer {
@@ -19,9 +20,10 @@
 </head>
 <body>
 
-<?php include("navbar.php"); ?>
   
-   <?php include("profilacheteurT.php"); ?>
+   <?php 
+   include("navbar.php");
+   include("profilacheteurT.php"); ?>
 <div class="container text-center">    
   <div class="row">
         <div class="col-sm-3 well">
@@ -32,20 +34,19 @@
             <p><a href="#"><?php echo $tel;?></a></p>
           </div>
           <div class="well">
-            <p class="info">
-               Adresse : <?php echo $adresse;?><br>
-               Ville : <?php echo $ville;?><br>
-               Code Postal : <?php echo $cp;?><br>
-               Pays : <?php echo $pays;?><br>
+            <p class="info">Adresse: <?php echo $adresse;?><br>
+               Ville:<?php echo $ville;?><br>
+               Code Postal: <?php echo $tel;?><br>
+               Pays:<?php echo $pays;?><br>
             </p>
           </div>
           <div class="well">
             <p class="info">
-               Nom de la carte : <?php echo $nomcarte;?><br>
-               Type de carte : <?php echo $typecarte;?><br>
-               Numéro : <?php echo $numero_carte;?><br>
-               Cryptogramme : <?php echo $code;?><br>
-               Date expiration : <?php echo $dateexp;?>
+               Nom de la carte: <?php echo $nomcarte;?><br>
+               Type de carte: <?php echo $typecarte;?><br>
+               Numéro:<?php echo $numero_carte;?><br>
+               Cryptogramme: <?php echo $code;?><br>
+               Date expiration: <?php echo $dateexp;?>
             </p>
           </div>
         </div>

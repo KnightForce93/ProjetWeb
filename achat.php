@@ -10,13 +10,9 @@
   <!-- lien vers font awesome, library de emoticone -->
     <script src="https://kit.fontawesome.com/49d3300cf5.js" crossorigin="anonymous"></script> 
   <link rel="stylesheet" type="text/css" href="achat.css">
+  <link rel="stylesheet" type="text/css" href="navbar.css">
   <style>
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-    }
-    
+   
     /* Add a gray background color and some padding to the footer */
     footer {
       background-color: #f2f2f2;
@@ -39,37 +35,7 @@
 </head>
 <body>
 
-    <nav>
-      <div class="container-fluid">
-        <div class="navbar-header">
-             <a href="index.php"><img src="images/logo.png" width="80"></a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar"  style="padding-top: 20px;">
-          <ul class="nav navbar-nav">
-            <div class = "dropdown">
-            <a href="" class="bouton-dropdown">Catégories</a>
-              <ul class="bouton-categorie-liste">
-                <li><a href="ferraille_tresor.php">Férrailles et Trésor</a></li>
-                <li><a href="#">Bon pour le musée</a></li>
-                <li><a href="#">Accessoire VIP</a></li>
-              </ul>
-            </div>
-          </ul>
-          <div class="nav navbar-nav">
-            <input type="search" id="recherche" name="recherche" placeholder="Rechercher dans ECE Ebay... ">
-          </div> 
-          <ul class="nav navbar-nav navbar-right">
-            <div class="navbar-menu">
-              <a href="achat.php" class="navbar-menu-link">Achat</a>
-              <a href="vente.php" class="navbar-menu-link">Vente</a>
-              <a href="inscription.php" class="navbar-menu-link">Votre Compte</a>
-              <a href="" class="navbar-menu-link"><i class="fas fa-shopping-basket"></i> Panier</a>
-              <a href="plus.php" class="navbar-menu-link">Plus</a>
-            </div>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <?php include("navbar.php"); ?>
 
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->

@@ -1,130 +1,123 @@
-<?php
-session_start();
+<!DOCTYPE html> 
+<html>
+<head>
+        <title>Inscription à ECE Ebay</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="inscription.css">
+        <!-- lien vers font awesome, library de emoticone -->
+        <script src="https://kit.fontawesome.com/49d3300cf5.js" crossorigin="anonymous"></script> 
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="addproduct.css">
+        <script type="text/javascript">
+            //utiliser jQuery pour que l’image s’étire sur l’écran
+                $(document).ready(function(){ 
+                    $('.header').height($(window).height());
+                });
+                
+        </script>
+</head> 
 
-include("Connexionbdd.php");
-$_SESSION['id_global']="11";
+<body> 
+    <nav class="navbar">
+                <img src="images/logo.png" width="80">
+    </nav>
 
-include("Connexionbdd.php"); 
-if($_SESSION['id_global']!=""){
-	    $id=$_SESSION['id_global'];
-		$nom = isset($_POST["nom"])? $_POST["nom"] : ""; 
-		$photo1 = isset($_POST["photo1"])? $_POST["photo1"] : "";  
-		$photo2= isset($_POST["photo2"])? $_POST["photo2"] : "";  
-		$photo3 = isset($_POST["photo3"])? $_POST["photo2"] : "";
-		$video = isset($_POST["video"])? $_POST["video"] : "";   
-		$description = isset($_POST["description"])? $_POST["description"] : ""; 
-		$prixmin = isset($_POST["prixmin"])? $_POST["prixmin"] : "";
-		$categoriedachat = isset($_POST["categoriedachat"])? $_POST["categoriedachat"] : "";
-		$categorieitem = isset($_POST["categorieitem"])? $_POST["categorieitem"] : "";
+    <header class="page-header header container-fluid">
+        <br><br><br>
+    <main class="my-form">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">Entrez les informations de votre produit</div>
+                        <div class="card-body">
+                            <form enctype="multipart/form-data" name="my-form" action="addproductT.php" method="post">
+                                <fieldset>
 
-		$erreur="";
+                                <div class="form-group row">
+                                    <label for="nom" class="col-md-4 col-form-label text-md-right">Nom du produit :</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="nom">
+                                    </div>
+                                </div>
 
-if($nom==""){
-	$erreur .= "Nom est vide.<br>";
-}
-if($description==""){
-	$erreur .= "description est vide.<br>";
-}if($prixmin==""){
-	$erreur .= "prixminest vide.<br>";
-}if($categoriedachat==""){
-	$erreur .= "categoriedachat est vide.<br>";
-}if($categorieitem==""){
-	$erreur .= "categorieitem est vide.<br>";
-}
+                                  <div class="form-group row">
+                                     <label for="categorieitem" class="col-md-4 col-form-label text-md-right">Catégorie du produit :</label>
+                                 <div class="col-md-6">
+                                <select name="categorieitem"> 
+                            <option value ="Ferrailles ou Trésors">Ferraille ou Trésor </option> 
+                            <option value ="Bon pour le musée">Bon pour le musée </option> 
+                            <option value ="Accessoires VIP">Accessoire VIP</option> 
+                            </select>
+                           </div>
+                          </div>
 
+                                <div class="form-group row">
+                                    <label for="description" class="col-md-4 col-form-label text-md-right">Description :</label>
+                                    <div class="col-md-6">
+                                       <textarea style="width:100%" placeholder="Points positifs/négatifs" name="description"></textarea>
+                                    </div>
+                                </div>
+                            <div class="form-group row">
+                                    <label for="categoriedachat" class="col-md-4 col-form-label text-md-right">Catégorie d'achat :</label>
+                           <div class="col-md-6">
+                        <select name="categoriedachat"> 
+                        <option value ="enchere">Enchère </option> 
+                        <option value ="bestoffer">Meilleure offre </option> 
+                        <option value ="achat">Achat immédiat </option> 
+                    </select>
+                </div>
+            </div>
+                                            <div class="form-group row" >
+                                   <label for="prixmin" class="col-md-4 col-form-label text-md-right">Prix ferme pour cette catégorie :</label>
+                   <div class="col-md-6">
+                    <input type="text" name="prixmin" placeholder="en €">
+                </div>
+            </div>
 
-$target_dir = "imagesproduit/";
-
-if (file_exists($_FILES["photo1"]["tmp_name"])) {
-	
-//$imageFileType = pathinfo($_FILES["pphoto"]["name"],PATHINFO_EXTENSION);
-$target_file = $target_dir . basename($_FILES["photo1"]["name"]);
-
-if (move_uploaded_file($_FILES["photo1"]["tmp_name"], $target_file)) {
-	
-$photo1=basename( $_FILES["photo1"]["name"]); //used to store the filename in a variable
-			        } else {
-			            $erreur .= "error uploading photo1.";
-			        }
-}else{$erreur .= "la photo1 est obligatoire";}
-
-if (file_exists($_FILES["photo2"]["tmp_name"])) {
-	
-$target_file = $target_dir . basename($_FILES["photo2"]["name"]);
-
-if (move_uploaded_file($_FILES["photo2"]["tmp_name"], $target_file)) {
-	
-$photo2=basename( $_FILES["photo2"]["name"]); //used to store the filename in a variable
-			        } else {
-			            $erreur .= "error uploading photo2.";
-			        }
-			    }
-			        
-
-if (file_exists($_FILES["photo3"]["tmp_name"])) {
-$target_file = $target_dir . basename($_FILES["photo3"]["name"]);
-if (move_uploaded_file($_FILES["photo3"]["tmp_name"], $target_file)) {
-	
-$photo3=basename( $_FILES["photo3"]["name"]); //used to store the filename in a variable
-			        } else {
-			            $erreur .= "error uploading photo3.";
-			        }
-			    }
-if (file_exists($_FILES["video"]["tmp_name"])) {
-					$target_dir = "videosproduit/";
-
-			        $target_file = $target_dir . basename($_FILES["video"]["name"]);
-
-if (move_uploaded_file($_FILES["video"]["tmp_name"], $target_file)) {
-	
-$video=basename( $_FILES["video"]["name"]); //used to store the filename in a variable
-			        } else {
-			            $erreur .= "error uploading video.";
-			        }
-			    }
-
-	if($erreur!=""){
-
-	 echo "Erreur: $erreur";
-}else{		        
- 	if (isset($_POST['submit'])) {  
-
-			 if ($db_found) {
-	$sql = "SELECT * FROM vendeur";       
-	    $sql .= " WHERE user_id LIKE '%$id%'";          	    
-		$result = mysqli_query($db_handle, $sql);
-		while ($data = mysqli_fetch_assoc($result)) { 
-		$id_vendeur=$data['id'];
-		} 		 	
-	$sql =  "INSERT INTO item(nom, photo1,";
-	 if($photo2!=""){
-	 	$sql .=  " photo2,";
-	 	}
-	 	if($photo3!=""){
-	 	$sql .=  " photo3,";
-	 	}
-	 	if($video!=""){
-	 	$sql .=  " video,";
-	 	}
-	 $sql .=  " description, prix_minimum, categorie_achat, categorie_produit, v_id)VALUES('$nom', '$photo1',";
-	  if($photo2!=""){
-	 	$sql .=  " '$photo2',";
-	 	}
-	 	if($photo3!=""){
-	 	$sql .=  " '$photo3',";
-	 	}
-	 	if($video!=""){
-	 	$sql .=  " '$video',";
-	 	}
-	 $sql .=" '$description', '$prixmin', '$categoriedachat', '$categorieitem','$id_vendeur')";   
-	$result = mysqli_query($db_handle, $sql); 
-	 mysqli_close($db_handle);
-		}	else {
-				echo "Database not found";
- 			} 
-		}
-	}
-}
-//fermer la connexion
-	
-?>
+                 <div class="form-group row">
+                     <label for="photo1" class="col-md-4 col-form-label text-md-right">Choisissez photo1</label>
+                   <div class="col-md-6">
+                     <input type="file" class="form-control-file" name="photo1">
+                 </div>
+             </div>
+                  <div class="form-group row">
+                     <label for="photo2" class="col-md-4 col-form-label text-md-right">Choisissez photo2</label>
+                     <div class="col-md-6">
+                     <input type="file" class="form-control-file" name="photo2">
+                 </div>
+             </div>
+                  <div class="form-group row">
+                     <label for="photo3" class="col-md-4 col-form-label text-md-right">Choisissez photo3</label>
+                     <div class="col-md-6">
+                     <input type="file" class="form-control-file" name="photo3">
+                 </div>
+             </div>
+                  <div class="form-group row">
+                     <label for="video" class="col-md-4 col-form-label text-md-right">Choisissez une video</label>
+                     <div class="col-md-6">
+                     <input type="file" class="form-control-file" name="video">
+                 </div>
+                </div>
+                         <div class="col-md-6 offset-md-4">
+                        <input type="submit" value="Ajout du produit" class ="btn btn-primary" name="submit">
+                                </div>
+                               </fieldset>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</main>
+</header>
+     <footer class="page-footer"> 
+        <div class="container">
+            <div class="footer-copyright text-center">&copy; 2020 Copyright | Droits d'auteurs: Wassim Sebbahi & Thomas Popielski & Louis Donikian TD02</div><!--text-center : modifier la typographie-->
+        </div>
+    </footer>
+</body>
+</html>

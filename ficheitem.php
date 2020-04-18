@@ -8,6 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="ficheitem.css">
+   <link rel="stylesheet" type="text/css" href="navbar.css">
   <style>    
     /* Set black background color, white text and some padding */
     footer {
@@ -16,6 +17,14 @@
       padding: 15px;
     }
   </style>
+    <script type="text/javascript">
+            //utiliser jQuery pour que l’image s’étire sur l’écran
+                function change(imageaffiche){
+                     document.getElementById("Big_image").src =imageaffiche;
+                    
+                } 
+            
+        </script>
 </head>
 <body>
 
@@ -43,21 +52,78 @@
                 </div>  
               </div>
           </div>
+          
           <div class="row">
               <div class="col-sm-5">
+                 <div class="row">
+                  <div class="col-sm-12">
                 <div class="well">
-                 <?php echo '<img src="images/'.$photo1.'" height="100%" width="100%" alt="Avatar">'?>
+                 <?php echo '<img id="Big_image" src="imagesproduit/'.$photo1.'" height="100%" width="100%" alt="Avatar" >';
+                 ?>
                 </div>
               </div>
-              <div class="col-sm-7">
+            </div>
+            <div class="row">
+                  <div class="col-sm-3">
+                <div class="well">
+                 <?php echo '<img src="imagesproduit/'.$photo1.'" height="100%" width="100%" alt="Avatar" onclick="change(\'imagesproduit/'.$photo1.'\')">' ;
+                 ?>
+                </div>
+              </div>
+
+              <?php 
+              if($photo2!=""){
+             echo '
+              <div class="col-sm-3">
+                <div class="well">
+                  <img src="imagesproduit/'.$photo2.'" height="100%" width="100%" alt="Avatar" onclick="change(\'imagesproduit/'.$photo2.'\')">
+               </div>
+              </div>';
+              }
+
+              if($photo3!=""){
+             echo '
+              <div class="col-sm-3">
+                <div class="well">
+                 <img src="imagesproduit/'.$photo3.'" height="100%" width="100%" alt="Avatar" onclick="change(\'imagesproduit/'.$photo3.'\')">
+               </div>
+              </div>';
+              }
+               if($video!=""){
+             echo '
+              <div class="col-sm-3">
+                <div class="well">
+                  <iframe src="videosproduit/'.$video.'" height="100%" width="100%" alt="Avatar" onclick="change(\'videosproduit/'.$video.'\')">
+               </div>
+              </div>';
+              }
+         ?>
+                </div>
+              </div>
+           
+       <div class="col-sm-7">
                 <div class="well">
                     <p class="titre"><strong>Titre: </strong><?php echo $nomitem;?><br></p>
-                    <p class="titre"><strong>Catégorie: </strong><?php echo $nomitem;?><br></p> <!--Ajouter la catégorie svp-->
+                    <p class="titre"><strong>Catégorie: </strong><?php echo $categorie_produit;?><br></p> <!--Ajouter la catégorie svp-->
                     <p class="description"> <strong>Description: </strong><?php echo $description;?></p><br>
-                    <p class="prix"><strong>Prix: </strong>250 euros</p> <!--Ajouter le prix svp-->
+                    <p class="prix"><strong>Prix: </strong><?php echo $prix;?> €</p> <!--Ajouter le prix svp-->
                      <br><br>
                 </div>
+                <?php
+                if($categorie_achat="AchatImmediat"){
+                echo'
                 <button class="buttonachat">Achat immédiat</button>
+                ';}
+                elseif ($categorie_achat="Enchere"){
+                echo'
+                <button class="buttonachat">Faire une enchere</button>
+                ';}
+                elseif ($categorie_achat="MeilleurOffre"){
+                echo'
+                <button class="buttonachat">Proposer un prix</button>
+                ';}
+                ?>
+
               </div>
           </div>
     </div>
