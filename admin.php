@@ -27,16 +27,17 @@
 </head>
 <body>
     <?php include ("navbar.php"); ?>
-      
+
+  <div class="pageadmin"> 
     <div class="container text-center">    
       <div class="row">
-        <div class="col-sm-3 well">
-          <div class="well">
-            <p><a href="#">Compte Admin</a></p>
-          </div>
-          <div class="well">
-            <a href="#"><button class="btn btn-outline-secondary btn-lg">Tableau des items</button></a>
-          </div>
+        <br>
+        <div class="col-sm-12 well" style="background-color: #A4B9E1;">
+            <h1 class="titrepage">Compte Admin</h1>
+
+
+            <a href="#"><button class="boutonitem">Tableau des items</button></a>
+
         </div>
         <div class="col-sm-12">
           <div class="row">
@@ -47,53 +48,48 @@
                   <br>
                 </div>
                 <div class="row">
-                  <div class="col-sm-3">
-                    <div class="well">
-                     <p>ID</p>
-                    </div>
-                  </div>
-                  <div class="col-sm-7">
-                    <div class="well">
-                      <p class="description">Nom du Vendeur</p>
-                    </div>
-                  </div>
                   <div class="col-sm-2">
                     <div class="well">
-                      <button class="buttonsup">Supprimer</button>
+                     <?php echo "<img src='images/".$pphoto."' height='70%' width='70%' alt='Avatar'>"; ?>
+                    </div>
+                  </div>
+                  <div class="col-sm-10">
+                    <div class="well">
+                      <p class="description">ID: </p>
+                      <p class="description">Nom du Vendeur: </p>
+                      <p class="description">Date d'inscription: </p>
+                      <button class="supprimerbouton">Supprimer</button>
                     </div>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-3">
+                  <div class="col-sm-2">
                     <div class="well">
-                     <p>ID</p>
+                     <?php echo "<img src='images/".$pphoto."' height='70%' width='70%' alt='Avatar'>"; ?>
                     </div>
                   </div>
-                  <div class="col-sm-9">
+                  <div class="col-sm-10">
                     <div class="well">
-                      <p class="description">Nom du Vendeur</p>
-                      <button style="margin-left: 500px;">Supprimer</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <div class="well">
-                     <p>ID</p>
-                    </div>
-                  </div>
-                  <div class="col-sm-9">
-                    <div class="well">
-                      <p class="description">Nom du Vendeur</p>
+                      <p class="description">ID: </p>
+                      <p class="description">Nom du Vendeur: </p>
+                      <p class="description">Date d'inscription: </p>
+                      <button class="supprimerbouton">Supprimer</button>
                     </div>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-sm-6">
-                    <button>Ajouter un vendeur</button>
+                  <div class="col-sm-2">
+                    <div class="well">
+                     <?php echo "<img src='images/".$pphoto."' height='70%' width='70%' alt='Avatar'>"; ?>
+                    </div>
                   </div>
-                  <div class="col-sm-6">
-                    <button>Supprimer un vendeur</button>
+                  <div class="col-sm-10">
+                    <div class="well">
+                      <p class="description">ID: </p>
+                      <p class="description">Nom du Vendeur: </p>
+                      <p class="description">Date d'inscription: </p>
+                      <button class="supprimerbouton">Supprimer</button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -102,6 +98,7 @@
         </div>
       </div>
     </div>
+  </div> 
 
     <footer class="page-footer"> 
         <div class="container">

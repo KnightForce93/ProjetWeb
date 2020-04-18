@@ -5,7 +5,7 @@ body {
 }
 
 .navbar { 
-	background:#FDFDFD;
+	background: #FDFDFD;
 	width: 100%;
 	margin: auto;
 	font-family: helvetica;
@@ -85,6 +85,13 @@ cursor: pointer;
 
 
 }
+
+/*--- Page ---*/
+
+.pageadmin {
+background-color:#7E8592; 
+}
+
 .row {
 	color: black;	
 }
@@ -94,22 +101,52 @@ cursor: pointer;
 	color: #031083;	
 
 }
-.panel-body h2 {
-	color: #031083;	
+
+.titrepage{
+	color:white;
 }
 
-.col-sm-6 button {
-	background-color: #FA7962;
-	border-radius: 10px;
-	padding: 20px;
+
+
+
+.boutonitem{
 	width: 300px;
-	color: black;
-	font-size: 20px;
+	height: 50px;
+	background-color: #054CDA;
+	color:white;
+	border-radius: 12px;
 
 }
-.well button {
-	background-color: red;
+
+.boutonitem:hover {
+background-color: #5C6BFF;
 }
+
+
+.panel-body h2 {
+	color: #031083;
+	text-align: center;	
+}
+
+.supprimerbouton {
+	margin-left: 700px;
+	width:85px;
+	height:85px;
+	background-color: #054CDA;
+	font:bold 13px helvetica;
+	border-radius:50%;
+	border:none;
+	color:#fff;
+	transform: translate(120%, -110%);
+	position: absolute;
+}
+.supprimerbouton:hover {
+	
+	background-color: #5C6BFF;
+}
+
+
+
 
 /*--- colonnes ---*/
 .page-footer { 

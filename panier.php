@@ -25,7 +25,7 @@
 
 <?php include("navbar.php"); ?>
 <?php include("panierT.php"); ?>
-
+  <br>
 <div class="container text-center">    
   <div class="row">
         <div class="col-sm-3 well">
