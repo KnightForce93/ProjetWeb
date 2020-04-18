@@ -1,5 +1,6 @@
 <?php
 echo '
+
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -13,11 +14,11 @@ echo '
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
                   <div class = "dropdown">
-                    <a href="achat.php" class="bouton-dropdown">Catégories</a>
+                    <a href="achat.php" class="bouton-dropdown" style="text-decoration:none;">Catégories</a>
                       <ul class="bouton-categorie-liste">
-                         <li><a href="produitscategories.php?categorie=Ferrailles ou Trésors">Férrailles et Trésor</a></li>
-                          <li><a href="produitscategories.php?categorie=Bon pour le musée">Bon pour le musée</a></li>
-                          <li><a href="produitscategories.php?categorie=Accessoires VIP">Accessoire VIP</a></li>
+                         <li><a href="produitscategories.php?categorie=Ferrailles ou Trésors" style="text-decoration:none;">Férrailles et Trésor</a></li>
+                          <li><a href="produitscategories.php?categorie=Bon pour le musée" style="text-decoration:none;">Bon pour le musée</a></li>
+                          <li><a href="produitscategories.php?categorie=Accessoires VIP" style="text-decoration:none;">Accessoire VIP</a></li>
                       </ul>
                   </div>
       </ul>
@@ -28,13 +29,13 @@ echo '
       </form>
      <ul class="nav navbar-nav navbar-right">
                   <div class="navbar-menu">
-                    <a href="achat.php" class="navbar-menu-link">Achat</a>
-                    <a href="addproduct.php" class="navbar-menu-link">Vendre</a>
-                    <a href="profilvendeur.php" class="navbar-menu-link">Votre Compte</a>
-                    <a href="panier.php" class="navbar-menu-link"><i class="fas fa-shopping-basket"></i> Panier</a>
-                    <a href="plus.php" class="navbar-menu-link">Plus</a>
-                     <a href="admin.php" class="navbar-menu-link">Admin</a>
-                      <a href="Firstpage.php" class="navbar-menu-link">Se deconnecter</a>
+                    <a href="achat.php" class="navbar-menu-link" style="text-decoration:none;">Achat</a>
+                    <a href="vendre.php" class="navbar-menu-link" style="text-decoration:none;">Vendre</a>
+                    <a href="profilvendeur.php" class="navbar-menu-link" style="text-decoration:none;">Votre Compte</a>
+                    <a href="panier.php" class="navbar-menu-link" style="text-decoration:none;"><i class="fas fa-shopping-basket"></i> Panier</a>
+                    <a href="adminV2.php" class="navbar-menu-link" style="text-decoration:none;">Plus</a> 
+                     <a href="admin.php" class="navbar-menu-link" style="text-decoration:none;">admin</a>
+                     <a href="admin.php" class="navbar-menu-link" style="text-decoration:none;">se deconnecter</a>
                   </div>
       </ul>
     </div>
