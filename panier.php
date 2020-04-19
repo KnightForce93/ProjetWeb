@@ -144,7 +144,7 @@ include("Connexionbdd.php");
             <form action="SuppItemPanierT.php" method="post">
                 <label for="id" class="offset-md-2 col-md-2 col-form-label text-md-right">Entrez l'id de l'item</label>
                 <div class="col-md-6">
-                    <input type="float" class="form-control" name="id" required autofocus>
+                    <input type="text" class="form-control" name="id" required autofocus>
                 </div>
                 <div class="offset-md-4">
                     <button type="submit" value="resend" name="submit"class="btn btn-danger">

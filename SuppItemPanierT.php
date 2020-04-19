@@ -19,7 +19,7 @@ $id = isset($_POST["id"])? $_POST["id"] : "";
       //       		if($categorie=="AchatImmediat")
       //       		{
             			$sql2 = "DELETE FROM panier";       
-			            $sql2 .= " WHERE id LIKE '%$id%'";   
+			            $sql2 .= " WHERE item_id LIKE '%$id%'";   
 			            $result2 = mysqli_query($db_handle, $sql2); 
 
             // 		}
