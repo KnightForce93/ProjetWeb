@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!-- lien vers font awesome, library de emoticone -->
+    <script src="https://kit.fontawesome.com/49d3300cf5.js" crossorigin="anonymous"></script> 
   <link rel="stylesheet" type="text/css" href="profilacheteur.css">
   <link rel="stylesheet" type="text/css" href="navbar.css">
   <style>    

@@ -11,6 +11,8 @@
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
         <link rel="stylesheet" type="text/css" href="addproduct.css">
+        <link rel="stylesheet" type="text/css" href="navbar.css">
+        <link rel="stylesheet" type="text/css" href="header.css">
         <script type="text/javascript">
             //utiliser jQuery pour que l’image s’étire sur l’écran
                 $(document).ready(function(){ 
@@ -21,10 +23,8 @@
 </head> 
 
 <body> 
-    <nav class="navbar">
-                <img src="images/logo.png" width="80">
-    </nav>
-
+    <?php include("navbar.php");?>
+    <div class="header">
     <header class="page-header header container-fluid">
         <br><br><br>
     <main class="my-form">
@@ -114,7 +114,7 @@
     </div>
 </main>
 </header>
-
+</div>
      <footer class="page-footer"> 
         <div class="container">
             <div class="footer-copyright text-center">&copy; 2020 Copyright | Droits d'auteurs: Wassim Sebbahi & Thomas Popielski & Louis Donikian TD02</div><!--text-center : modifier la typographie-->

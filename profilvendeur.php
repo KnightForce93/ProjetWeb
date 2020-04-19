@@ -10,6 +10,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <!-- lien vers font awesome, library de emoticone -->
     <script src="https://kit.fontawesome.com/49d3300cf5.js" crossorigin="anonymous"></script> 
+    
   <link rel="stylesheet" type="text/css" href="profilvendeur.css">
   <link rel="stylesheet" type="text/css" href="navbar.css">
   <style>
@@ -65,7 +66,7 @@
                   <div class="panel panel-default text-left">
                     <div class="panel-body">
                       <p contenteditable="true">Statut: <?php echo $statut;?></p>
-                  <p contenteditable="true">Vous est inscrit sur ECE Ebay depuis le <?php echo$datecreation;?></p>      
+                  <p contenteditable="true">Vous êtes inscrit sur ECE Ebay depuis le <?php echo $datecreation;?></p>      
                     </div>
                   </div>
                 </div>

@@ -11,6 +11,7 @@
     <script src="https://kit.fontawesome.com/49d3300cf5.js" crossorigin="anonymous"></script> 
   <link rel="stylesheet" type="text/css" href="produitscategories.css">
    <link rel="stylesheet" type="text/css" href="navbar.css">
+   <link rel="stylesheet" type="text/css" href="header.css">
   <style>
         
     /* Add a gray background color and some padding to the footer */
@@ -83,8 +84,8 @@
           <span class="sr-only">Next</span>
         </a>
     </div>
-    <br>
-
+<div class="header">
+  <br><br>
      <div class='container text-center'>    
       <div class='row'>
             <div class='col-sm-12'>
@@ -176,7 +177,7 @@
   </div>
 </div>
    </div> 
-
+</div>
   
 <footer class="page-footer"> 
     <div class="container">
