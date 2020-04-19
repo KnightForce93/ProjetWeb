@@ -16,7 +16,7 @@ echo '
                   <div class = "dropdown">
                     <a href="achat.php" class="bouton-dropdown" style="text-decoration:none;">Catégories</a>
                       <ul class="bouton-categorie-liste">
-                         <li><a href="produitscategories.php?categorie=Ferrailles ou Trésors" style="text-decoration:none;">Férrailles et Trésor</a></li>
+                         <li><a href="produitscategories.php?categorie=Ferrailles ou Trésors" style="text-decoration:none;">Ferrailles et Trésor</a></li>
                           <li><a href="produitscategories.php?categorie=Bon pour le musée" style="text-decoration:none;">Bon pour le musée</a></li>
                           <li><a href="produitscategories.php?categorie=Accessoires VIP" style="text-decoration:none;">Accessoire VIP</a></li>
                       </ul>

@@ -6,7 +6,7 @@ $email = isset($_POST["email"])? $_POST["email"] : "";
 //verifie si l'utilisateur n'existe pas déja
 if (isset($_POST['submit'])) {  
 	if ($db_found) {  
-		 $sql = "SELECT * FROM utilisateur";       
+		$sql = "SELECT * FROM utilisateur";       
  	    $sql .= " WHERE email LIKE '%$email%'";  
  	    $result = mysqli_query($db_handle, $sql); 
  	    if (mysqli_num_rows($result) == 0) {     

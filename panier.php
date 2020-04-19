@@ -13,12 +13,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="panier.css">
     <link rel="stylesheet" type="text/css" href="navbar.css">
+
   <style>    
     /* Set black background color, white text and some padding */
     footer {
       background-color: #555;
       color: white;
       padding: 15px;
+      margin-top: -40px;
     }
   </style>
 </head>
@@ -28,7 +30,10 @@
 include("Connexionbdd.php");
  include("panierT.php"); 
  ?>
-
+<div class="header" style="background-image: url('images/background.jpg'); background-size: cover; 
+    background-position: center;
+    position: relative; "> 
+    <br>
 <div class="container text-center">    
   <div class="row">
         <div class="col-sm-3 well">
@@ -96,13 +101,17 @@ include("Connexionbdd.php");
             	                    </div>
                             </div>
                             <div class="col-sm-9">
-                                    <div class="well">
+                                    <div class="well well-lg">
             	                        <p class="description">
-            	                        <b>Prix : ' . $data1['prix_minimum'] . '€</b><br>
+            	                        <b>ID : ' . $data1['id'] .' <br>
+                                        Prix : ' . $data1['prix_minimum'] . '€</b><br>
                                                Description : ' . $data1['description'] . '<br>
                                                <small>
+                                               Catégorie d\'achat : ' . $data1['categorie_achat'] . '<br>
+                                               </small> 
+                                               <small>
                                                		<i>Vendu par : ' . $data2['prenom'] . ' ' .$data2['nom'] . '</i>
-                                               	</small> 
+                                               	</small>
                                         </p>
                             		</div>
                             </div>
@@ -111,25 +120,37 @@ include("Connexionbdd.php");
                    } }
 			}
             echo '
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="well">
-                  <p class="total">Total : ' . $tot . '€</p>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="well">
+                        <p class="total">Total : ' . $tot . '€</p>
+                    </div>
                 </div>
-              </div>
             </div>
             ';?>
             <form action="procederPaiement.php" method="post">
                 <div class="row">
                     <div class="col-sm-12">
-                        <button type="submit" value="connexion" name="submit" class="bouton-paiement">Procéder au paiement</button>
+                        <button type="submit" value="connexion" name="submit" class="bouton-paiement">Procéder au paiement</button> <br><br>
                     </div>
+                </div>
+            </form>
+            <form action="SuppItemPanierT.php" method="post">
+                <label for="id" class="offset-md-2 col-md-2 col-form-label text-md-right">Entrez l'id de l'item</label>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" name="id" required autofocus>
+                </div>
+                <div class="offset-md-4">
+                    <button type="submit" value="resend" name="submit"class="btn btn-danger">
+                        Supprimer du panier
+                    </button>
                 </div>
             </form>
           </div>
         </div>
   </div>
 </div>
+
 <br>
 <br>
 
@@ -137,7 +158,7 @@ include("Connexionbdd.php");
     <div class="container">
       <div class="footer-copyright text-center">&copy; 2020 Copyright | Droits d'auteurs: Wassim Sebbahi & Thomas Popielski & Louis Donikian TD02</div><!--text-center : modifier la typographie-->
     </div>
-  </footer>
+</footer>
 
 </body>
 </html>
