@@ -73,7 +73,7 @@ include("Connexionbdd.php");
           	     $sql= "SELECT * FROM panier";
 			     $sql .= " WHERE ach_id LIKE '%$id_acheteur%'";
 			     $result = mysqli_query($db_handle, $sql); 
-
+                 $tot=0;
       			while ($data = mysqli_fetch_assoc($result))
       			{
                     $item_id=$data['item_id'];
@@ -119,11 +119,13 @@ include("Connexionbdd.php");
               </div>
             </div>
             ';?>
-            <div class="row">
-            <div class="col-sm-12">
-            <a href=""><button class="bouton-paiement">Procéder au paiement</button></a>
-              </div>
-            </div>
+            <form action="procederPaiement.php" method="post">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <button type="submit" value="connexion" name="submit" class="bouton-paiement">Procéder au paiement</button>
+                    </div>
+                </div>
+            </form>
           </div>
         </div>
   </div>

@@ -3,12 +3,9 @@
 include("Connexionbdd.php");
  //récupérer les données venant de formulaire  
 $email = isset($_POST["email"])? $_POST["email"] : "";  
-echo "ok1";
 //verifie si l'utilisateur n'existe pas déja
 if (isset($_POST['submit'])) {  
-echo "ok1";
 	if ($db_found) {  
-		echo "ok1";
 		 $sql = "SELECT * FROM utilisateur";       
  	    $sql .= " WHERE email LIKE '%$email%'";  
  	    $result = mysqli_query($db_handle, $sql); 
