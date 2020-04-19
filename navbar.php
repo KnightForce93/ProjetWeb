@@ -30,12 +30,18 @@ echo '
      <ul class="nav navbar-nav navbar-right">
                   <div class="navbar-menu">
                     <a href="achat.php" class="navbar-menu-link" style="text-decoration:none;">Achat</a>
-                    <a href="vendre.php" class="navbar-menu-link" style="text-decoration:none;">Vendre</a>
+                    <a href="addproduct.php" class="navbar-menu-link" style="text-decoration:none;">Vendre</a>
                     <a href="profilvendeur.php" class="navbar-menu-link" style="text-decoration:none;">Votre Compte</a>
-                    <a href="panier.php" class="navbar-menu-link" style="text-decoration:none;"><i class="fas fa-shopping-basket"></i> Panier</a>
-                    <a href="adminV2.php" class="navbar-menu-link" style="text-decoration:none;">Plus</a> 
-                     <a href="admin.php" class="navbar-menu-link" style="text-decoration:none;">admin</a>
-                     <a href="admin.php" class="navbar-menu-link" style="text-decoration:none;">se deconnecter</a>
+                    <a href="panier.php" class="navbar-menu-link" style="text-decoration:none;"><i class="fas fa-shopping-basket"></i> Panier</a> 
+                    <a> </a>
+                    <div class = "dropdownplus">
+                    <a href="achat.php" class="bouton-dropdownplus" style="text-decoration:none;">Plus</a>
+                      <ul class="bouton-plus-liste">
+                         <li><a href="" style="text-decoration:none;"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a></li>
+                          <li><a href="adminV2.php" style="text-decoration:none;">Admin</a></li>
+                          <li><a href="plus.php" style="text-decoration:none;">Plus</a></li>
+                      </ul>
+                  </div>
                   </div>
       </ul>
     </div>

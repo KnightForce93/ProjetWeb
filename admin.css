@@ -69,6 +69,10 @@ background-color: #5C6BFF;
 }
 
 /*--- V2 ---*/
+
+table tbody tr:nth-child(odd) {
+    background-color: #d7d7d7; 
+}
 .bouton-supprimer{
 	border:1px solid black; 
 	background-color: black;
