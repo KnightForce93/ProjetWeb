@@ -47,6 +47,24 @@ if($_SESSION['id_global']!=""){
 			$dateexp=$data['dateexp'];
 			$code=$data['code'];
 		} 
+
+
+		 $sql= "SELECT * FROM panier";
+	     $sql .= " WHERE ach_id LIKE '%$id_acheteur%'";
+	     $result = mysqli_query($db_handle, $sql); 
+         $tot=0;
+		while ($pmt = mysqli_fetch_assoc($result))
+		{
+            $item_id=$pmt['item_id'];
+            $sql1 = "SELECT * FROM item ";
+            $sql1 .= " WHERE id LIKE '%$item_id%'";
+            $result1 = mysqli_query($db_handle, $sql1);  
+            while ($pmt1 = mysqli_fetch_assoc($result1)) 
+            {
+                $tot=$tot+$pmt1['prix_minimum'];
+           		
+           	}
+		}
 	}
 ?>	       
 

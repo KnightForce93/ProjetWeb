@@ -13,6 +13,12 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="panier.css">
     <link rel="stylesheet" type="text/css" href="navbar.css">
+    <script type="text/javascript">
+      //utiliser jQuery pour que l’image s’étire sur l’écran
+        $(document).ready(function(){ 
+          $('.header').height($(window).height());
+        });
+    </script>
 
   <style>    
     /* Set black background color, white text and some padding */
@@ -138,7 +144,7 @@ include("Connexionbdd.php");
             <form action="SuppItemPanierT.php" method="post">
                 <label for="id" class="offset-md-2 col-md-2 col-form-label text-md-right">Entrez l'id de l'item</label>
                 <div class="col-md-6">
-                    <input type="text" class="form-control" name="id" required autofocus>
+                    <input type="float" class="form-control" name="id" required autofocus>
                 </div>
                 <div class="offset-md-4">
                     <button type="submit" value="resend" name="submit"class="btn btn-danger">

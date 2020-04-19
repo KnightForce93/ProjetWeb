@@ -4,7 +4,7 @@ $_SESSION['id_global']="11";
 include("Connexionbdd.php"); 
 if($_SESSION['id_global']!=""){
 		$id=$_SESSION['id_global'];
-		$sql = "SELECT * FROM utilisateur";       
+		$sql = "SELECT *, DATE_FORMAT(created_at, '%d %M %Y à %kh%i') as datee FROM utilisateur";       
 	    $sql .= " WHERE id LIKE '%$id%'";               	    
 		$result = mysqli_query($db_handle, $sql); 
 //regarder s'il y a de résultat   
@@ -13,7 +13,7 @@ if($_SESSION['id_global']!=""){
 		$email =$data['email'];
 		$mdp = $data['password'];
 		$statut = $data['statut'];
-		$datecreation=$data['created_at'];
+		$datecreation=$data['datee'];
 		}
 		$sql = "SELECT * FROM vendeur";       
 	    $sql .= " WHERE user_id LIKE '%$id%'";               	    
