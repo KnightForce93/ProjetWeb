@@ -139,7 +139,7 @@
 
        <div class="col-sm-3">
                 <div class="well">
-                 <img src="images/'.$data['photo1'].'" height="100%" width="100%" alt="Avatar">
+                 <img src="imagesproduit/'.$data['photo1'].'" height="100%" width="100%" alt="Avatar">
                 </div>
               </div>
 

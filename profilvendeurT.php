@@ -1,5 +1,4 @@
-<?php 
-session_start();
+<?php session_start();
 $_SESSION['id_global']="11";
 
 include("Connexionbdd.php"); 

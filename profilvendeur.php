@@ -1,3 +1,4 @@
+<?php include("profilvendeurT.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,8 +41,6 @@
 <body>
 
   <?php include ("navbar.php"); ?>
-  
-    <?php include("profilvendeurT.php"); ?>
     <div class="photocouverture">
       <div class="container text-center">   
         <div class="overlay"></div>
@@ -54,8 +53,9 @@
               </div>
               
               <p>Adresse email: <?php echo $email;?></p>
+              <a href="modificationinfos.php?info=email"> <button type="button" class="btn btn-primary">Modifier email</button></a> 
               <p>Mot de passe: <?php echo $mdp;?> </p><br>
-              <a href="modificationdonnées.php"> <button type="button" class="btn btn-primary">Modifier données personnelles</button></a> 
+              <a href="modificationinfos.php?info=mdp"> <button type="button" class="btn btn-primary">Modifier mot de passe</button></a> 
             </div>
 
             <div class="col-sm-7">
@@ -116,9 +116,9 @@
                 }
                 ?>
               </div> 
-              <div id="Block_offres" >
+              <div id="Block_offres" style="display:none">
               <?php 
-              $sql = "SELECT item.id, item.nom ,item.photo1, item.description FROM item, meilleuroffre";      
+              $sql = "SELECT item.id, item.nom ,item.photo1, item.description, meilleuroffre.prixAch, meilleuroffre.msg_ach, meilleuroffre.prixVen, meilleuroffre.msg_vend, meilleuroffre.statut, meilleuroffre.repetition, meilleuroffre.validation, meilleuroffre.id AS id2 FROM item, meilleuroffre";      
               $sql .= " WHERE item.id = meilleuroffre.item_id";  
               $sql .= " AND item.v_id = '$id_vendeur%'";                  
                 $result = mysqli_query($db_handle, $sql); 
@@ -135,8 +135,47 @@
                     </div>
                     <div class="col-sm-9">
                       <div class="well">
-                        <p class="description">'.$data['description'].'</p>
-                      </div>
+                      ';
+                       if($data['statut']=="vendeur"){
+                       echo' <p class="description">Prix proposé par l\'acheteur: '.$data['prixAch'].'</p>
+                         <p class="description">Message de l\'acheteur: '.$data['msg_ach'].'</p>
+                         ';
+                         if($data['validation']==1){
+                     echo '<p class="description">Vous avez validé l\'offre </p>';
+                   }else{
+                       echo' <a href="modificationmeilleuroffre.php?meilleuroffre_id='.$data['id2'].'"><button class="buttonachat">Répondre</button></a>
+
+                          <br>
+                          <form  name="my-form"  action="addpanierT2.php" method="post">
+                                <fieldset>
+                               <input type="hidden"  name="meilleuroffre_id" value="'.$data['id2'].'">
+
+                                <div class="col-md-6 offset-md-4">
+                                        <input type="submit" value="Validation" class ="btn btn-primary" name="submitValidation">
+                                </div>
+                               </fieldset>
+                            </form>
+                ';}
+              }
+                 if($data['statut']=="acheteur"){
+
+                          echo' <p class="description">Prix que vous avez proposé: '.$data['prixVen'].'</p>
+                         <p class="description">Votre message: '.$data['msg_vend'].'</p>
+                         <br>
+                         <br>
+                          ';
+                          if($data['validation']==1){
+                     echo '<p class="description">L\'acheteur a validé l\'offre</p>';
+                   }
+                        else  if($data['repetition']>=5){
+                    echo '<p class="description">le nombre d\'echange maximum est atteint</p>';
+                  }else{
+                        echo ' <p class="description">En attente de réponse</p>';
+                      }
+                         
+                }
+
+                     echo' </div>
                     </div>
                   </div>
                   </div>
