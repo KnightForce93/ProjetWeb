@@ -40,9 +40,9 @@
         <br>
         <div class="col-sm-12 well">
             <h1 class="titrepage2">Compte Admin</h1><br>
-            <a href="adminV3.php?table=vendeur"><button class="boutonitem2">Tableau des vendeurs</button></a>
-             <a href="adminV3.php?table=item"><button class="boutonitem2">Tableau des items</button></a>
-              <a href="adminV3.php?table=enchere"><button class="boutonitem2">Tableau des enchères</button></a>
+            <a href="admin.php?table=vendeur"><button class="boutonitem2">Tableau des vendeurs</button></a>
+             <a href="admin.php?table=item"><button class="boutonitem2">Tableau des items</button></a>
+              <a href="admin.php?table=enchere"><button class="boutonitem2">Tableau des enchères</button></a>
         </div>
       </div>
      <div class="row">
@@ -220,7 +220,8 @@ if($table=="vendeur"){
                                 <td>
                                   <div>
                                     <form action="addpanierT3.php" method="post">
-                                <input type="hidden"  name="item_id" value="'.$data['id'].'">
+                                <input type="hidden"  name="prixfinal" value="'.$prix.'">
+                                <input type="hidden"  name="item_id" value="'.$data['item_id'].'">
                                  <input type="hidden"  name="ach_id" value="'.$data['ach_id'].'">
                                 <div class="offset-md-4">
                                 <button type="submit" value="resend" name="submitVE"class="btn btn-danger">

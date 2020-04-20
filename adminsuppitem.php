@@ -28,7 +28,7 @@ if (isset($_POST['submitSI'])) {
             $sql .= " WHERE id LIKE '%$item_id%'";
             $result = mysqli_query($db_handle, $sql);
 
-        header("Location: adminV3.php");
+        header("Location: admin.php");
         mysqli_close($db_handle);  
         exit; 
 }

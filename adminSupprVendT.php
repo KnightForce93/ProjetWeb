@@ -27,7 +27,7 @@ if (isset($_POST['submitSV'])) {
         $sql3 = "DELETE FROM vendeur";
             $sql3 .= " WHERE id LIKE '%$V_id%'";
             $result3 = mysqli_query($db_handle, $sql3);
-        header("Location: adminV3.php");
+        header("Location: admin.php");
         mysqli_close($db_handle);  
         exit; 
 }

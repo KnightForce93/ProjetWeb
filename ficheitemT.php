@@ -8,6 +8,7 @@ if(filter_has_var(INPUT_GET,'item_id')){
         $item_id=$_GET['item_id'];
     }else{$item_id='15';
 }
+
 		$sql = "SELECT * FROM item";       
 	    $sql .= " WHERE id LIKE '%$item_id%'";               	    
 		$result = mysqli_query($db_handle, $sql); 
@@ -39,10 +40,24 @@ if(filter_has_var(INPUT_GET,'item_id')){
 //regarder s'il y a de résultat   
 		while ($data = mysqli_fetch_assoc($result)) {   
 		$enchere_id =$data['id'];
-
+		$dateS=$data['startdate'];
+		$dateE=$data['enddate'];
 		}
+		$sql = "SELECT * FROM enchere WHERE enddate > CURDATE() AND id ='$enchere_id'";
+		$result = mysqli_query($db_handle, $sql); 
+		if (mysqli_num_rows($result) == 0) {     
+         $fin="yes";    
+   } else{$fin="no";
 		}
-	}
+		$sql = "SELECT * FROM enchere WHERE startdate < CURDATE() AND id ='$enchere_id'";
+		$result = mysqli_query($db_handle, $sql); 
+		if (mysqli_num_rows($result) == 0) {     
+         $debut="no";    
+   } else{$debut="yes";
+		}
+   }
+   }
+	
 	
 ?>	       
 
