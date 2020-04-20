@@ -160,6 +160,7 @@ include("Connexionbdd.php");
 <br>
 <br>
 
+
 <footer class="page-footer"> 
     <div class="container">
       <div class="footer-copyright text-center">&copy; 2020 Copyright | Droits d'auteurs: Wassim Sebbahi & Thomas Popielski & Louis Donikian TD02</div><!--text-center : modifier la typographie-->
