@@ -43,10 +43,10 @@
           <div class="row">
             
         <div class="col-sm-6">
-            <p>Nom: <?php echo $nom; ?></p>
+            <p>Nom : <?php echo $nom; ?></p>
           </div>
           <div class="col-sm-6">
-            <button type="button" class="btn btn-primary">Modifier nom</button> 
+            <a href="modificationinfos.php?info=nom"><button type="button" class="btn btn-primary">Modifier nom</button> </a>
           </div>
         </div>
       </div>
@@ -54,10 +54,10 @@
        <div class="row">
        
         <div class="col-sm-6">
-            <p>Prénom: <?php echo $prenom; ?></p>
+            <p>Prénom : <?php echo $prenom; ?></p>
           </div>
           <div class="col-sm-6">
-            <button type="button" class="btn btn-primary">Modifier prénom</button> 
+            <a href="modificationinfos.php?info=prenom"><button type="button" class="btn btn-primary">Modifier prénom</button> </a>
           </div>
         </div>
       </div>
@@ -66,28 +66,28 @@
         
         <div class="col-sm-6">
   
-            <p>Email: <?php echo $email;?></p>
+            <p>Email : <?php echo $email;?></p>
           
           </div>
           <div class="col-sm-6">
-            <button type="button" class="btn btn-primary">Modifier email</button> 
+            <a href="modificationinfos.php?info=email"><button  type="button" class="btn btn-primary">Modifier email</button> </a>
           </div>
           </div>
         </div>
-      </div>
+      
        <div class="well">
        <div class="row">
        
         <div class="col-sm-6">
-            <p>Mot de passe <?php echo $mdp;?></p>
+            <p>Mot de passe : <?php echo $mdp;?></p>
          
           </div>
           <div class="col-sm-6">
-           <button type="button" class="btn btn-primary">Modifier mot de passe</button> 
+           <a href="modificationinfos.php?info=mdp"><button type="button" class="btn btn-primary">Modifier mot de passe</button> </a>
           </div>
         </div>
       </div>
-       
+     </div>  
  <div class="row">
         <div class="col-sm-12">
           <div class="well">
@@ -143,7 +143,7 @@
                            ';
                             if (mysqli_num_rows($result) < 3) {     
       echo'
-                           <button type="button" class="btn btn-primary">Ajouter une Adresse</button> ';   
+                           <a href="modificationinfos.php?info=adresse"><button type="button" class="btn btn-primary">Ajouter une Adresse</button></a> ';   
     } else{ 
       echo' <p> Vous avez atteint le nombre maximum d\'adresses, pour en ajouter une nouvelle veuillez en supprimer une.</p>';
   }
@@ -212,7 +212,7 @@
                            ';
                             if (mysqli_num_rows($result) <3) {     
       echo'
-                           <button type="button" class="btn btn-primary">Ajouter une Carte de crédit</button> ';   
+                           <a href="modificationinfos.php?info=paiement"><button type="button" class="btn btn-primary">Ajouter une Carte de crédit</button></a> ';   
     } else{ 
       echo' <p> Vous avez atteint le nombre maximum de carte de crédit, pour en ajouter une nouvelle veuillez en supprimer une.</p>';
   }

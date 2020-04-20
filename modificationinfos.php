@@ -11,8 +11,6 @@
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    
   <link rel="stylesheet" type="text/css" href="accueil.css">
   <link rel="stylesheet" type="text/css" href="navbar.css">
 
@@ -40,16 +38,46 @@ if(filter_has_var(INPUT_GET,'info')){
         $info=$_GET['info'];
     }
 ?>
-<header class="page-header header container-fluid">
+<header class="page-header  container-fluid">
         <br><br><br>
     <main class="my-form">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                     <div class="card">
-                      <?php if($info=="email"){
+                      <?php
+                      if($info=="nom"){
+                        echo'
+                        <div class="card-header">Entrez votre nouveau nom</div>
+                        <br>
+                        <div class="card-body">
+                            <form  name="my-form"  action="modificationinfosT.php" method="post">
+                                <fieldset>
+                                <div class="form-group row">
+                                    <label for="nom" class="col-md-4 col-form-label text-md-right">Nom</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="nom">
+                                    </div>
+                                </div>';
+                              }
+                              if($info=="prenom"){
+                        echo'
+                        <div class="card-header">Entrez votre nouveau prénom</div>
+                        <br>
+                        <div class="card-body">
+                            <form  name="my-form"  action="modificationinfosT.php" method="post">
+                                <fieldset>
+                                <div class="form-group row">
+                                    <label for="prenom" class="col-md-4 col-form-label text-md-right">Prénom</label>
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" name="prenom">
+                                    </div>
+                                </div>';
+                              } 
+                          if($info=="email"){
                         echo'
                         <div class="card-header">Entrez votre nouvelle adresse email</div>
+                        <br>
                         <div class="card-body">
                             <form  name="my-form"  action="modificationinfosT.php" method="post">
                                 <fieldset>
@@ -63,6 +91,7 @@ if(filter_has_var(INPUT_GET,'info')){
                               if($info=="mdp"){
                         echo'
                         <div class="card-header">Entrez votre nouveau mot de passe</div>
+                        <br>
                         <div class="card-body">
                             <form  name="my-form"  action="modificationinfosT.php" method="post">
                                 <fieldset>
@@ -73,10 +102,96 @@ if(filter_has_var(INPUT_GET,'info')){
                                     </div>
                                 </div>';
                               }
-                            
+                              if($info=="adresse"){
+                        echo'
+                        <div class="card-header">Entrez une nouvelle adresse</div>
+                        <br>
+                        <div class="card-body">
+                            <form  name="my-form"  action="modificationinfosT.php" method="post">
+                                <fieldset>
+                                <div class="form-group row">
+                                    <label for="adresse" class="col-md-4 col-form-label text-md-right">Adresse</label>
+                                    <div class="col-md-6">
+                                          <input type="text" name="adresse" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                   <label for="ville" class="col-md-4 col-form-label text-md-right">Ville</label>
+                                   <div class="col-md-6">
+                                        <input type="text" class="form-control" name="ville">
+                                    </div>
+                                </div>  
+                                <div class="form-group row">
+                                   <label for="cp" class="col-md-4 col-form-label text-md-right">Code postal</label>
+                                   <div class="col-md-6">
+                                        <input type="text" class="form-control" name="cp">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                   <label for="pays" class="col-md-4 col-form-label text-md-right">Pays</label>
+                                   <div class="col-md-6">
+                                        <input type="text" class="form-control" name="pays">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                   <label for="tel" class="col-md-4 col-form-label text-md-right">Téléphone</label>
+                                   <div class="col-md-6">
+                                        <input type="text" class="form-control" name="tel">
+                                    </div>
+                                </div>
+
+                                ';
+                              }
+
+                              if($info=="paiement"){
+                        echo'
+                        <div class="card-header">Entrez une nouvelle carte bancaire</div>
+                        <br>
+                        <div class="card-body">
+                            <form  name="my-form"  action="modificationinfosT.php" method="post">
+                                <fieldset>
+                                <div class="form-group row">
+                                    <label for="typecarte" class="col-md-4 col-form-label text-md-right">Type de carte</label>
+                                    <div class="col-md-6">
+                                          <input type="text" name="typecarte" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                   <label for="nomC" class="col-md-4 col-form-label text-md-right">Nom</label>
+                                   <div class="col-md-6">
+                                        <input type="text" class="form-control" name="nomC">
+                                    </div>
+                                </div>  
+                                <div class="form-group row">
+                                   <label for="numero_carte" class="col-md-4 col-form-label text-md-right">Numéro de la carte</label>
+                                   <div class="col-md-6">
+                                        <input type="text" class="form-control" name="numero_carte">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                   <label for="dateexp" class="col-md-4 col-form-label text-md-right">Date d\'expiration</label>
+                                   <div class="col-md-6">
+                                        <input type="text" class="form-control" name="dateexp">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                   <label for="code" class="col-md-4 col-form-label text-md-right">Cryptogramme</label>
+                                   <div class="col-md-6">
+                                        <input type="text" class="form-control" name="code">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                   <label for="solde" class="col-md-4 col-form-label text-md-right">Solde</label>
+                                   <div class="col-md-6">
+                                        <input type="text" class="form-control" name="solde">
+                                    </div>
+                                </div>';
+                              }
+
+
                               echo'
                                 <div class="col-md-6 offset-md-4">
-                                        <input type="submit" value="Modifier" class ="btn btn-primary" name="submit">
+                                        <input type="submit" value="Enregistrer" class ="btn btn-primary btn-right" name="submit">
                                 </div>
                                </fieldset>
                             </form>
