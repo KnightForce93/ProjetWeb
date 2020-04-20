@@ -112,9 +112,9 @@
                                     <label for="categoriedachat" class="col-sm-4 col-form-label text-sm-right">Catégorie d'achat :</label>
                            <div class="col-sm-6">
                         <select name="categoriedachat"> 
-                        <option value ="enchere">Enchère </option> 
-                        <option value ="bestoffer">Meilleure offre </option> 
-                        <option value ="achat">Achat immédiat </option> 
+                        <option value ="Enchere">Enchère </option> 
+                        <option value ="MeilleureOffre">Meilleure offre </option> 
+                        <option value ="AchatImmediat">Achat immédiat </option> 
                     </select>
                 </div>
             </div>
