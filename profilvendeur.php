@@ -53,8 +53,8 @@
               </div>
               
               <p>Adresse email: <?php echo $email;?></p>
-              <a href="modificationinfos.php?info=email"> <button type="button" class="btn btn-primary">Modifier email</button></a> 
-              <p>Mot de passe: <?php echo $mdp;?> </p><br>
+              <a href="modificationinfos.php?info=email"> <button type="button" class="btn btn-primary">Modifier email</button></a> <br><br>
+              <p>Mot de passe: <?php echo $mdp;?> </p>
               <a href="modificationinfos.php?info=mdp"> <button type="button" class="btn btn-primary">Modifier mot de passe</button></a> 
             </div>
 

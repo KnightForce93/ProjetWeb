@@ -61,7 +61,7 @@
                     <div class = "dropdownplus">
                     <a href="achat.php" class="bouton-dropdownplus" style="text-decoration:none;">Plus</a>
                       <ul class="bouton-plus-liste">
-                         <li><a href="" style="text-decoration:none;"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a></li>
+                         <li><a href="deconnexion.php" style="text-decoration:none;"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a></li>
                           <li><a href="adminV2.php" style="text-decoration:none;">Admin</a></li>
                           <li><a href="plus.php" style="text-decoration:none;">Plus</a></li>
                       </ul>
@@ -109,7 +109,7 @@
                                     </div>
                                 </div>
                             <div class="form-group row">
-                                    <label for="categoriedachat" class="col-sm-4 col-form-label text-sù-right">Catégorie d'achat :</label>
+                                    <label for="categoriedachat" class="col-sm-4 col-form-label text-sm-right">Catégorie d'achat :</label>
                            <div class="col-sm-6">
                         <select name="categoriedachat"> 
                         <option value ="enchere">Enchère </option> 
