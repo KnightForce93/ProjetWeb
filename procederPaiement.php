@@ -119,15 +119,15 @@
                             }
                             else if($data1['categorie_achat']=='Enchere')
                             {
-                                $prix=$data1['prix_minimum'];
-                                $sql3 = "UPDATE item SET date_vente=NOW(), prix_vente=$prix,id_acheteur = $id_acheteur ";
+                                //$prix=$data1['prix_minimum'];
+                                $sql3 = "UPDATE item SET date_vente=NOW(),id_acheteur = $id_acheteur ";
                                 $sql3 .= " WHERE id LIKE '%$item_id%'";
                                 $result3 = mysqli_query($db_handle, $sql3); 
                             }
                             else if($data1['categorie_achat']=='MeilleureOffre')
                             {
-                                $prix=$data1['prix_minimum'];
-                                $sql3 = "UPDATE item SET date_vente=NOW(), prix_vente=$prix,id_acheteur = $id_acheteur ";
+                               // $prix=$data1['prix_minimum'];
+                                $sql3 = "UPDATE item SET date_vente=NOW(),id_acheteur = $id_acheteur ";
                                 $sql3 .= " WHERE id LIKE '%$item_id%'";
                                 $result3 = mysqli_query($db_handle, $sql3);
 
