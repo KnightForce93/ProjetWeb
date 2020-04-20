@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<?php include("testutilisateur.php"); ?>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>ECE Ebay</title>
@@ -46,62 +47,6 @@ if(filter_has_var(INPUT_GET,'info')){
             <div class="col-md-8">
                     <div class="card">
                       <?php
-                      if($info=="nom"){
-                        echo'
-                        <div class="card-header">Entrez votre nouveau nom</div>
-                        <br>
-                        <div class="card-body">
-                            <form  name="my-form"  action="modificationinfosT.php" method="post">
-                                <fieldset>
-                                <div class="form-group row">
-                                    <label for="nom" class="col-md-4 col-form-label text-md-right">Nom</label>
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" name="nom">
-                                    </div>
-                                </div>';
-                              }
-                              if($info=="prenom"){
-                        echo'
-                        <div class="card-header">Entrez votre nouveau prénom</div>
-                        <br>
-                        <div class="card-body">
-                            <form  name="my-form"  action="modificationinfosT.php" method="post">
-                                <fieldset>
-                                <div class="form-group row">
-                                    <label for="prenom" class="col-md-4 col-form-label text-md-right">Prénom</label>
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" name="prenom">
-                                    </div>
-                                </div>';
-                              } 
-                          if($info=="email"){
-                        echo'
-                        <div class="card-header">Entrez votre nouvelle adresse email</div>
-                        <br>
-                        <div class="card-body">
-                            <form  name="my-form"  action="modificationinfosT.php" method="post">
-                                <fieldset>
-                                <div class="form-group row">
-                                    <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" name="email">
-                                    </div>
-                                </div>';
-                              }
-                              if($info=="mdp"){
-                        echo'
-                        <div class="card-header">Entrez votre nouveau mot de passe</div>
-                        <br>
-                        <div class="card-body">
-                            <form  name="my-form"  action="modificationinfosT.php" method="post">
-                                <fieldset>
-                                <div class="form-group row">
-                                    <label for="mdp" class="col-md-4 col-form-label text-md-right">Mot de passe</label>
-                                    <div class="col-md-6">
-                                        <input type="text" class="form-control" name="mdp">
-                                    </div>
-                                </div>';
-                              }
                               if($info=="adresse"){
                         echo'
                         <div class="card-header">Entrez une nouvelle adresse</div>
@@ -131,12 +76,6 @@ if(filter_has_var(INPUT_GET,'info')){
                                    <label for="pays" class="col-md-4 col-form-label text-md-right">Pays</label>
                                    <div class="col-md-6">
                                         <input type="text" class="form-control" name="pays">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                   <label for="tel" class="col-md-4 col-form-label text-md-right">Téléphone</label>
-                                   <div class="col-md-6">
-                                        <input type="text" class="form-control" name="tel">
                                     </div>
                                 </div>
 

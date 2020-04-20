@@ -1,3 +1,4 @@
+<?php include("testutilisateur.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -75,7 +76,7 @@
     </div>
   
     <div class="container text-center">    
-      <h3>Catégories:</h3><br>
+      <h3><u>Catégories:</u></h3><br>
       <div class="row">
         <div class="col-sm-4">
           <h2>Ferrailles ou Trésors</h2>   

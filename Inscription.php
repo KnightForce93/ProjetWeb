@@ -72,7 +72,7 @@ if (isset($_POST['submit'])) {
 		}	
 
    if ($statut=="acheteur")  {
-   	  $sql = "INSERT INTO acheteur(prenom, nom, user_id)VALUES('$prenom', '$nom', '$id')";     
+   	  $sql = "INSERT INTO acheteur(prenom, nom, tel, user_id)VALUES('$prenom', '$nom', '$tel', '$id')";     
       $result = mysqli_query($db_handle, $sql); 
         $sql = "SELECT * FROM acheteur";       
 	    $sql .= " WHERE user_id LIKE '%$id%'";             
@@ -83,7 +83,7 @@ if (isset($_POST['submit'])) {
 		
 		}	
 
-   		$sql = "INSERT INTO adresse(adresse, ville, codepostal, pays, telephone, ach_id)VALUES('$adresse', '$ville', '$cp', '$pays', '$tel', '$id2')"; 
+   		$sql = "INSERT INTO adresse(adresse, ville, codepostal, pays, ach_id)VALUES('$adresse', '$ville', '$cp', '$pays', '$id2')"; 
    		$result = mysqli_query($db_handle, $sql);  
    		}
      else if($statut=="vendeur"){

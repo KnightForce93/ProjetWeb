@@ -1,13 +1,6 @@
 <?php
-session_start();
-
-include("Connexionbdd.php");
-$_SESSION['id_global']="11";
-
-include("Connexionbdd.php"); 
-if($_SESSION['id_global']!=""){
-	    $id=$_SESSION['id_global'];
-		$nom = isset($_POST["nom"])? $_POST["nom"] : ""; 
+include("testutilisateur.php"); 
+$nom = isset($_POST["nom"])? $_POST["nom"] : ""; 
 		$photo1 = isset($_POST["photo1"])? $_POST["photo1"] : "";  
 		$photo2= isset($_POST["photo2"])? $_POST["photo2"] : "";  
 		$photo3 = isset($_POST["photo3"])? $_POST["photo2"] : "";
@@ -126,7 +119,7 @@ $video=basename( $_FILES["video"]["name"]); //used to store the filename in a va
  			} 
 		}
 	}
-}
+
 //fermer la connexion
 	
 ?>

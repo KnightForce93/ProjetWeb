@@ -1,3 +1,4 @@
+<?php include("testutilisateur.php"); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -30,7 +31,7 @@
 <body>
 
     <?php include ("navbar.php"); 
-    include("Connexionbdd.php");?>
+ ?>
 
   <div class="pageadmin">
   <div class="header">

@@ -1,14 +1,8 @@
-<?php 
-session_start();
-$_SESSION['id_global']="10";
+<?php include("testutilisateur.php"); 
 
-include("Connexionbdd.php"); 
-
-if($_SESSION['id_global']!=""){
-	$id=$_SESSION['id_global'];
 $prix = isset($_POST["prix"])? $_POST["prix"] : "";  
 $item_id = isset($_POST["item_id"])? $_POST["item_id"] : ""; 
-   if ($db_found) {
+
    if (isset($_POST['submitEnchere'])) {   
     $sql = "SELECT * FROM enchere";       
      $sql .= " WHERE item_id LIKE '%$item_id%'";  
@@ -21,6 +15,6 @@ $item_id = isset($_POST["item_id"])? $_POST["item_id"] : "";
    header("Location: ficheitem.php?item_id=$item_id");
     exit;
   }
-}
-}
+
+
 ?>

@@ -1,11 +1,4 @@
 <?php 
-session_start(); 
-$_SESSION['id_global']="10";
-
-include("Connexionbdd.php"); 
-
-if($_SESSION['id_global']!=""){
-		$id=$_SESSION['id_global'];
 		$sql = "SELECT * FROM utilisateur";       
 	    $sql .= " WHERE id LIKE '%$id%'";               	    
 		$result = mysqli_query($db_handle, $sql); 
@@ -24,6 +17,7 @@ if($_SESSION['id_global']!=""){
 		$id_acheteur=$data['id'];
 		$nom = $data['nom'];
 		$prenom = $data['prenom'];
+		$tel=$data['telephone'];
 		}
 
 		$sql = "SELECT * FROM adresse";       
@@ -34,7 +28,7 @@ if($_SESSION['id_global']!=""){
 		$ville = $data['ville'];
 		$cp = $data['codepostal'];
 		$pays=$data['pays'];
-		$tel=$data['telephone'];
+		
 		}
 
 		$sql = "SELECT * FROM paiement";       

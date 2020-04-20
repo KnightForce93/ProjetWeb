@@ -1,6 +1,13 @@
 <?php
 echo '
-
+<script type="text/javascript">   
+  function al1() {             
+   alert("Connectez vous sur un compte vendeur pour ajouter un nouveau produit.");      };
+   function al2() {             
+   alert("Connectez vous sur un compte acheteur pour acceder au panier.");      };
+   function al3() {             
+   alert("Connectez vous sur un compte admin pour acceder à la page administrateur.");      };
+   </script> 
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -26,16 +33,41 @@ echo '
      <ul class="nav navbar-nav navbar-right">
                   <div class="navbar-menu">
                     <a href="achat.php" class="navbar-menu-link" style="text-decoration:none;">Achat</a>
-                    <a href="addproduct.php" class="navbar-menu-link" style="text-decoration:none;">Vendre</a>
-                    <a href="profilvendeur.php" class="navbar-menu-link" style="text-decoration:none;">Votre Compte</a>
-                    <a href="panier.php" class="navbar-menu-link" style="text-decoration:none;"><i class="fas fa-shopping-basket"></i> Panier</a> 
-                    <a> </a>
+                    ';
+                    if($statut=="vendeur"){
+                echo'    <a href="addproduct.php" class="navbar-menu-link" style="text-decoration:none;">Vendre</a>
+                    ';} else{
+                    echo'  <a href="#" class="navbar-menu-link" style="text-decoration:none;"><button onclick="al1()"> Vendre</button></a>';
+                    }
+                    if($statut=="vendeur"){
+                 echo'   <a href="profilvendeur.php" class="navbar-menu-link" style="text-decoration:none;">Votre Compte</a>';
+                  }
+                   if($statut=="acheteur"){
+                 echo'   <a href="profilacheteur.php" class="navbar-menu-link" style="text-decoration:none;">Votre Compte</a>';
+                  }
+                   if($statut=="admin"){
+                 echo'   <a href="admin.php" class="navbar-menu-link" style="text-decoration:none;">Votre Compte</a>';
+                  }
+                    if($statut=="acheteur"){
+                 echo'   <a href="panier.php" class="navbar-menu-link" style="text-decoration:none;"><i class="fas fa-shopping-basket"></i> Panier</a> 
+                    <a> </a>';
+                  } else{
+                   echo' <a href="# class="navbar-menu-link" style="text-decoration:none;"><i class="fas fa-shopping-basket"></i><button onclick="al2()"> Panier</button></a> 
+                    <a> </a>';
+                  }
+                  echo'
                     <div class = "dropdownplus">
                     <a href="achat.php" class="bouton-dropdownplus" style="text-decoration:none;">Plus</a>
                       <ul class="bouton-plus-liste">
                          <li><a href="" style="text-decoration:none;"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a></li>
-                          <li><a href="adminV2.php" style="text-decoration:none;">Admin</a></li>
-                          <li><a href="plus.php" style="text-decoration:none;">Plus</a></li>
+                     ';
+                         if($statut=="admin"){
+                     echo'     <li><a href="admin.php" style="text-decoration:none;">Admin</a></li>';
+                        }else{
+                       echo'   <li><a href="#" style="text-decoration:none;"><button onclick="al3()">Admin</button></a></li>';
+                        }
+                   echo'       <li><a href="plus.php" style="text-decoration:none;">Plus</a></li>
+                        
                       </ul>
                   </div>
                   </div>
@@ -43,5 +75,6 @@ echo '
     </div>
   </div>
 </nav>
-'
+';
+
 ?>

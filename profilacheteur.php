@@ -1,4 +1,4 @@
-<?php include("profilacheteurT.php"); ?>
+<?php include("testutilisateur.php"); include("profilacheteurT.php"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,8 +8,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <!-- lien vers font awesome, library de emoticone -->
-    <script src="https://kit.fontawesome.com/49d3300cf5.js" crossorigin="anonymous"></script> 
   <link rel="stylesheet" type="text/css" href="profilacheteur.css">
   <link rel="stylesheet" type="text/css" href="navbar.css">
   <style>    
@@ -46,21 +44,9 @@
             <p><a href="#"><?php echo $mdp;?></a></p>
             <p><a href="#"><?php echo $tel;?></a></p>
           </div>
+          
           <div class="well">
-            <p class="info">Adresse: <?php echo $adresse;?><br>
-               Ville:<?php echo $ville;?><br>
-               Code Postal: <?php echo $tel;?><br>
-               Pays:<?php echo $pays;?><br>
-            </p>
-          </div>
-          <div class="well">
-            <p class="info">
-               Nom de la carte: <?php echo $nomcarte;?><br>
-               Type de carte: <?php echo $typecarte;?><br>
-               Numéro:<?php echo $numero_carte;?><br>
-               Cryptogramme: <?php echo $code;?><br>
-               Date expiration: <?php echo $dateexp;?>
-            </p>
+        <a href="info.php"> <button type="button" class="btn btn-primary">Voir plus d'informations</button></a> 
           </div>
         </div>
 
@@ -93,7 +79,7 @@
               
                  <div id="Block_commande"> 
               <?php $sql = "SELECT * FROM item";       
-            $sql .= " WHERE id_acheteur LIKE '%$id_acheteur%'"; 
+            $sql .= " WHERE id_acheteur LIKE '%$id_acheteur%' and date_vente!=0"; 
 
     $result = mysqli_query($db_handle, $sql); 
     while ($data = mysqli_fetch_assoc($result)) {

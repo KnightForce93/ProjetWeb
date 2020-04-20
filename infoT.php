@@ -1,11 +1,4 @@
-<?php 
-session_start(); 
-$_SESSION['id_global']="10";
-
-include("Connexionbdd.php"); 
-
-if($_SESSION['id_global']!=""){
-		$id=$_SESSION['id_global'];
+<?php  
 		$sql = "SELECT * FROM utilisateur";       
 	    $sql .= " WHERE id LIKE '%$id%'";               	    
 		$result = mysqli_query($db_handle, $sql); 
@@ -22,6 +15,7 @@ if($_SESSION['id_global']!=""){
 		$ach_id=$data['id'];
 		$nom = $data['nom'];
 		$prenom = $data['prenom'];
+		$tel = $data['telephone'];
 		}
-	}
+	
 	?>

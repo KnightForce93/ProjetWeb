@@ -1,15 +1,9 @@
-<?php 
-session_start();
-$_SESSION['id_global']="10";
+<?php include("testutilisateur.php"); 
 
-include("Connexionbdd.php"); 
-
-if($_SESSION['id_global']!=""){
-$id=$_SESSION['id_global'];
 $prix = isset($_POST["prix"])? $_POST["prix"] : ""; 
 $msg = isset($_POST["msg"])? $_POST["msg"] : ""; 
 $item_id = isset($_POST["item_id"])? $_POST["item_id"] : "";
-if ($db_found) {
+
 	if (isset($_POST['submitOffre'])) {  
     $sql = "SELECT * FROM item";       
      $sql .= " WHERE id LIKE '%$item_id%'";  
@@ -22,7 +16,7 @@ if ($db_found) {
   header("Location: ficheitem.php?item_id=$item_id");
       exit; }
 
-  }
+  
 
-}
+
 ?>

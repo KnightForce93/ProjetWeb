@@ -1,4 +1,5 @@
-<?php include("ficheitemT.php");?>
+<?php include("testutilisateur.php");
+  include("ficheitemT.php");?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -145,7 +146,9 @@
 
                 </div>
                 <?php
-                
+                if($statut=="vendeur" || $statut=="admin"){
+                  echo' vous ne pouvez pas faire d\'achat avec votre type de compte';
+                }else{
                 $sql = "SELECT * FROM panier";        
                 $sql .= " WHERE item_id LIKE '%$item_id%'";          
                 $sql .= " AND ach_id LIKE '%$id%'";         
@@ -205,6 +208,7 @@
                 ';}
               }
             }
+          }
                 ?>
                 <div id="Form_enchere" style="display:none">
                      <form  name="my-form"  action="addenchereT.php" method="post">

@@ -1,4 +1,5 @@
-<?php include("infoT.php");
+<?php include("testutilisateur.php"); 
+include("infoT.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +12,52 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="profilacheteur.css">
   <link rel="stylesheet" type="text/css" href="navbar.css">
-  <style>    
+     <script type="text/javascript">
+      //utiliser jQuery pour que l’image s’étire sur l’écran
+        $(document).ready(function(){ 
+          $('.header').height($(window).height());
+        });
+         function togg1(){
+                     document.getElementById("div_nom").style.display = "block";
+                     document.getElementById("div_prenom").style.display = "none";
+                     document.getElementById("div_tel").style.display = "none";
+                     document.getElementById("div_email").style.display = "none";
+                      document.getElementById("div_mdp").style.display = "none";
+                }; 
+                function togg2(){
+               
+                     document.getElementById("div_prenom").style.display = "block";
+                    document.getElementById("div_nom").style.display = "none";
+                     document.getElementById("div_tel").style.display = "none";
+                     document.getElementById("div_email").style.display = "none";
+                      document.getElementById("div_mdp").style.display = "none";
+                };
+                function togg3(){
+                     document.getElementById("div_tel").style.display = "block";
+                     document.getElementById("div_prenom").style.display = "none";
+                      document.getElementById("div_nom").style.display = "none";
+                     document.getElementById("div_email").style.display = "none";
+                      document.getElementById("div_mdp").style.display = "none";
+                }; 
+                function togg4(){
+               
+                     document.getElementById("div_email").style.display = "block";
+                    document.getElementById("div_nom").style.display = "none";
+                     document.getElementById("div_tel").style.display = "none";
+                     document.getElementById("div_prenom").style.display = "none";
+                      document.getElementById("div_mdp").style.display = "none";
+                };
+                function togg5(){
+                     document.getElementById("div_mdp").style.display = "block";
+                     document.getElementById("div_prenom").style.display = "none";
+                      document.getElementById("div_tel").style.display = "none";
+                     document.getElementById("div_email").style.display = "none";
+                      document.getElementById("div_nom").style.display = "none";
+                }; 
+              
+    </script>
+
+<style>    
     /* Set black background color, white text and some padding */
     footer {
       background-color: #555;
@@ -19,16 +65,7 @@
       padding: 15px;
     }
   </style>
-  <script type="text/javascript">
-                function togg1(){
-                     document.getElementById("Block_commande").style.display = "block";
-                     document.getElementById("Block_offres").style.display = "none";
-                }; 
-                function togg2(){
-                     document.getElementById("Block_offres").style.display = "block";
-                    document.getElementById("Block_commande").style.display = "none";
-                };
-        </script>
+
 </head>
 <body>
 
@@ -43,10 +80,25 @@
           <div class="row">
             
         <div class="col-sm-6">
-            <p>Nom : <?php echo $nom; ?></p>
-          </div>
+            <p>Nom: <?php echo $nom; ?></p>
+                        <br>
+                        <div class="card-body" id="div_nom" style="display:none">
+                            <form  name="my-form"  action="modificationinfosT.php" method="post">
+                                <fieldset>
+                                <div class="form-group row">
+                                    <label for="nom" class="col-md-4 col-form-label text-md-right">Entrez votre nouveau Nom</label>
+                                        <input type="text" class="form-control" name="nom">
+                                    </div>
+                                  <div class="col-md-6 offset-md-4">
+                                        <input type="submit" value="Enregistrer" class ="btn btn-primary btn-right" name="submit">
+                                </div>
+                               </fieldset>
+                            </form>
+                        </div>
+                                </div>
+
           <div class="col-sm-6">
-            <a href="modificationinfos.php?info=nom"><button type="button" class="btn btn-primary">Modifier nom</button> </a>
+            <button type="button" onclick="togg1()" class="btn btn-primary">Modifier nom</button> 
           </div>
         </div>
       </div>
@@ -54,10 +106,49 @@
        <div class="row">
        
         <div class="col-sm-6">
-            <p>Prénom : <?php echo $prenom; ?></p>
+            <p>Prénom: <?php echo $prenom; ?></p>
+                        <br>
+                        <div class="card-body" id="div_prenom" style="display:none">
+                            <form  name="my-form"  action="modificationinfosT.php" method="post">
+                                <fieldset>
+                                <div class="form-group row">
+                                    <label for="prenom" class="col-md-4 col-form-label text-md-right">Entrez votre nouveau Prénom</label>
+                                        <input type="text" class="form-control" name="prenom">
+                                    </div>
+                                  <div class="col-md-6 offset-md-4">
+                                        <input type="submit" value="Enregistrer" class ="btn btn-primary btn-right" name="submit">
+                                </div>
+                               </fieldset>
+                            </form>
+                        </div>
+                                </div>
+          <div class="col-sm-6">
+            <button type="button" onclick="togg2()"class="btn btn-primary">Modifier prénom</button> 
+          </div>
+        </div>
+      </div>
+      <div class="well">
+       <div class="row">
+       
+        <div class="col-sm-6">
+            <p>Tel: <?php echo $tel; ?></p>
+            <br>
+                        <div class="card-body" id="div_tel" style="display:none">
+                            <form  name="my-form"  action="modificationinfosT.php" method="post">
+                                <fieldset>
+                                <div class="form-group row">
+                                    <label for="tel" class="col-md-4 col-form-label text-md-right">Entrez votre nouveau téléphone</label>
+                                        <input type="text" class="form-control" name="tel">
+                                    </div>
+                                  <div class="col-md-6 offset-md-4">
+                                        <input type="submit" value="Enregistrer" class ="btn btn-primary btn-right" name="submit">
+                                </div>
+                               </fieldset>
+                            </form>
+                        </div>
           </div>
           <div class="col-sm-6">
-            <a href="modificationinfos.php?info=prenom"><button type="button" class="btn btn-primary">Modifier prénom</button> </a>
+            <button type="button" onclick="togg3()" class="btn btn-primary">Modifier téléphone</button> 
           </div>
         </div>
       </div>
@@ -66,28 +157,56 @@
         
         <div class="col-sm-6">
   
-            <p>Email : <?php echo $email;?></p>
+            <p>Email: <?php echo $email;?></p>
+            <br>
+                        <div class="card-body" id="div_email" style="display:none">
+                            <form  name="my-form"  action="modificationinfosT.php" method="post">
+                                <fieldset>
+                                <div class="form-group row">
+                                    <label for="email" class="col-md-4 col-form-label text-md-right">Entrez votre nouveau email</label>
+                                        <input type="text" class="form-control" name="email">
+                                    </div>
+                                  <div class="col-md-6 offset-md-4">
+                                        <input type="submit" value="Enregistrer" class ="btn btn-primary btn-right" name="submit">
+                                </div>
+                               </fieldset>
+                            </form>
+                        </div>
           
           </div>
           <div class="col-sm-6">
-            <a href="modificationinfos.php?info=email"><button  type="button" class="btn btn-primary">Modifier email</button> </a>
+            <button type="button" onclick="togg4()" class="btn btn-primary">Modifier email</button> 
           </div>
           </div>
         </div>
-      
+      </div>
        <div class="well">
        <div class="row">
        
         <div class="col-sm-6">
-            <p>Mot de passe : <?php echo $mdp;?></p>
+            <p>Mot de passe <?php echo $mdp;?></p>
+            <br>
+                        <div class="card-body" id="div_mdp" style="display:none">
+                            <form  name="my-form"  action="modificationinfosT.php" method="post">
+                                <fieldset>
+                                <div class="form-group row">
+                                    <label for="mdp" class="col-md-4 col-form-label text-md-right">Entrez votre nouveau Mot de passe</label>
+                                        <input type="text" class="form-control" name="mdp">
+                                    </div>
+                                  <div class="col-md-6 offset-md-4">
+                                        <input type="submit" value="Enregistrer" class ="btn btn-primary btn-right" name="submit">
+                                </div>
+                               </fieldset>
+                            </form>
+                        </div>
          
           </div>
           <div class="col-sm-6">
-           <a href="modificationinfos.php?info=mdp"><button type="button" class="btn btn-primary">Modifier mot de passe</button> </a>
+           <button type="button" onclick="togg5()"class="btn btn-primary">Modifier mot de passe</button> 
           </div>
         </div>
       </div>
-     </div>  
+       
  <div class="row">
         <div class="col-sm-12">
           <div class="well">
@@ -105,7 +224,6 @@
                     <th><strong>Ville</strong></th>
                     <th><strong>Code Postal</strong></th>
                     <th><strong>Pays</strong></th>
-                    <th><strong>Téléphone</strong></th>
                     <th>Action</th>
                   </tr>
                   <?php
@@ -120,14 +238,13 @@
                                 <td>'.$data['ville'].'</td>
                                 <td>'.$data['codepostal'].'</td>
                                 <td>'.$data['pays'].'</td>
-                                <td>'.$data['telephone'].'</td>
                                 <td>
                                   <div>
 
-                                <form action="supressionadresseT.php" method="post">
-                                <input type="hidden"  name="adresse_id" value="'.$data['id'].'">
+                                <form action="modificationinfosT.php" method="post">
+                                <input type="hidden"  name="adresseS_id" value="'.$data['id'].'">
                                 <div class="offset-md-4">
-                                <button type="submit" value="resend" name="submitSA"class="btn btn-danger">
+                                <button type="submit" value="resend" name="submitSA" class="btn btn-danger">
                                     Supprimer
                                 </button>
                             </div>
@@ -143,7 +260,8 @@
                            ';
                             if (mysqli_num_rows($result) < 3) {     
       echo'
-                           <a href="modificationinfos.php?info=adresse"><button type="button" class="btn btn-primary">Ajouter une Adresse</button></a> ';   
+                            <a href="modificationinfos.php?info=adresse"><button type="button" class="btn btn-primary">Ajouter une Adresse</button></a> '
+                           ;   
     } else{ 
       echo' <p> Vous avez atteint le nombre maximum d\'adresses, pour en ajouter une nouvelle veuillez en supprimer une.</p>';
   }
@@ -192,10 +310,10 @@
                                 <td>
                                   <div>
 
-                                <form action="supressionpaiementT.php" method="post">
-                                <input type="hidden"  name="paiement_id" value="'.$data['id'].'">
+                                <form action="modificationinfosT.php" method="post">
+                                <input type="hidden"  name="carteS_id" value="'.$data['id'].'">
                                 <div class="offset-md-4">
-                                <button type="submit" value="resend" name="submitSP"class="btn btn-danger">
+                                <button type="submit" value="resend" name="submitSP" class="btn btn-danger">
                                     Supprimer
                                 </button>
                             </div>
@@ -212,7 +330,7 @@
                            ';
                             if (mysqli_num_rows($result) <3) {     
       echo'
-                           <a href="modificationinfos.php?info=paiement"><button type="button" class="btn btn-primary">Ajouter une Carte de crédit</button></a> ';   
+                            <a href="modificationinfos.php?info=paiement"><button type="button" class="btn btn-primary">Ajouter une Carte de crédit</button></a> ';   
     } else{ 
       echo' <p> Vous avez atteint le nombre maximum de carte de crédit, pour en ajouter une nouvelle veuillez en supprimer une.</p>';
   }

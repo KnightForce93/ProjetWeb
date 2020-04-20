@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php  include("testutilisateur.php"); 
+    include("panierT.php"); ?>
+    <!DOCTYPE html>
 <html lang="fr">
 <head>
       <title>ECE Ebay</title>
@@ -35,8 +37,7 @@
 <body>
 
     <?php include ("navbar.php"); 
-    include("Connexionbdd.php");
-    include("panierT.php");?>
+   ?>
 
     <div class="header" style="background-image: url('images/background.jpg'); background-size: cover; 
     background-position: center;
@@ -46,100 +47,79 @@
 
     <?php 
 
-    if (isset($_POST['submit'])) {   
-        $sql0 = "SELECT * FROM paiement ";
-        $sql0 .= " WHERE ach_id LIKE '%$id_acheteur%'";
+    if (isset($_POST['submitP'])) {
+
+      $adresse_id= isset($_POST["statusRadiosA"])? $_POST["statusRadiosA"] : "";
+
+      $carte_id= isset($_POST["statusRadiosC"])? $_POST["statusRadiosC"] : "";
+     
+      $total= isset($_POST["total"])? $_POST["total"] : "";
+       
+        $sql0 = "SELECT paiement.solde FROM paiement ";
+        $sql0 .= " WHERE id ='".$carte_id."' ";
         $result0 = mysqli_query($db_handle, $sql0);  
         while ($data0 = mysqli_fetch_assoc($result0)) 
         {
             $solde=$data0['solde'];
-            if($solde>=$tot) {   
+          }
+          
+            if($solde >= $total) {   
                 echo '            
                 <div class="row">
                         <br>
                         <div class="col-sm-12 well">
-                            <h3 class="titrepage2">Voici la liste des produits achetés :</h3><br>
+                            Paiement réussi
                         </div>
                 </div>  
                 ';
-                $sql= "SELECT * FROM panier";
-                 $sql .= " WHERE ach_id LIKE '%$id_acheteur%'";
+                $nb=0;
+                $sql= "SELECT item.id, item.categorie_achat, item.prix_minimum, item.date_vente, item.prix_vente, item.id_acheteur, panier.id as id2 FROM item, panier";
+                 $sql .= " WHERE panier.ach_id LIKE '%$id_acheteur%' And panier.item_id=item.id";
                  $result = mysqli_query($db_handle, $sql); 
-                 $tot=0;
-                 $nb=0;
-                $message = 'Bonjour !' . "\n\n" . 'Nous vous remercierons pour vos achats, vous avez acheté : ' . "\n\n";
-                while ($data = mysqli_fetch_assoc($result))
-                {
-                    $item_id=$data['item_id'];
-                    $sql1 = "SELECT * FROM item ";
-                    $sql1 .= " WHERE id LIKE '%$item_id%'";
-                    $result1 = mysqli_query($db_handle, $sql1);  
-                    while ($data1 = mysqli_fetch_assoc($result1)) 
-                    {
-                        $v_id=$data1['v_id'];
-                        $sql2 = "SELECT * FROM vendeur ";
-                        $sql2 .= " WHERE id LIKE '%$v_id%'";
-                        $result2 = mysqli_query($db_handle, $sql2);
-                        while ($data2 = mysqli_fetch_assoc($result2)) {
-                            $message .= ' - ' . $data1['nom'] . ' de ' . $data2['prenom'] . ' ' .$data2['nom'] . "\n\n";
-                            echo '
-                            <div class="col-sm-7 text-left">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                            <div class="well">
-                                                <p><a href="ficheitem.php/{' . $data1['id'].'}">' . $data1['nom'] . '</a></p>
-                                                    <img src="images/'.$data1['photo1'] .' "height="100%" width="100%" alt="photo1"> <br>
-                                            </div>
-                                    </div>
-                            <div class="col-sm-9">
-                                    <div class="well">
-                                        <p class="description">
-                                        <b>Prix : ' . $data1['prix_minimum'] . '€</b><br>
-                                               Description : ' . $data1['description'] . '<br>
-                                               <small>
-                                               Catégorie d\'achat : ' . $data1['categorie_achat'] . '<br>
-                                               </small> 
-                                               <small>
-                                                    <i>Vendu par : ' . $data2['prenom'] . ' ' .$data2['nom'] . '</i>
-                                                </small> 
-                                        </p>
-                                    </div>
-                            </div>
-                            </div>
-                            </div>';
-                            $tot=$tot+$data1['prix_minimum'];
-                            $nb++;
-
+                while ($data1 = mysqli_fetch_assoc($result)){
                             if($data1['categorie_achat']=='AchatImmediat')
                             {
                                 $prix=$data1['prix_minimum'];
-                                $sql3 = "UPDATE item SET date_vente=NOW(), prix_vente=$prix,id_acheteur = $id_acheteur ";
-                                $sql3 .= " WHERE id LIKE '%$item_id%'";
+                                $sql3 = "UPDATE item SET date_vente=NOW(), prix_vente='$prix', id_acheteur = '$id_acheteur' ";
+                                $sql3 .=" WHERE id ='".$data1['id']."' ";
                                 $result3 = mysqli_query($db_handle, $sql3);
                             }
                             else if($data1['categorie_achat']=='Enchere')
                             {
-                                //$prix=$data1['prix_minimum'];
-                                $sql3 = "UPDATE item SET date_vente=NOW(),id_acheteur = $id_acheteur ";
-                                $sql3 .= " WHERE id LIKE '%$item_id%'";
+                                $sql3 = "UPDATE item SET date_vente=NOW() ";
+                                $sql3 .=" WHERE id ='".$data1['id']."' ";
                                 $result3 = mysqli_query($db_handle, $sql3); 
                             }
-                            else if($data1['categorie_achat']=='MeilleureOffre')
+                            else if($data1['categorie_achat']=='MeilleurOffre')
                             {
-                               // $prix=$data1['prix_minimum'];
-                                $sql3 = "UPDATE item SET date_vente=NOW(),id_acheteur = $id_acheteur ";
-                                $sql3 .= " WHERE id LIKE '%$item_id%'";
+                              if($data1['prix_vente']!=0){
+                                 $sql3 = "UPDATE item SET date_vente=NOW() ";
+                                $sql3 .= " WHERE id ='".$data1['id']."' ";
                                 $result3 = mysqli_query($db_handle, $sql3);
+                                  }else{
+                                $prix=$data1['prix_minimum'];
+                                $sql3 = "UPDATE item SET date_vente=NOW(), prix_vente='$prix',id_acheteur = '$id_acheteur' ";
+                                $sql3 .= " WHERE id ='".$data1['id']."' ";
+                                $result3 = mysqli_query($db_handle, $sql3);
+                                 $sql3 = "DELETE FROM meilleuroffre";
+                               $sql3 .= " WHERE item_id != '".$data1['id']."'";
+                                $result = mysqli_query($db_handle, $sql3);
+                            
+                                  }
 
                             }
-
+                              $nb=$nb+1;
                         } 
-                    }
-                }  
+        $solde=  $solde-$total;               
+        $sql3 = "UPDATE paiement SET solde='$prix'";
+        $sql3 .= " WHERE id ='".$carte_id."' ";
+        $result0 = mysqli_query($db_handle, $sql0);                 
+                        
+
                 $to = $email;
                 //$to = 'louis.donikian@gmail.com';
                  $subject = 'Vos achats sur ECE eBay !';
-                 $message .= 'Vous avez acheté : ' . $nb . ' item(s).' . "\n\n" . 'Pour un montant total de ' . $tot . '€.' . "\n\n" . 'L\'équipe ECE Ebay.';
+                 $message .= 'Vous avez acheté '.$nb.' pour un montant total de ' . $total . '€.' . "\n\n" . 'L\'équipe ECE Ebay.';
                  $headers = 'From: noreply@eceebay.com' . "\r\n" .
                  'Reply-To: noreply@eceebay.com' . "\r\n";
                  //$ok=mail($to, $subject, $message, $headers);
@@ -152,24 +132,29 @@
                  $sql4 = "DELETE FROM panier ";
                  $sql4 .= " WHERE ach_id LIKE '%$id_acheteur%'";
                  $result4 = mysqli_query($db_handle, $sql4); 
-             }
+             
+           }
              else {
                 echo '            
                 <div class="row">
                         <br>
                         <div class="col-sm-12 well">
                             <h3 class="titrepage2">Votre solde n\'est pas suffisant !</h3><br>
-                            <p>Veuillez prendre contact avec votre établissement bancaire en cas d\'erreur.</p>
+                            <p>Veuillez prendre contact avec votre établissement bancaire en cas d\'erreur ou changer de carte de crédit.</p>
                         </div>
                 </div>  
                 ';
              }
-     }
+    
         mysqli_close($db_handle);
         exit;
-        
-    }
+         }
+    
     ?>
+   }
+     ?>
+
+
     </div>
 </div>
 

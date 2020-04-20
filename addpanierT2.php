@@ -1,17 +1,4 @@
-<?php 
-session_start();
-$_SESSION['id_global']="11";
-
-include("Connexionbdd.php"); 
-
-if($_SESSION['id_global']!=""){
-  $id=$_SESSION['id_global']; 
-   if ($db_found) {
-   if (isset($_POST['submitValidation'])) { 
-   $meilleuroffre_id= isset($_POST["meilleuroffre_id"])? $_POST["meilleuroffre_id"] : "";
-   $sql = "UPDATE meilleuroffre SET validation=1";
-   $sql .= " WHERE id LIKE '%$meilleuroffre_id%'";   
-   $result = mysqli_query($db_handle, $sql);
+<?php include("testutilisateur.php");
 
   $sql = "SELECT * FROM meilleuroffre";       
      $sql .= " WHERE id LIKE '%$meilleuroffre_id%'";  
@@ -53,6 +40,6 @@ $sql = "SELECT * FROM utilisateur";
       exit; }
       
  }
-}
-}
+
+
 ?>

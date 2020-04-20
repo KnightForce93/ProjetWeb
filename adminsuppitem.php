@@ -1,6 +1,4 @@
-<?php 
-
-include("Connexionbdd.php");
+<?php include("testutilisateur.php");
 $item_id = isset($_POST["item__id"])? $_POST["item_id"] : "";  
 
 if (isset($_POST['submitSI'])) { 

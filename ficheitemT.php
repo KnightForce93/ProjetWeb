@@ -1,9 +1,4 @@
-<?php session_start();
-$_SESSION['id_global']="10";
-
-include("Connexionbdd.php");
-if($_SESSION['id_global']!=""){ 
-	$id=$_SESSION['id_global'];
+<?php 
 if(filter_has_var(INPUT_GET,'item_id')){
         $item_id=$_GET['item_id'];
     }else{$item_id='15';
@@ -56,7 +51,7 @@ if(filter_has_var(INPUT_GET,'item_id')){
    } else{$debut="yes";
 		}
    }
-   }
+   
 	
 	
 ?>	       

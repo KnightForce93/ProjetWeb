@@ -1,6 +1,4 @@
-<?php 
-
-include("Connexionbdd.php");
+<?php include("testutilisateur.php"); 
 $V_id = isset($_POST["V_id"])? $_POST["V_id"] : "";  
 
 if (isset($_POST['submitSV'])) { 

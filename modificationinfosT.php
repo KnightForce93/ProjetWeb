@@ -1,10 +1,4 @@
-<?php session_start();
-$_SESSION['id_global']="10";
-
-include("Connexionbdd.php"); 
-
-if($_SESSION['id_global']!=""){
-	$id=$_SESSION['id_global'];
+<?php include("testutilisateur.php"); 
 	$nom = isset($_POST["nom"])? $_POST["nom"] : "";  
 	$prenom = isset($_POST["prenom"])? $_POST["prenom"] : "";    
 	$email = isset($_POST["email"])? $_POST["email"] : "";  
@@ -22,8 +16,8 @@ if($_SESSION['id_global']!=""){
 	$dateexp = isset($_POST["dateexp"])? $_POST["dateexp"] : "";
 	$code = isset($_POST["code"])? $_POST["code"] : "";
 	$solde = isset($_POST["solde"])? $_POST["solde"] : "";
-
-
+	$adresseS_id= isset($_POST["adresseS_id"])? $_POST["adresseS_id"] : "";
+$carteS_id= isset($_POST["carteS_id"])? $_POST["carteS_id"] : "";
 	$erreur="";
 
 	if($erreur!=""){
@@ -46,6 +40,14 @@ if($_SESSION['id_global']!=""){
 			   header("Location: info.php"); 
 			   exit;
 			}
+			if($telephone!=""){
+			   $sql = "UPDATE acheteur SET telephone='$telephone'";  
+			   $sql .= " WHERE user_id LIKE '%$id%'";   
+			   $result = mysqli_query($db_handle, $sql); 
+			   header("Location: info.php"); 
+			   exit;
+			}
+
 		   if($email!=""){
 			   $sql = "UPDATE utilisateur SET email='$email'";  
 			   $sql .= " WHERE id LIKE '%$id%'";   
@@ -117,6 +119,23 @@ if($_SESSION['id_global']!=""){
 				}
 			}
 		}
+		if (isset($_POST['submitSA'])) {
+			if($adresseS_id!=""){
+			$sql3 = "DELETE FROM adresse";
+                               $sql3 .= " WHERE id = '".$adresseS_id."'";
+                                $result = mysqli_query($db_handle, $sql3);
+                                header("Location: info.php");
+				   	exit;
+}}
+if (isset($_POST['submitSP'])) {
+			if($carteS_id!=""){
+			$sql3 = "DELETE FROM paiement";
+                               $sql3 .= " WHERE id = '".$carteS_id."'";
+                                $result = mysqli_query($db_handle, $sql3);
+                                header("Location: info.php");
+				   	exit;
+}}
+
 	}
-}
+
 ?>	
