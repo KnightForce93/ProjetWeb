@@ -135,6 +135,10 @@
                      elseif($categorie_achat=="Enchere"){
                       echo '
                     <p class="prix"><strong>Début de l\'Enchere à: </strong>'.$prix.' €</p> 
+                     <br>
+                     <p>L\'enchère débute le: '.$dateS.' </p> 
+                     <br>
+                  <p>L\'enchère se termine le: '.$dateE.' </p> 
                      <br>';
                    }
                    ?>
@@ -165,6 +169,12 @@
                 ';
               }
                 elseif ($categorie_achat=="Enchere"){
+                  if($fin=="yes" ){
+                    echo "L'enchere est terminé";
+                  }
+                  else if ($debut=="no"){
+                     echo "L'enchere n'a pas débuté";
+                   }else{
                 $sql = "SELECT * FROM offreenchere";        
                 $sql .= " WHERE ach_id LIKE '%$id%'";          
                 $sql .= " AND enchere_id LIKE '%$enchere_id%'";         
@@ -177,6 +187,7 @@
                <button class="buttonachat" onclick="togg1()">Faire une Enchere</button></a>
                 ';}
               }
+            }
 
                 elseif ($categorie_achat=="MeilleurOffre"){
                 echo'
