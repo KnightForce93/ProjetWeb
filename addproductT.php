@@ -7,8 +7,10 @@ $nom = isset($_POST["nom"])? $_POST["nom"] : "";
 		$video = isset($_POST["video"])? $_POST["video"] : "";   
 		$description = isset($_POST["description"])? $_POST["description"] : ""; 
 		$prixmin = isset($_POST["prixmin"])? $_POST["prixmin"] : "";
-		$categoriedachat = isset($_POST["categoriedachat"])? $_POST["categoriedachat"] : "";
+		$categoriedachat = isset($_POST["statusRadios"])? $_POST["statusRadios"] : "";
 		$categorieitem = isset($_POST["categorieitem"])? $_POST["categorieitem"] : "";
+		$date_D = isset($_POST["Date_debut"])? $_POST["Date_debut"] : "";
+		$date_F= isset($_POST["Date_fin"])? $_POST["Date_fin"] : "";
 
 		$erreur="";
 
@@ -82,7 +84,6 @@ $video=basename( $_FILES["video"]["name"]); //used to store the filename in a va
 }else{		        
  	if (isset($_POST['submit'])) {  
 
-			 if ($db_found) {
 	$sql = "SELECT * FROM vendeur";       
 	    $sql .= " WHERE user_id LIKE '%$id%'";          	    
 		$result = mysqli_query($db_handle, $sql);
@@ -109,16 +110,38 @@ $video=basename( $_FILES["video"]["name"]); //used to store the filename in a va
 	 	if($video!=""){
 	 	$sql .=  " '$video',";
 	 	}
+
 	 $sql .=" '$description', '$prixmin', '$categoriedachat', '$categorieitem','$id_vendeur')";   
 	$result = mysqli_query($db_handle, $sql); 
+
+	$sql = "SELECT * FROM item";       
+	$sql .= " WHERE v_id LIKE '%$id_vendeur%' and nom ='$nom'";    
+	$result = mysqli_query($db_handle, $sql); 
+	while ($data = mysqli_fetch_assoc($result)) { 
+		$sql =  "INSERT INTO enchere(";
+	 if($date_D!=""){
+	 	$sql .=  " startdate,";
+	 	}
+	 	if($date_F!=""){
+	 	$sql .=  " enddate,";
+	 	}
+	 $sql .=  " item_id)VALUES(";
+	  if($date_D!=""){
+	 	$sql .=  " '$date_D',";
+	 	}
+	 	if($date_F!=""){
+	 	$sql .=  " '$date_F',";
+	 	}
+	 $sql .=" '".$data['id']."')";   
+	$result = mysqli_query($db_handle, $sql); 
+}
 	 mysqli_close($db_handle);
+
 	 header("Location: accueil.php");
 	 exit;
-		}	else {
-				echo "Database not found";
- 			} 
+		}	 
 		}
-	}
+	
 
 //fermer la connexion
 	

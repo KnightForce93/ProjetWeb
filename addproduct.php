@@ -25,7 +25,14 @@
             $(document).ready(function(){ 
                 $('.header').height($(window).height());
             });
-                
+                function togg1(){
+                     document.getElementById("div_ench").style.display = "block";
+                     
+                }; 
+                function togg2(){
+                     document.getElementById("div_ench").style.display = "none";
+                     
+                }; 
         </script>
 </head> 
 
@@ -78,7 +85,7 @@
     <main class="my-form">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-sm-8">
+            <div class="col-sm-9">
                     <div class="card">
                         <div class="card-header">Entrez les informations de votre produit</div>
                         <div class="card-body">
@@ -109,16 +116,37 @@
                                        <textarea style="width:100%" placeholder="Points positifs/négatifs" name="description"></textarea>
                                     </div>
                                 </div>
-                            <div class="form-group row">
-                                    <label for="categoriedachat" class="col-sm-4 col-form-label text-sù-right">Catégorie d'achat :</label>
-                           <div class="col-sm-6">
-                        <select name="categoriedachat"> 
-                        <option value ="enchere">Enchère </option> 
-                        <option value ="bestoffer">Meilleure offre </option> 
-                        <option value ="achat">Achat immédiat </option> 
-                    </select>
+                                  <div class="form-group row">
+                                    <div class="form-check row col-form-label col-md-6 text-md-right">
+                                        <input type="radio" onclick="togg1()" class="form-check-input" id="enchere" name="statusRadios" value="Enchere">
+                                        <label class="form-check-label" for="enchere">Enchere</label>
+                                    </div>
+                                    <div class="form-check row col-form-label">
+                                        <input type="radio" onclick="togg2()" class="form-check-input" id="achat" name="statusRadios" value="AchatImmediat">
+                                        <label class="form-check-label" for="achat">Achat Immediat</label>
+                                    </div>
+                                    <div class="form-check row col-form-label">
+                                        <input type="radio" onclick="togg2()" class="form-check-input" id="offre" name="statusRadios" value="MeilleurOffre">
+                                        <label class="form-check-label" for="offre">Meilleur Offre</label>
+                                    </div>
+                                </div>
+                
+
+
+            <div id="div_ench" style="display:none">
+                <div class="form-group row" >
+                                   <label for="Date début" class="col-sm-4 col-form-label text-sm-right">Entrez la date de début de l'enchere :</label>
+                   <div class="col-sm-6">
+                    <input type="date" name="Date_debut">
                 </div>
             </div>
+            <div class="form-group row" >
+                                   <label for="Date fin" class="col-sm-4 col-form-label text-sm-right">Entrez la date de fin de l'enchere :</label>
+                   <div class="col-sm-6">
+                    <input type="date" name="Date_fin" >
+                </div>
+            </div>
+          </div>
                                             <div class="form-group row" >
                                    <label for="prixmin" class="col-sm-4 col-form-label text-sm-right">Prix ferme pour cette catégorie :</label>
                    <div class="col-sm-6">
