@@ -71,7 +71,6 @@
               </div>
               
               <p>Adresse email: <?php echo $email;?></p>
-<<<<<<< HEAD
               <button type="button" onclick="togg4()"class="btn btn-primary">Modifier Email</button> 
                <br>
                         <div class="card-body" id="div_email" style="display:none">
@@ -104,11 +103,6 @@
                             </form>
                         </div>
          
-=======
-              <a href="modificationinfos.php?info=email"> <button type="button" class="btn btn-primary">Modifier email</button></a> <br><br>
-              <p>Mot de passe: <?php echo $mdp;?> </p>
-              <a href="modificationinfos.php?info=mdp"> <button type="button" class="btn btn-primary">Modifier mot de passe</button></a> 
->>>>>>> Front
             </div>
 
             <div class="col-sm-7">
